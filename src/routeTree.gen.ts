@@ -9,38 +9,98 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ZazitkyRouteImport } from './routes/zazitky'
+import { Route as OMneRouteImport } from './routes/o-mne'
+import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ZazitkySlugRouteImport } from './routes/zazitky.$slug'
 
+const ZazitkyRoute = ZazitkyRouteImport.update({
+  id: '/zazitky',
+  path: '/zazitky',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OMneRoute = OMneRouteImport.update({
+  id: '/o-mne',
+  path: '/o-mne',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZazitkySlugRoute = ZazitkySlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ZazitkyRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/o-mne': typeof OMneRoute
+  '/zazitky': typeof ZazitkyRouteWithChildren
+  '/zazitky/$slug': typeof ZazitkySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/o-mne': typeof OMneRoute
+  '/zazitky': typeof ZazitkyRouteWithChildren
+  '/zazitky/$slug': typeof ZazitkySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/o-mne': typeof OMneRoute
+  '/zazitky': typeof ZazitkyRouteWithChildren
+  '/zazitky/$slug': typeof ZazitkySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/kontakt' | '/o-mne' | '/zazitky' | '/zazitky/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/kontakt' | '/o-mne' | '/zazitky' | '/zazitky/$slug'
+  id: '__root__' | '/' | '/kontakt' | '/o-mne' | '/zazitky' | '/zazitky/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KontaktRoute: typeof KontaktRoute
+  OMneRoute: typeof OMneRoute
+  ZazitkyRoute: typeof ZazitkyRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/zazitky': {
+      id: '/zazitky'
+      path: '/zazitky'
+      fullPath: '/zazitky'
+      preLoaderRoute: typeof ZazitkyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/o-mne': {
+      id: '/o-mne'
+      path: '/o-mne'
+      fullPath: '/o-mne'
+      preLoaderRoute: typeof OMneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +108,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zazitky/$slug': {
+      id: '/zazitky/$slug'
+      path: '/$slug'
+      fullPath: '/zazitky/$slug'
+      preLoaderRoute: typeof ZazitkySlugRouteImport
+      parentRoute: typeof ZazitkyRoute
+    }
   }
 }
 
+interface ZazitkyRouteChildren {
+  ZazitkySlugRoute: typeof ZazitkySlugRoute
+}
+
+const ZazitkyRouteChildren: ZazitkyRouteChildren = {
+  ZazitkySlugRoute: ZazitkySlugRoute,
+}
+
+const ZazitkyRouteWithChildren =
+  ZazitkyRoute._addFileChildren(ZazitkyRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KontaktRoute: KontaktRoute,
+  OMneRoute: OMneRoute,
+  ZazitkyRoute: ZazitkyRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

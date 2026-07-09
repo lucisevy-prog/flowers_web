@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { getExperience, experiences } from "@/lib/experiences";
+import { getExperience, experiences, type Experience } from "@/lib/experiences";
 import { ArrowUpRight, Check, Clock, Users, Sparkle } from "lucide-react";
 
 export const Route = createFileRoute("/zazitky/$slug")({
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/zazitky/$slug")({
 });
 
 function ExperienceDetail() {
-  const { exp } = Route.useLoaderData();
+  const { exp } = Route.useLoaderData() as { exp: Experience };
   const others = experiences.filter((e) => e.slug !== exp.slug).slice(0, 3);
 
   return (
