@@ -82,10 +82,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky" },
       { name: "description", content: "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Signature Flower Bar, DIY kity a intimní zážitky." },
       { name: "author", content: "LU by Lucie" },
-      { property: "og:title", content: "LU by Lucie — Květinové zážitky" },
-      { property: "og:description", content: "Prémiové květinové zážitky, které si odnesete domů. Svatby, rozlučky, firemní eventy." },
+      { property: "og:title", content: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky" },
+      { property: "og:description", content: "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Signature Flower Bar, DIY kity a intimní zážitky." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky" },
+      { name: "twitter:description", content: "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Signature Flower Bar, DIY kity a intimní zážitky." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4a030899-8f27-458c-842c-109509c0a37e/id-preview-6dbbe08f--d6d28549-0722-4c60-b41f-e395d18253e3.lovable.app-1783673526315.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4a030899-8f27-458c-842c-109509c0a37e/id-preview-6dbbe08f--d6d28549-0722-4c60-b41f-e395d18253e3.lovable.app-1783673526315.png" },
     ],
     links: [
       {
