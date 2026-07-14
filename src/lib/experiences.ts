@@ -29,7 +29,45 @@ export type Experience = {
   idealFor: string[];
   tiers?: Tier[];
   priceBlocks?: { label: string; value: string; note?: string }[];
+  extraGuest?: { label: string; price: string };
+  deliveryZones?: { icon: string; label: string; price: string; note?: string }[];
 };
+
+const defaultDelivery = [
+  {
+    icon: "📍",
+    label: "Osobní odběr (Tuchoměřice / Praha 6)",
+    price: "Zdarma",
+    note: "vyzvednutí i vrácení",
+  },
+  {
+    icon: "🚗",
+    label: "Západní okruh (Praha, Praha-západ, Kladno, Slaný, Beroun)",
+    price: "1 000 Kč",
+    note: "full servis dovoz i odvoz",
+  },
+  {
+    icon: "🗺️",
+    label: "Východní okruh (Praha-východ a dál)",
+    price: "1 800 Kč",
+    note: "full servis dovoz i odvoz",
+  },
+];
+
+const deliveryWithSetup = [
+  {
+    icon: "🚗",
+    label: "Západní okruh (Praha, Praha-západ, Kladno, Slaný, Beroun)",
+    price: "1 000 Kč",
+    note: "full servis dovoz i odvoz, příprava, úklid",
+  },
+  {
+    icon: "🗺️",
+    label: "Východní okruh (Praha-východ a dál)",
+    price: "1 800 Kč",
+    note: "full servis dovoz i odvoz, příprava, úklid",
+  },
+];
 
 export const experiences: Experience[] = [
   {
