@@ -50,36 +50,42 @@ function ZazitkyIndex() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-32 lg:px-10">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col gap-6 border-t border-border/60">
           {experiences.map((e, i) => (
             <Link
               key={e.slug}
               to="/zazitky/$slug"
               params={{ slug: e.slug }}
-              className="group relative flex flex-col overflow-hidden rounded-[2px] border border-border/60 bg-card transition-shadow hover:shadow-[0_24px_60px_-30px_rgba(94,70,59,0.35)]"
+              className="group grid grid-cols-1 gap-8 py-10 border-b border-border/60 lg:grid-cols-12 lg:gap-12 transition-colors hover:bg-card/30 px-3 rounded-[2px]"
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[2px] lg:col-span-4 shrink-0">
                 <img
                   src={e.image}
                   alt={e.title}
                   loading={i < 2 ? "eager" : "lazy"}
-                  className="h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04]"
+                  className="h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.03]"
                 />
                 <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full bg-cream/90 px-3 py-1 text-[0.62rem] uppercase tracking-[0.2em] text-cocoa backdrop-blur">
                   <span className="font-serif text-champagne">{String(i + 1).padStart(2, "0")}</span>
                   <span>{e.eyebrow}</span>
                 </div>
               </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h2 className="font-serif text-2xl text-espresso">{e.title}</h2>
-                <p className="mt-2 text-sm text-cocoa/80">{e.shortDescription}</p>
-                <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-[0.68rem] uppercase tracking-[0.14em] text-cocoa/60">
-                  <span>{e.guests}</span>
-                  <span>{e.duration}</span>
-                  <span className="text-champagne">{e.from}</span>
+              <div className="flex flex-1 flex-col justify-center lg:col-span-8">
+                <div className="flex items-center gap-3">
+                  <span className="font-serif text-2xl text-champagne leading-none">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-xs uppercase tracking-[0.18em] text-cocoa/60">— {e.eyebrow}</span>
                 </div>
-                <span className="mt-auto inline-flex items-center gap-2 pt-6 text-[0.7rem] uppercase tracking-[0.22em] text-espresso">
-                  Detail <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <h2 className="mt-2 font-serif text-3xl text-espresso group-hover:text-champagne transition-colors duration-300">
+                  {e.title}
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-cocoa/80">{e.shortDescription}</p>
+                <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-[0.7rem] uppercase tracking-[0.14em] text-cocoa/60">
+                  <span className="flex items-center gap-1 bg-muted px-2.5 py-1 rounded-sm">👥 {e.guests}</span>
+                  <span className="flex items-center gap-1 bg-muted px-2.5 py-1 rounded-sm">⏱️ {e.duration}</span>
+                  <span className="text-espresso font-semibold bg-blush/40 px-2.5 py-1 rounded-sm">🏷️ {e.from}</span>
+                </div>
+                <span className="mt-6 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-espresso font-bold">
+                  Detail zážitku <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </div>
             </Link>

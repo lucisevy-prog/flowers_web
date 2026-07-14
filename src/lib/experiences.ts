@@ -172,7 +172,7 @@ export const experiences: Experience[] = [
     image: diyKit,
     duration: "45–90 minut na doma",
     guests: "1–8 osob (více kitů)",
-    from: "od 1 890 Kč / kit",
+    from: "2 690 Kč",
     audience: ["Dárky", "Rozlučky se svobodou", "Firemní gifting"],
     steps: [
       {
@@ -206,9 +206,9 @@ export const experiences: Experience[] = [
     ],
     priceBlocks: [
       {
-        label: "Pronájem kitu",
-        value: "od 2 690 Kč",
-        note: "jednotná cena za pronájem — bez příplatků",
+        label: "Cena za pronájem",
+        value: "2 690 Kč",
+        note: "jednotná cena za pronájem",
       },
     ],
     deliveryZones: defaultDelivery,
@@ -224,7 +224,7 @@ export const experiences: Experience[] = [
     image: genderReveal,
     duration: "60–90 minut",
     guests: "4–20 hostů",
-    from: "od 8 900 Kč",
+    from: "8 900 Kč",
     audience: ["Nastávající rodiče", "Rodinné oslavy"],
     steps: [
       {
@@ -256,7 +256,7 @@ export const experiences: Experience[] = [
       "Fotografy zdokumentovaný moment",
     ],
     priceBlocks: [
-      { label: "Základní cena", value: "od 8 900 Kč", note: "platí pro 10 hostů" },
+      { label: "Základní cena", value: "8 900 Kč", note: "platí pro 10 hostů" },
     ],
     extraGuest: { label: "Každý další host", price: "+ 390 Kč / os." },
     deliveryZones: deliveryWithSetup,
@@ -272,7 +272,7 @@ export const experiences: Experience[] = [
     image: flowerFortune,
     duration: "45 minut",
     guests: "6–20 hostek",
-    from: "od 4 900 Kč",
+    from: "4 900 Kč",
     audience: ["Rozlučky se svobodou", "Ženské kruhy", "Baby shower"],
     steps: [
       {
@@ -305,7 +305,7 @@ export const experiences: Experience[] = [
     priceBlocks: [
       {
         label: "Základní cena",
-        value: "od 4 900 Kč",
+        value: "4 900 Kč",
         note: "platí pro 5 kamarádek + budoucí nevěsta",
       },
     ],
@@ -323,7 +323,7 @@ export const experiences: Experience[] = [
     image: miniExperience,
     duration: "90 minut",
     guests: "2–6 osob",
-    from: "od 3 900 Kč",
+    from: "7 900 Kč",
     audience: ["Dárek", "Blízcí přátelé", "Rodina"],
     steps: [
       {
@@ -356,7 +356,7 @@ export const experiences: Experience[] = [
     priceBlocks: [
       {
         label: "Základní cena",
-        value: "od 7 900 Kč",
+        value: "7 900 Kč",
         note: "platí pro 6 žen",
       },
     ],
