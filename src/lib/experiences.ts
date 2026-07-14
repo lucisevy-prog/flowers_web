@@ -205,10 +205,13 @@ export const experiences: Experience[] = [
       "Slow-evening pro sebe",
     ],
     priceBlocks: [
-      { label: "Petite Kit", value: "1 890 Kč", note: "6 stonků, pro 1 os." },
-      { label: "Signature Kit", value: "2 690 Kč", note: "10 stonků + prémiové" },
-      { label: "Duo Kit", value: "3 990 Kč", note: "2 kity, ideální pro dvě" },
+      {
+        label: "Pronájem kitu",
+        value: "od 2 690 Kč",
+        note: "jednotná cena za pronájem — bez příplatků",
+      },
     ],
+    deliveryZones: defaultDelivery,
   },
   {
     slug: "gender-reveal-bloom",
@@ -253,9 +256,10 @@ export const experiences: Experience[] = [
       "Fotografy zdokumentovaný moment",
     ],
     priceBlocks: [
-      { label: "Základ", value: "od 8 900 Kč", note: "do 10 hostů, Praha" },
-      { label: "Extended", value: "od 12 900 Kč", note: "do 20 hostů, styling na míru" },
+      { label: "Základní cena", value: "od 8 900 Kč", note: "platí pro 10 hostů" },
     ],
+    extraGuest: { label: "Každý další host", price: "+ 390 Kč / os." },
+    deliveryZones: deliveryWithSetup,
   },
   {
     slug: "flower-fortune",
@@ -299,9 +303,14 @@ export const experiences: Experience[] = [
       "Retreat a ženské víkendy",
     ],
     priceBlocks: [
-      { label: "6–10 hostek", value: "od 4 900 Kč" },
-      { label: "11–20 hostek", value: "od 7 900 Kč" },
+      {
+        label: "Základní cena",
+        value: "od 4 900 Kč",
+        note: "platí pro 5 kamarádek + budoucí nevěsta",
+      },
     ],
+    extraGuest: { label: "Každá další účastnice", price: "+ 490 Kč / os." },
+    deliveryZones: defaultDelivery,
   },
   {
     slug: "mini-flower-experience",
@@ -345,10 +354,14 @@ export const experiences: Experience[] = [
       "Klidný večer se ženami z rodiny",
     ],
     priceBlocks: [
-      { label: "2 osoby", value: "3 900 Kč" },
-      { label: "3–4 osoby", value: "5 900 Kč" },
-      { label: "5–6 osob", value: "7 900 Kč" },
+      {
+        label: "Základní cena",
+        value: "od 7 900 Kč",
+        note: "platí pro 6 žen",
+      },
     ],
+    extraGuest: { label: "Každá další žena", price: "+ 590 Kč / os." },
+    deliveryZones: defaultDelivery,
   },
 ];
 
