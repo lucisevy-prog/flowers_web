@@ -3,7 +3,9 @@ import { Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-flower-bar.jpg";
 import bouquetHands from "@/assets/bouquet-hands.jpg";
 import corporateEvent from "@/assets/corporate-event.jpg";
-import { experiences } from "@/lib/experiences";
+import venueGarden from "@/assets/venue-garden.jpg";
+import venueChateau from "@/assets/venue-chateau.jpg";
+import venueLoft from "@/assets/venue-loft.jpg";
 import { Flower2, Sparkles, Camera, HandHeart, ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -16,8 +18,8 @@ function Index() {
       <Hero />
       <UspBar />
       <Split />
+      <Venues />
       <HowItWorks />
-      <FeaturedExperiences />
       <CtaBanner />
     </div>
   );
@@ -251,39 +253,78 @@ function HowItWorks() {
   );
 }
 
-function FeaturedExperiences() {
+const venues = [
+  {
+    image: venueGarden,
+    eyebrow: "Zahrada & château park",
+    title: "Venkovní svatby & letní oslavy",
+    text: "Dřevěné stoly pod korunami stromů, květinový bar ve stínu — od malých rodinných hostin po velké svatby v parku.",
+  },
+  {
+    image: venueChateau,
+    eyebrow: "Historické interiéry",
+    title: "Château, salóny & vily",
+    text: "Vysoká okna, parkety, denní světlo. Elegantní zázemí pro rozlučky, baby shower a intimní oslavy v centru Prahy i okolí.",
+  },
+  {
+    image: venueLoft,
+    eyebrow: "Loft & industrial",
+    title: "Firemní eventy & PR akce",
+    text: "Průmyslová okna, cihlové zdi, minimalistický styling. Květinová aktivace, kterou si hosté odnesou v kytici i na fotkách.",
+  },
+  {
+    image: bouquetHands,
+    eyebrow: "Doma & u vás",
+    title: "Byty, ateliéry, terasy",
+    text: "Mini Flower Experience, DIY Kit nebo Flower Fortune — přijedu k vám, nebo pošlu kit kurýrem po celé ČR.",
+  },
+];
+
+function Venues() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
-      <div className="mb-14 flex items-end justify-between gap-8">
-        <div>
-          <p className="eyebrow">Vybrané zážitky</p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
-            Pět formátů, jedna estetika.
-          </h2>
-        </div>
-        <Link to="/zazitky" className="hidden text-xs uppercase tracking-[0.22em] text-cocoa hover:text-espresso sm:inline-flex items-center gap-2">
-          Všechny zážitky <ArrowUpRight className="h-4 w-4" />
-        </Link>
+      <div className="mb-14 max-w-2xl">
+        <p className="eyebrow">Kde LU tvoří</p>
+        <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
+          Kdekoliv chcete — od <em className="italic">zahrady</em> po loft.
+        </h2>
+        <p className="mt-6 text-cocoa/80">
+          Květinové zážitky přizpůsobím prostoru, ve kterém se odehrává váš den. Tady je pár inspirací, kam LU už dorazila.
+        </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {experiences.slice(0, 3).map((e) => (
-          <Link
-            key={e.slug}
-            to="/zazitky/$slug"
-            params={{ slug: e.slug }}
-            className="group block overflow-hidden rounded-[2px] border border-border/60 bg-card"
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {venues.map((v) => (
+          <figure
+            key={v.title}
+            className="group flex flex-col overflow-hidden rounded-[2px] border border-border/60 bg-card"
           >
             <div className="relative aspect-[4/5] overflow-hidden">
-              <img src={e.image} alt={e.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04]" />
+              <img
+                src={v.image}
+                alt={v.title}
+                loading="lazy"
+                width={1024}
+                height={1280}
+                className="h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04]"
+              />
             </div>
-            <div className="p-6">
-              <p className="eyebrow">{e.eyebrow}</p>
-              <h3 className="mt-2 font-serif text-2xl text-espresso">{e.title}</h3>
-              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-champagne">{e.from}</p>
-            </div>
-          </Link>
+            <figcaption className="flex flex-1 flex-col p-6">
+              <p className="eyebrow">{v.eyebrow}</p>
+              <p className="mt-2 font-serif text-xl leading-tight text-espresso">{v.title}</p>
+              <p className="mt-3 text-sm text-cocoa/75">{v.text}</p>
+            </figcaption>
+          </figure>
         ))}
+      </div>
+
+      <div className="mt-12">
+        <Link
+          to="/zazitky"
+          className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-espresso underline decoration-champagne decoration-2 underline-offset-8 hover:text-cocoa"
+        >
+          Prohlédnout všech 5 zážitků <ArrowUpRight className="h-4 w-4" />
+        </Link>
       </div>
     </section>
   );
