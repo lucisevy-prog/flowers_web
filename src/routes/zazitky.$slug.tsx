@@ -198,7 +198,7 @@ function ExperienceDetail() {
         <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <div className="mb-10 max-w-xl">
             <p className="eyebrow">Ceník</p>
-            <h3 className="mt-4 font-serif text-3xl text-espresso">Orientační ceny</h3>
+            <h3 className="mt-4 font-serif text-3xl text-espresso">Cena zážitku</h3>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {exp.priceBlocks.map((p) => (
@@ -208,9 +208,36 @@ function ExperienceDetail() {
                 {p.note ? <p className="mt-2 text-sm text-cocoa/70">{p.note}</p> : null}
               </div>
             ))}
+            {exp.extraGuest ? (
+              <div className="rounded-[2px] border border-champagne/50 bg-blush/40 p-8">
+                <p className="eyebrow">{exp.extraGuest.label}</p>
+                <p className="mt-3 font-serif text-3xl text-espresso">{exp.extraGuest.price}</p>
+                <p className="mt-2 text-sm text-cocoa/70">nad rámec základní ceny</p>
+              </div>
+            ) : null}
           </div>
+          {exp.deliveryZones ? (
+            <div className="mt-14">
+              <p className="eyebrow">Doprava</p>
+              <h4 className="mt-3 font-serif text-2xl text-espresso">Kde vás obsloužíme</h4>
+              <ul className="mt-6 divide-y divide-border rounded-[2px] border border-border bg-card">
+                {exp.deliveryZones.map((z) => (
+                  <li key={z.label} className="flex flex-col gap-2 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                    <div className="flex items-start gap-3">
+                      <span aria-hidden className="text-lg leading-none">{z.icon}</span>
+                      <div>
+                        <p className="font-serif text-lg text-espresso">{z.label}</p>
+                        {z.note ? <p className="text-sm text-cocoa/70">{z.note}</p> : null}
+                      </div>
+                    </div>
+                    <p className="shrink-0 font-serif text-lg text-champagne sm:text-right">{z.price}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           <p className="mt-8 max-w-xl text-sm italic text-cocoa/70">
-            Finální cena záleží na sezóně, počtu hostů a lokalitě. Kalkulaci na míru posílám do 24 hodin od poptávky.
+            Konečnou kalkulaci vám pošlu do 24 hodin od poptávky spolu s QR kódem k platbě.
           </p>
         </section>
       ) : null}

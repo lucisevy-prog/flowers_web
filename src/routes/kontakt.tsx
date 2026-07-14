@@ -152,6 +152,60 @@ function Contact() {
         </div>
       </section>
 
+      <section className="border-t border-border/60 bg-cream/60">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+          <div className="grid gap-16 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <p className="eyebrow">Jak to funguje s cenou</p>
+              <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso">
+                Transparentně. <em className="italic">Bez skrytých poplatků.</em>
+              </h2>
+              <p className="mt-6 text-cocoa/80">
+                U každého květinového zážitku vidíte jasnou základní cenu, která platí
+                pro stanovený počet osob. Pokud je vás na rozlučce nebo oslavě víc,
+                žádný problém. Za každého dalšího hosta se připočítává pevný
+                příplatek, takže si konečnou cenu snadno spočítáte sami předem.
+              </p>
+            </div>
+
+            <div className="lg:col-span-7">
+              <p className="eyebrow">Rezervace ve třech krocích</p>
+              <h3 className="mt-4 font-serif text-3xl text-espresso">
+                Co se stane po odeslání formuláře
+              </h3>
+
+              <ol className="mt-10 space-y-8">
+                {[
+                  {
+                    n: "01",
+                    title: "Vyplníte formulář",
+                    text: "Zabere to minutku. Napíšete mi, o jaký zážitek máte zájem a jaký termín zvažujete.",
+                  },
+                  {
+                    n: "02",
+                    title: "Potvrzení a podklady k platbě",
+                    text: "Do 24 hodin vám e-mailem potvrdím termín, pošlu konečnou kalkulaci a QR kód pro rychlou platbu. Od odeslání podkladů vám termín závazně držím 24 hodin.",
+                  },
+                  {
+                    n: "03",
+                    title: "Máte rezervováno",
+                    text: "Jakmile platba dorazí, termín a zážitek je definitivně váš. Do e-mailu přijde faktura a vy se můžete začít těšit — bez stresu a zbytečného papírování.",
+                  },
+                ].map((s) => (
+                  <li key={s.n} className="grid grid-cols-[auto_1fr] gap-6 border-t border-border pt-6">
+                    <span className="font-serif text-3xl text-champagne">{s.n}</span>
+                    <div>
+                      <h4 className="font-serif text-xl text-espresso">{s.title}</h4>
+                      <p className="mt-2 text-cocoa/80">{s.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <style>{`
         .lu-input {
           width: 100%;
