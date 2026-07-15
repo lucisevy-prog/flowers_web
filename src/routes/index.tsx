@@ -6,7 +6,7 @@ import corporateEvent from "@/assets/corporate-event.jpg";
 import venueGarden from "@/assets/venue-garden.jpg";
 import venueChateau from "@/assets/venue-chateau.jpg";
 import venueLoft from "@/assets/venue-loft.jpg";
-import { Flower2, Sparkles, Camera, HandHeart, ArrowUpRight } from "lucide-react";
+import { Flower2, Sparkles, Camera, HandHeart, ArrowUpRight, Heart, Gift } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -31,15 +31,19 @@ function Hero() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 pt-16 pb-24 lg:grid-cols-12 lg:gap-8 lg:px-10 lg:pt-24 lg:pb-32">
         <div className="fade-up lg:col-span-6 lg:pt-14">
           <p className="eyebrow">Praha · Střední Čechy</p>
-          <h1 className="mt-6 font-serif text-[2.75rem] leading-[1.05] text-espresso sm:text-[3.5rem] lg:text-[4.5rem]">
-            Květinové zážitky, <br className="hidden sm:block" />
-            <em className="italic text-cocoa">které si odnesete</em> domů.
+          <h1 className="mt-6 font-serif text-[2.75rem] leading-[1.1] text-espresso sm:text-[3.5rem] lg:text-[4.2rem]">
+            Květinový bar, <br className="hidden sm:block" />
+            o kterém budou hosté mluvit <em className="italic text-cocoa">ještě cestou domů.</em>
           </h1>
-          <p className="mt-8 max-w-lg font-sans text-lg leading-relaxed text-cocoa/85">
-            LU je prémiová značka květinových zážitků pro svatby, rozlučky, oslavy
-            a firemní eventy. Vytvářím intimní momenty i velkolepé bary — vždy s
-            důrazem na detail, vůni a fotogenickou eleganci.
-          </p>
+          
+          <div className="mt-8 border-l border-champagne/40 pl-6 space-y-4 max-w-xl">
+            <p className="font-sans text-lg leading-relaxed text-cocoa/90">
+              Květinové zážitky navržené podle charakteru dané příležitosti. Vždy dokreslí danou událost, vtáhnou hosty do lehkého květinového tvoření a ještě s nimi květiny odcházejí domů.
+            </p>
+            <p className="font-sans text-base leading-relaxed text-cocoa/70 italic">
+              Květinové momenty, které se v Čechách teprve začínají objevovat. Otevřou ale vaše kreativní Já i srdce.
+            </p>
+          </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
@@ -101,25 +105,33 @@ function Hero() {
 }
 
 const usps = [
-  { icon: Sparkles, title: "Prémiové květiny", text: "Sezónní, autorský výběr" },
-  { icon: HandHeart, title: "Osobní přístup", text: "Vždy pod vedením Lucie" },
-  { icon: Camera, title: "Fotogenický styling", text: "Připraveno pro objektiv" },
-  { icon: Flower2, title: "Zážitek domů", text: "Kytice jako vzpomínka" },
+  { title: "Moment, který si každý fotí", emoji: "📸" },
+  { title: "Hosté jsou součástí dění", emoji: "🌸" },
+  { title: "Atmosféra, která propojuje", emoji: "🤍" },
+  { title: "Kytička pro ně jako pozornost domů", emoji: "💐" },
 ];
 
 function UspBar() {
   return (
-    <section className="border-y border-border/60 bg-cream/60">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-12 sm:grid-cols-4 lg:px-10">
-        {usps.map(({ icon: Icon, title, text }) => (
-          <div key={title} className="flex flex-col items-start gap-3">
-            <Icon className="h-5 w-5 text-champagne" strokeWidth={1.25} />
-            <div>
-              <p className="font-serif text-lg text-espresso">{title}</p>
-              <p className="text-xs uppercase tracking-[0.14em] text-cocoa/60">{text}</p>
+    <section className="relative border-y border-border/50 bg-gradient-to-b from-cream/40 to-cream/80 py-16">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {usps.map(({ title, emoji }) => (
+            <div
+              key={title}
+              className="group relative flex items-center gap-5 rounded-[4px] border border-border/40 bg-card/35 p-6 backdrop-blur-[2px] transition-all duration-500 hover:-translate-y-0.5 hover:border-champagne/40 hover:bg-card/90 hover:shadow-[0_12px_24px_-10px_rgba(94,70,59,0.12)]"
+            >
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-champagne/25 bg-cream/90 shadow-[0_4px_12px_rgba(94,70,59,0.04)] text-xl transition-transform duration-500 group-hover:scale-105">
+                {emoji}
+              </div>
+              <div>
+                <h3 className="font-serif text-base sm:text-[1.05rem] text-espresso leading-snug font-medium">
+                  {title}
+                </h3>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
