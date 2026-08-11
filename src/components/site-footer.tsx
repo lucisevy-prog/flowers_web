@@ -16,13 +16,22 @@ export function SiteFooter() {
             Květinové zážitky, které si odnesete domů — v kytici i ve vzpomínce.
           </p>
           <div className="mt-8 flex flex-wrap gap-6 text-sm text-cream/70">
-            <a href="mailto:hello@lubylucie.cz" className="inline-flex items-center gap-2 hover:text-champagne">
+            <a
+              href="mailto:hello@lubylucie.cz"
+              className="inline-flex items-center gap-2 hover:text-champagne"
+            >
               <Mail className="h-4 w-4" /> hello@lubylucie.cz
             </a>
-            <a href="https://wa.me/420000000000" className="inline-flex items-center gap-2 hover:text-champagne">
+            <a
+              href="https://wa.me/420777992589"
+              className="inline-flex items-center gap-2 hover:text-champagne"
+            >
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
-            <a href="https://instagram.com" className="inline-flex items-center gap-2 hover:text-champagne">
+            <a
+              href="https://instagram.com"
+              className="inline-flex items-center gap-2 hover:text-champagne"
+            >
               <Instagram className="h-4 w-4" /> @lubylucie
             </a>
           </div>
@@ -31,10 +40,26 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow !text-champagne">Navigace</p>
           <ul className="mt-5 space-y-3 text-sm text-cream/80">
-            <li><Link to="/" className="hover:text-champagne">Domů</Link></li>
-            <li><Link to="/zazitky" className="hover:text-champagne">Zážitky</Link></li>
-            <li><Link to="/o-mne" className="hover:text-champagne">O mně</Link></li>
-            <li><Link to="/kontakt" className="hover:text-champagne">Kontakt</Link></li>
+            <li>
+              <Link to="/" className="hover:text-champagne">
+                Domů
+              </Link>
+            </li>
+            <li>
+              <Link to="/zazitky" className="hover:text-champagne">
+                Zážitky
+              </Link>
+            </li>
+            <li>
+              <Link to="/o-mne" className="hover:text-champagne">
+                O mně
+              </Link>
+            </li>
+            <li>
+              <Link to="/kontakt" className="hover:text-champagne">
+                Kontakt
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -42,7 +67,11 @@ export function SiteFooter() {
           <p className="eyebrow !text-champagne">Kde působíme</p>
           <p className="mt-5 inline-flex items-start gap-2 text-sm text-cream/80">
             <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-            <span>Praha & Středočeský kraj<br/>Na vyžádání kdekoliv v ČR</span>
+            <span>
+              Praha & Středočeský kraj
+              <br />
+              Na vyžádání kdekoliv v ČR
+            </span>
           </p>
         </div>
       </div>

@@ -6,9 +6,16 @@ export const Route = createFileRoute("/zazitky")({
   head: () => ({
     meta: [
       { title: "Zážitky — LU by Lucie" },
-      { name: "description", content: "Pět květinových formátů od LU by Lucie — Signature Flower Bar, DIY Kit, Gender Reveal Bloom, Flower Fortune, Mini Experience." },
+      {
+        name: "description",
+        content:
+          "Pět květinových formátů od LU by Lucie — Signature Flower Bar, DIY Kit, Gender Reveal Bloom, Flower Fortune, Mini Experience.",
+      },
       { property: "og:title", content: "Zážitky — LU by Lucie" },
-      { property: "og:description", content: "Pět květinových formátů pro svatby, rozlučky a firemní eventy." },
+      {
+        property: "og:description",
+        content: "Pět květinových formátů pro svatby, rozlučky a firemní eventy.",
+      },
     ],
   }),
   component: ZazitkyLayout,
@@ -31,9 +38,8 @@ function ZazitkyIndex() {
             Pět formátů, <em className="italic">jedna estetika</em>.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-cocoa/80">
-            Každý zážitek jsem vyladila tak, aby fungoval sám o sobě — a zároveň
-            spolu tvořily jednu rodinu. Vyberte si podle příležitosti, prostoru a
-            počtu hostů.
+            Každý zážitek jsem vyladila tak, aby fungoval sám o sobě — a zároveň spolu tvořily jednu
+            rodinu. Vyberte si podle příležitosti, prostoru a počtu hostů.
           </p>
           <ul className="mt-8 flex flex-wrap gap-2">
             {experiences.map((e, i) => (
@@ -66,26 +72,39 @@ function ZazitkyIndex() {
                   className="h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.03]"
                 />
                 <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full bg-cream/90 px-3 py-1 text-[0.62rem] uppercase tracking-[0.2em] text-cocoa backdrop-blur">
-                  <span className="font-serif text-champagne">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-serif text-champagne">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <span>{e.eyebrow}</span>
                 </div>
               </div>
               <div className="flex flex-1 flex-col justify-center lg:col-span-8">
                 <div className="flex items-center gap-3">
-                  <span className="font-serif text-2xl text-champagne leading-none">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="text-xs uppercase tracking-[0.18em] text-cocoa/60">— {e.eyebrow}</span>
+                  <span className="font-serif text-2xl text-champagne leading-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-xs uppercase tracking-[0.18em] text-cocoa/60">
+                    — {e.eyebrow}
+                  </span>
                 </div>
                 <h2 className="mt-2 font-serif text-3xl text-espresso group-hover:text-champagne transition-colors duration-300">
                   {e.title}
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-cocoa/80">{e.shortDescription}</p>
                 <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-[0.7rem] uppercase tracking-[0.14em] text-cocoa/60">
-                  <span className="flex items-center gap-1 bg-muted px-2.5 py-1 rounded-sm">👥 {e.guests}</span>
-                  <span className="flex items-center gap-1 bg-muted px-2.5 py-1 rounded-sm">⏱️ {e.duration}</span>
-                  <span className="text-espresso font-semibold bg-blush/40 px-2.5 py-1 rounded-sm">🏷️ {e.from}</span>
+                  <span className="flex items-center gap-1 bg-muted px-2.5 py-1 rounded-sm">
+                    👥 {e.guests}
+                  </span>
+                  <span className="flex items-center gap-1 bg-muted px-2.5 py-1 rounded-sm">
+                    ⏱️ {e.duration}
+                  </span>
+                  <span className="text-espresso font-semibold bg-blush/40 px-2.5 py-1 rounded-sm">
+                    🏷️ {e.from}
+                  </span>
                 </div>
                 <span className="mt-6 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-espresso font-bold">
-                  Detail zážitku <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  Detail zážitku{" "}
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </div>
             </Link>

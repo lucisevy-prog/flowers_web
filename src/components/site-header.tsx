@@ -23,16 +23,12 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-500 ${
-        scrolled
-          ? "border-b border-border/60 bg-background/85 backdrop-blur-md"
-          : "bg-transparent"
+        scrolled ? "border-b border-border/60 bg-background/85 backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
         <Link to="/" className="group flex items-baseline gap-2">
-          <span className="font-serif text-3xl leading-none tracking-tight text-espresso">
-            LU
-          </span>
+          <span className="font-serif text-3xl leading-none tracking-tight text-espresso">LU</span>
           <span className="hidden text-[0.65rem] uppercase tracking-[0.32em] text-cocoa/70 sm:inline">
             by Lucie
           </span>
@@ -70,7 +66,9 @@ export function SiteHeader() {
 
         <button
           type="button"
-          aria-label="Menu"
+          aria-label={open ? "Zavřít menu" : "Otevřít menu"}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
           onClick={() => setOpen((o) => !o)}
           className="md:hidden p-2 text-cocoa"
         >
@@ -79,7 +77,7 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <div className="border-t border-border bg-background md:hidden">
+        <div id="mobile-nav" className="border-t border-border bg-background md:hidden">
           <div className="flex flex-col gap-1 px-6 py-6">
             {nav.map((item) => (
               <Link

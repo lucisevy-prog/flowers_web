@@ -234,8 +234,7 @@ export const experiences: Experience[] = [
       },
       {
         title: "Styling na místě",
-        description:
-          "Připravím stůl, dvě zapečetěné kompozice, svíčky a rámování pro fotografii.",
+        description: "Připravím stůl, dvě zapečetěné kompozice, svíčky a rámování pro fotografii.",
       },
       {
         title: "Okamžik reveal",
@@ -255,9 +254,7 @@ export const experiences: Experience[] = [
       "Malé rodinné oslavy",
       "Fotografy zdokumentovaný moment",
     ],
-    priceBlocks: [
-      { label: "Základní cena", value: "8 900 Kč", note: "platí pro 10 hostů" },
-    ],
+    priceBlocks: [{ label: "Základní cena", value: "8 900 Kč", note: "platí pro 10 hostů" }],
     extraGuest: { label: "Každý další host", price: "+ 390 Kč / os." },
     deliveryZones: deliveryWithSetup,
   },
@@ -265,8 +262,7 @@ export const experiences: Experience[] = [
     slug: "flower-fortune",
     title: "Flower Fortune",
     eyebrow: "Poetický okamžik",
-    shortDescription:
-      "Malá kytice s ručně psaným vzkazem jako květinová věštba pro každého hosta.",
+    shortDescription: "Malá kytice s ručně psaným vzkazem jako květinová věštba pro každého hosta.",
     longDescription:
       "Flower Fortune je poetický zážitek pro rozlučky, ženské kruhy a intimní setkání. Každá hostka si vylosuje jednu malou kytici s ručně psaným vzkazem — jako květinovou věštbu, kterou si odnese domů.",
     image: flowerFortune,
@@ -316,8 +312,7 @@ export const experiences: Experience[] = [
     slug: "mini-flower-experience",
     title: "Mini Flower Experience",
     eyebrow: "Intimní zážitek",
-    shortDescription:
-      "Komorní květinový zážitek pro 2–6 osob u vás doma nebo na vybraném místě.",
+    shortDescription: "Komorní květinový zážitek pro 2–6 osob u vás doma nebo na vybraném místě.",
     longDescription:
       "Mini Flower Experience je nejintimnější formát LU. Přijedu k vám s vybraným setem květin a společně strávíme tichý večer u vázání kytic, dobrého vína a rozhovorů. Ideální jako dárek nebo způsob, jak oslavit s nejbližšími.",
     image: miniExperience,
@@ -328,18 +323,15 @@ export const experiences: Experience[] = [
     steps: [
       {
         title: "Dohoda o místě & datu",
-        description:
-          "U vás doma, na chatě, v ateliéru — přijedu s kompletním setem.",
+        description: "U vás doma, na chatě, v ateliéru — přijedu s kompletním setem.",
       },
       {
         title: "Tichý večer",
-        description:
-          "Provedu vás tvorbou vlastních kytic ve vzdušném, nespěchavém tempu.",
+        description: "Provedu vás tvorbou vlastních kytic ve vzdušném, nespěchavém tempu.",
       },
       {
         title: "Odchod se vzpomínkou",
-        description:
-          "Každý si odnese svou kytici a klid, který v takovém večeru vzniká.",
+        description: "Každý si odnese svou kytici a klid, který v takovém večeru vzniká.",
       },
     ],
     included: [

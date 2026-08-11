@@ -1,14 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { useState, type SubmitEvent } from "react";
 import portrait from "@/assets/lucie-portrait.jpg";
 import { ArrowUpRight } from "lucide-react";
+import { submitInquiry } from "@/lib/contact.functions";
 
 export const Route = createFileRoute("/o-mne")({
   head: () => ({
     meta: [
       { title: "O mně — Lucie — LU by Lucie" },
-      { name: "description", content: "Za značkou LU stojí Lucie — florální designérka a stylistka, která věří v pomalé, smyslové zážitky." },
+      {
+        name: "description",
+        content:
+          "Za značkou LU stojí Lucie — florální designérka a stylistka, která věří v pomalé, smyslové zážitky.",
+      },
       { property: "og:title", content: "O mně — LU by Lucie" },
-      { property: "og:description", content: "Za značkou LU stojí Lucie — florální designérka a stylistka." },
+      {
+        property: "og:description",
+        content: "Za značkou LU stojí Lucie — florální designérka a stylistka.",
+      },
     ],
   }),
   component: About,
@@ -33,27 +43,59 @@ const pillars = [
   },
 ];
 
+type SubmitStatus = "idle" | "pending" | "success" | "error";
+
 function About() {
+  const submitInquiryFn = useServerFn(submitInquiry);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const field = (name: string) => String(formData.get(name) ?? "");
+
+    setStatus("pending");
+    try {
+      const result = await submitInquiryFn({
+        data: {
+          name: field("name"),
+          email: field("email"),
+          message: field("message"),
+          company: field("company"),
+        },
+      });
+      if (result.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  }
+
   return (
     <div className="bg-background">
       <section className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 pt-20 pb-24 lg:grid-cols-12 lg:gap-14 lg:px-10 lg:pt-28">
         <div className="lg:col-span-7 lg:pt-10">
           <p className="eyebrow">Za značkou LU</p>
           <h1 className="mt-6 font-serif text-5xl leading-[1.05] text-espresso sm:text-6xl">
-            Jmenuji se Lucie a <em className="italic">tvořím zážitky</em>, po kterých doma zůstane vůně.
+            Jmenuji se Lucie a <em className="italic">tvořím zážitky</em>, po kterých doma zůstane
+            vůně.
           </h1>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-cocoa/85">
             <p>
-              Ke květinám jsem se dostala oklikou — přes marketing, styling a
-              několik let strávených mezi butikovými značkami v Paříži. Zjistila
-              jsem, že to, co mě baví nejvíc, není samotná kytice, ale okamžik,
-              který kolem ní vzniká.
+              Ke květinám jsem se dostala oklikou — přes marketing, styling a několik let strávených
+              mezi butikovými značkami v Paříži. Zjistila jsem, že to, co mě baví nejvíc, není
+              samotná kytice, ale okamžik, který kolem ní vzniká.
             </p>
             <p>
-              LU jsem založila v roce 2022 v Praze jako značku, která květiny
-              nedává na piedestal — dává je do rukou. Pracuji se ženami, páry a
-              značkami, které chtějí, aby jejich moment zůstal v paměti jinak,
-              než jen jako pěkná fotka.
+              LU jsem založila v roce 2022 v Praze jako značku, která květiny nedává na piedestal —
+              dává je do rukou. Pracuji se ženami, páry a značkami, které chtějí, aby jejich moment
+              zůstal v paměti jinak, než jen jako pěkná fotka.
             </p>
             <p className="font-serif text-2xl text-espresso italic">
               „Nedělám floristiku. Dělám zážitky, ve kterých květiny jenom hrají hlavní roli."
@@ -64,12 +106,16 @@ function About() {
         <div className="lg:col-span-5">
           <div className="relative">
             <div className="aspect-[4/5] overflow-hidden rounded-[2px]">
-              <img src={portrait} alt="Portrét Lucie" className="h-full w-full object-cover" />
+              <img
+                src={portrait}
+                alt="Portrét Lucie"
+                width={1200}
+                height={1504}
+                className="h-full w-full object-cover"
+              />
             </div>
-            <div className="absolute -bottom-6 -right-4 w-52 bg-blush p-5 sm:-right-8">
-              <p className="font-serif text-xl leading-tight text-espresso italic">
-                Lucie K.
-              </p>
+            <div className="absolute -bottom-6 -right-4 w-52 bg-blush p-5 lg:-right-8">
+              <p className="font-serif text-xl leading-tight text-espresso italic">Lucie K.</p>
               <p className="mt-1 text-[0.7rem] uppercase tracking-[0.22em] text-cocoa/70">
                 Florální designérka
               </p>
@@ -109,31 +155,55 @@ function About() {
           Napište mi pár slov — datum, prostor, počet hostů. Ozvu se do 24 hodin.
         </p>
 
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="mx-auto mt-12 grid max-w-xl gap-4 text-left"
-        >
+        <form onSubmit={handleSubmit} className="mx-auto mt-12 grid max-w-xl gap-4 text-left">
+          {/* Honeypot — hidden from sighted users and screen readers alike;
+              real visitors never fill it, so a non-empty value marks a bot. */}
+          <div className="sr-only" aria-hidden="true">
+            <label htmlFor="about-company">Nevyplňujte toto pole</label>
+            <input id="about-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
+
           <input
+            required
+            name="name"
             type="text"
             placeholder="Vaše jméno"
             className="w-full border-0 border-b border-cocoa/30 bg-transparent px-1 py-4 text-base text-espresso placeholder:text-cocoa/50 focus:border-champagne focus:outline-none"
           />
           <input
+            required
+            name="email"
             type="email"
             placeholder="E-mail"
             className="w-full border-0 border-b border-cocoa/30 bg-transparent px-1 py-4 text-base text-espresso placeholder:text-cocoa/50 focus:border-champagne focus:outline-none"
           />
           <textarea
+            name="message"
             rows={4}
             placeholder="O co jde? (pár slov stačí)"
             className="w-full border-0 border-b border-cocoa/30 bg-transparent px-1 py-4 text-base text-espresso placeholder:text-cocoa/50 focus:border-champagne focus:outline-none"
           />
           <button
             type="submit"
-            className="mt-6 inline-flex items-center justify-center gap-3 self-start rounded-full bg-espresso px-8 py-4 text-xs uppercase tracking-[0.22em] text-cream hover:bg-cocoa"
+            disabled={status === "pending"}
+            className="mt-6 inline-flex items-center justify-center gap-3 self-start rounded-full bg-espresso px-8 py-4 text-xs uppercase tracking-[0.22em] text-cream hover:bg-cocoa disabled:cursor-not-allowed disabled:opacity-60"
           >
-            Odeslat zprávu <ArrowUpRight className="h-4 w-4" />
+            {status === "success"
+              ? "Odesláno ✓"
+              : status === "pending"
+                ? "Odesílám…"
+                : "Odeslat zprávu"}
+            {status === "idle" && <ArrowUpRight className="h-4 w-4" />}
           </button>
+          {status === "error" ? (
+            <p className="text-sm text-red-600">
+              Něco se pokazilo. Zkuste to prosím znovu, nebo mi napište přímo na{" "}
+              <a href="mailto:hello@lubylucie.cz" className="underline">
+                hello@lubylucie.cz
+              </a>
+              .
+            </p>
+          ) : null}
         </form>
 
         <p className="mt-8 text-sm text-cocoa/60">

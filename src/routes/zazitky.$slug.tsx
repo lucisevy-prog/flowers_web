@@ -9,7 +9,8 @@ export const Route = createFileRoute("/zazitky/$slug")({
     return { exp };
   },
   head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Zážitek — LU by Lucie" }, { name: "robots", content: "noindex" }] };
+    if (!loaderData)
+      return { meta: [{ title: "Zážitek — LU by Lucie" }, { name: "robots", content: "noindex" }] };
     const { exp } = loaderData;
     return {
       meta: [
@@ -27,7 +28,10 @@ export const Route = createFileRoute("/zazitky/$slug")({
     <div className="mx-auto max-w-2xl px-6 py-32 text-center">
       <p className="eyebrow">404</p>
       <h1 className="mt-4 font-serif text-4xl text-espresso">Zážitek nenalezen</h1>
-      <Link to="/zazitky" className="mt-8 inline-block text-xs uppercase tracking-[0.22em] text-espresso underline decoration-champagne underline-offset-8">
+      <Link
+        to="/zazitky"
+        className="mt-8 inline-block text-xs uppercase tracking-[0.22em] text-espresso underline decoration-champagne underline-offset-8"
+      >
         Zpět na přehled
       </Link>
     </div>
@@ -86,16 +90,16 @@ function ExperienceDetail() {
           <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
             <div className="mb-14 max-w-xl">
               <p className="eyebrow">Cenové úrovně</p>
-              <h2 className="mt-4 font-serif text-4xl text-espresso">Vyberte formát podle vaší akce.</h2>
+              <h2 className="mt-4 font-serif text-4xl text-espresso">
+                Vyberte formát podle vaší akce.
+              </h2>
             </div>
             <div className="grid gap-6 lg:grid-cols-3">
               {exp.tiers.map((t) => (
                 <div
                   key={t.name}
                   className={`relative flex flex-col rounded-[2px] border p-8 lg:p-10 ${
-                    t.featured
-                      ? "border-espresso bg-espresso text-cream"
-                      : "border-border bg-card"
+                    t.featured ? "border-espresso bg-espresso text-cream" : "border-border bg-card"
                   }`}
                 >
                   {t.featured ? (
@@ -103,22 +107,33 @@ function ExperienceDetail() {
                       Nejoblíbenější
                     </span>
                   ) : null}
-                  <p className={`text-xs uppercase tracking-[0.22em] ${t.featured ? "text-champagne" : "text-champagne"}`}>
+                  <p
+                    className={`text-xs uppercase tracking-[0.22em] ${t.featured ? "text-champagne" : "text-champagne"}`}
+                  >
                     {t.tagline}
                   </p>
-                  <h3 className={`mt-3 font-serif text-4xl ${t.featured ? "text-cream" : "text-espresso"}`}>
+                  <h3
+                    className={`mt-3 font-serif text-4xl ${t.featured ? "text-cream" : "text-espresso"}`}
+                  >
                     {t.name}
                   </h3>
                   <p className={`mt-2 text-sm ${t.featured ? "text-cream/70" : "text-cocoa/60"}`}>
                     {t.guests}
                   </p>
-                  <p className={`mt-6 font-serif text-3xl ${t.featured ? "text-cream" : "text-espresso"}`}>
+                  <p
+                    className={`mt-6 font-serif text-3xl ${t.featured ? "text-cream" : "text-espresso"}`}
+                  >
                     {t.price}
                   </p>
-                  <ul className={`mt-8 space-y-3 text-sm ${t.featured ? "text-cream/85" : "text-cocoa/80"}`}>
+                  <ul
+                    className={`mt-8 space-y-3 text-sm ${t.featured ? "text-cream/85" : "text-cocoa/80"}`}
+                  >
                     {t.highlights.map((h) => (
                       <li key={h} className="flex items-start gap-3">
-                        <Check className={`mt-0.5 h-4 w-4 shrink-0 ${t.featured ? "text-champagne" : "text-champagne"}`} strokeWidth={1.5} />
+                        <Check
+                          className={`mt-0.5 h-4 w-4 shrink-0 ${t.featured ? "text-champagne" : "text-champagne"}`}
+                          strokeWidth={1.5}
+                        />
                         <span>{h}</span>
                       </li>
                     ))}
@@ -143,12 +158,17 @@ function ExperienceDetail() {
         <div className="grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="eyebrow">Jak to probíhá</p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso">Krok za krokem, bez stresu.</h2>
+            <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso">
+              Krok za krokem, bez stresu.
+            </h2>
           </div>
           <div className="lg:col-span-8">
             <ol className="space-y-10">
               {exp.steps.map((s, i) => (
-                <li key={s.title} className="grid grid-cols-[auto_1fr] gap-8 border-t border-border pt-8">
+                <li
+                  key={s.title}
+                  className="grid grid-cols-[auto_1fr] gap-8 border-t border-border pt-8"
+                >
                   <span className="font-serif text-3xl text-champagne">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -222,15 +242,22 @@ function ExperienceDetail() {
               <h4 className="mt-3 font-serif text-2xl text-espresso">Kde vás obsloužíme</h4>
               <ul className="mt-6 divide-y divide-border rounded-[2px] border border-border bg-card">
                 {exp.deliveryZones.map((z) => (
-                  <li key={z.label} className="flex flex-col gap-2 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                  <li
+                    key={z.label}
+                    className="flex flex-col gap-2 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+                  >
                     <div className="flex items-start gap-3">
-                      <span aria-hidden className="text-lg leading-none">{z.icon}</span>
+                      <span aria-hidden className="text-lg leading-none">
+                        {z.icon}
+                      </span>
                       <div>
                         <p className="font-serif text-lg text-espresso">{z.label}</p>
                         {z.note ? <p className="text-sm text-cocoa/70">{z.note}</p> : null}
                       </div>
                     </div>
-                    <p className="shrink-0 font-serif text-lg text-champagne sm:text-right">{z.price}</p>
+                    <p className="shrink-0 font-serif text-lg text-champagne sm:text-right">
+                      {z.price}
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -255,7 +282,12 @@ function ExperienceDetail() {
                 className="group block overflow-hidden rounded-[2px] border border-border bg-card"
               >
                 <div className="aspect-[4/5] overflow-hidden">
-                  <img src={e.image} alt={e.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04]" />
+                  <img
+                    src={e.image}
+                    alt={e.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04]"
+                  />
                 </div>
                 <div className="p-6">
                   <p className="eyebrow">{e.eyebrow}</p>

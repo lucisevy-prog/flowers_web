@@ -32,16 +32,19 @@ function Hero() {
         <div className="fade-up lg:col-span-6 lg:pt-14">
           <p className="eyebrow">Praha · Střední Čechy</p>
           <h1 className="mt-6 font-serif text-[2.75rem] leading-[1.1] text-espresso sm:text-[3.5rem] lg:text-[4.2rem]">
-            Květinový bar, <br className="hidden sm:block" />
-            o kterém budou hosté mluvit <em className="italic text-cocoa">ještě cestou domů.</em>
+            Květinový bar, <br className="hidden sm:block" />o kterém budou hosté mluvit{" "}
+            <em className="italic text-cocoa">ještě cestou domů.</em>
           </h1>
-          
+
           <div className="mt-8 border-l border-champagne/40 pl-6 space-y-4 max-w-xl">
             <p className="font-sans text-lg leading-relaxed text-cocoa/90">
-              Květinové zážitky navržené podle charakteru dané příležitosti. Vždy dokreslí danou událost, vtáhnou hosty do lehkého květinového tvoření a ještě s nimi květiny odcházejí domů.
+              Květinové zážitky navržené podle charakteru dané příležitosti. Vždy dokreslí danou
+              událost, vtáhnou hosty do lehkého květinového tvoření a ještě s nimi květiny odcházejí
+              domů.
             </p>
             <p className="font-sans text-base leading-relaxed text-cocoa/70 italic">
-              Květinové momenty, které se v Čechách teprve začínají objevovat. Otevřou ale vaše kreativní Já i srdce.
+              Květinové momenty, které se v Čechách teprve začínají objevovat. Otevřou ale vaše
+              kreativní Já i srdce.
             </p>
           </div>
 
@@ -74,31 +77,22 @@ function Hero() {
             <img
               src={heroImg}
               alt="Signature Flower Bar LU"
-              width={1600}
-              height={1200}
+              width={1024}
+              height={682}
               className="h-full w-full object-cover"
             />
           </div>
           <div className="absolute -bottom-8 -left-6 hidden w-56 rounded-[2px] border border-champagne/40 bg-cream p-5 shadow-[0_20px_50px_-20px_rgba(94,70,59,0.35)] sm:block lg:-left-12">
             <p className="eyebrow">Signature</p>
-            <p className="mt-2 font-serif text-2xl leading-tight text-espresso">
-              Flower Bar
-            </p>
-            <p className="mt-2 text-xs text-cocoa/70">
-              Náš vlajkový zážitek pro 15–300 hostů.
-            </p>
+            <p className="mt-2 font-serif text-2xl leading-tight text-espresso">Flower Bar</p>
+            <p className="mt-2 text-xs text-cocoa/70">Náš vlajkový zážitek pro 15–300 hostů.</p>
           </div>
         </div>
       </div>
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px]"
-        style={{
-          background:
-            "radial-gradient(60% 60% at 80% 0%, var(--blush) 0%, transparent 70%)",
-          opacity: 0.55,
-        }}
+        className="hero-glow pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px]"
       />
     </section>
   );
@@ -143,7 +137,8 @@ function Split() {
       <div className="mb-16 max-w-2xl">
         <p className="eyebrow">Pro koho tvořím</p>
         <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
-          Intimní zážitek pro šest žen <em className="italic text-cocoa">i</em> velkolepý večer pro stovky hostů.
+          Intimní zážitek pro šest žen <em className="italic text-cocoa">i</em> velkolepý večer pro
+          stovky hostů.
         </h2>
       </div>
 
@@ -207,7 +202,10 @@ function SplitCard({
         <p className="mt-4 text-cocoa/80">{text}</p>
         <ul className="mt-6 flex flex-wrap gap-2">
           {audience.map((a) => (
-            <li key={a} className="rounded-full border border-cocoa/20 px-3 py-1 text-[0.7rem] uppercase tracking-[0.14em] text-cocoa/70">
+            <li
+              key={a}
+              className="rounded-full border border-cocoa/20 px-3 py-1 text-[0.7rem] uppercase tracking-[0.14em] text-cocoa/70"
+            >
               {a}
             </li>
           ))}
@@ -301,7 +299,8 @@ function Venues() {
           Kdekoliv chcete — od <em className="italic">zahrady</em> po loft.
         </h2>
         <p className="mt-6 text-cocoa/80">
-          Květinové zážitky přizpůsobím prostoru, ve kterém se odehrává váš den. Tady je pár inspirací, kam LU už dorazila.
+          Květinové zážitky přizpůsobím prostoru, ve kterém se odehrává váš den. Tady je pár
+          inspirací, kam LU už dorazila.
         </p>
       </div>
 
@@ -361,17 +360,8 @@ function CtaBanner() {
             Poptat zážitek <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-0"
-          style={{
-            background:
-              "radial-gradient(50% 80% at 100% 100%, var(--rose) 0%, transparent 60%)",
-            opacity: 0.35,
-          }}
-        />
+        <div aria-hidden className="cta-glow pointer-events-none absolute inset-0 -z-0" />
       </div>
     </section>
   );
 }
-
