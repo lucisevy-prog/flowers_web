@@ -4,8 +4,14 @@ import { useState, type SubmitEvent } from "react";
 import { Mail, MessageCircle, MapPin, ArrowUpRight, Instagram } from "lucide-react";
 import { experiences } from "@/lib/experiences";
 import { submitInquiry } from "@/lib/contact.functions";
+import moodboardCollage from "@/assets/moodboard-collage.png";
+
+type ContactSearch = { zazitek?: string };
 
 export const Route = createFileRoute("/kontakt")({
+  validateSearch: (search: Record<string, unknown>): ContactSearch => ({
+    zazitek: typeof search.zazitek === "string" ? search.zazitek : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Kontakt & poptávka — LU by Lucie" },
@@ -29,6 +35,8 @@ type SubmitStatus = "idle" | "pending" | "success" | "error";
 function Contact() {
   const submitInquiryFn = useServerFn(submitInquiry);
   const [status, setStatus] = useState<SubmitStatus>("idle");
+  const { zazitek } = Route.useSearch();
+  const preselectedExperience = experiences.find((e) => e.slug === zazitek)?.title ?? "";
 
   async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -168,6 +176,13 @@ function Contact() {
               Napsat rovnou na WhatsApp <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
+
+          <img
+            src={moodboardCollage}
+            alt="Nálada LU by Lucie — Flower Bar, Kniha zážitku, Flower Fortune a další"
+            className="mx-auto mt-14 h-auto w-full max-w-xs"
+            loading="lazy"
+          />
         </aside>
 
         {/* Row 2 on desktop: Contact Form on the right */}
@@ -213,7 +228,7 @@ function Contact() {
               </Field>
 
               <Field label="Typ zážitku">
-                <select name="experience" className="lu-input" defaultValue="">
+                <select name="experience" className="lu-input" defaultValue={preselectedExperience}>
                   <option value="" disabled>
                     Vyberte…
                   </option>

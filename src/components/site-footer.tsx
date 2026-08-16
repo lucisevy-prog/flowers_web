@@ -1,17 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MessageCircle, MapPin } from "lucide-react";
+import logoFull from "@/assets/logo-full.png";
 
 export function SiteFooter() {
   return (
     <footer className="mt-32 border-t border-border/60 bg-espresso text-cream">
       <div className="mx-auto grid max-w-7xl gap-14 px-6 py-20 lg:grid-cols-4 lg:px-10">
         <div className="lg:col-span-2">
-          <div className="flex items-baseline gap-2">
-            <span className="font-serif text-4xl">LU</span>
-            <span className="text-[0.65rem] uppercase tracking-[0.32em] text-cream/60">
-              by Lucie
-            </span>
-          </div>
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="inline-block"
+          >
+            <img src={logoFull} alt="LU by Lucie — Květinové zážitky" className="h-32 w-auto" />
+          </Link>
           <p className="mt-6 max-w-md font-serif text-2xl leading-snug text-cream/90">
             Květinové zážitky, které si odnesete domů — v kytici i ve vzpomínce.
           </p>
@@ -79,7 +81,6 @@ export function SiteFooter() {
       <div className="border-t border-cream/10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-6 text-xs text-cream/50 sm:flex-row lg:px-10">
           <p>© {new Date().getFullYear()} LU by Lucie. Vytvořeno s láskou.</p>
-          <p className="tracking-[0.24em] uppercase">Editorial floral experiences</p>
         </div>
       </div>
     </footer>

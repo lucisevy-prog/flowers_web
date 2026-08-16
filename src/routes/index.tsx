@@ -3,9 +3,13 @@ import { Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-flower-bar.jpg";
 import bouquetHands from "@/assets/bouquet-hands.jpg";
 import corporateEvent from "@/assets/corporate-event.jpg";
-import venueGarden from "@/assets/venue-garden.jpg";
-import venueChateau from "@/assets/venue-chateau.jpg";
-import venueLoft from "@/assets/venue-loft.jpg";
+import venueCorporateGala from "@/assets/venue-corporate-gala.jpg";
+import venueWellnessStudio from "@/assets/venue-wellness-studio.jpg";
+import venueCafePopup from "@/assets/venue-cafe-popup.jpg";
+import venueGenderReveal from "@/assets/venue-gender-reveal.jpg";
+import venueRetailPopup from "@/assets/venue-retail-popup.jpg";
+import venueWeddingGarden from "@/assets/venue-wedding-garden.jpg";
+import venueBachelorette from "@/assets/venue-bachelorette.jpg";
 import { Flower2, Sparkles, Camera, HandHeart, ArrowUpRight, Heart, Gift } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -77,8 +81,8 @@ function Hero() {
             <img
               src={heroImg}
               alt="Signature Flower Bar LU"
-              width={1024}
-              height={682}
+              width={819}
+              height={1024}
               className="h-full w-full object-cover"
             />
           </div>
@@ -158,8 +162,9 @@ function Split() {
           title="Firemní eventy & PR"
           text="Aktivace, které si hosté odnesou v kytici i na fotkách. Od launche produktu po galavečer — vytvářím florální kout, který funguje jako prémiový brand touchpoint."
           audience={["Launches", "Galavečery", "Konference", "Gifting"]}
-          to="/zazitky"
-          cta="Zážitky pro firmy"
+          to="/kontakt"
+          search={{ zazitek: "signature-flower-bar" }}
+          cta="Poptat firemní event"
           variant="rose"
         />
       </div>
@@ -174,6 +179,7 @@ function SplitCard({
   text,
   audience,
   to,
+  search,
   cta,
   variant,
 }: {
@@ -183,6 +189,7 @@ function SplitCard({
   text: string;
   audience: string[];
   to: string;
+  search?: { zazitek: string };
   cta: string;
   variant?: "rose";
 }) {
@@ -212,6 +219,7 @@ function SplitCard({
         </ul>
         <Link
           to={to}
+          search={search}
           className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-espresso"
         >
           {cta}
@@ -265,28 +273,46 @@ function HowItWorks() {
 
 const venues = [
   {
-    image: venueGarden,
-    eyebrow: "Zahrada & château park",
-    title: "Venkovní svatby & letní oslavy",
-    text: "Dřevěné stoly pod korunami stromů, květinový bar ve stínu — od malých rodinných hostin po velké svatby v parku.",
+    image: venueWeddingGarden,
+    eyebrow: "Zahrady & venkovní svatby",
+    title: "Svatby pod širým nebem",
+    text: "Zlaté hodinky, tráva pod nohama, nevěsta u vlastního flower baru. Od rodinných hostin po velké svatby v parku.",
   },
   {
-    image: venueChateau,
-    eyebrow: "Historické interiéry",
-    title: "Château, salóny & vily",
-    text: "Vysoká okna, parkety, denní světlo. Elegantní zázemí pro rozlučky, baby shower a intimní oslavy v centru Prahy i okolí.",
+    image: venueCorporateGala,
+    eyebrow: "Firemní gala & večírky",
+    title: "Reprezentativní eventy",
+    text: "Vysoká okna, svíce, sklenka v ruce. Květinový bar jako centrální bod večera, který si hosté odnesou domů v kytici.",
   },
   {
-    image: venueLoft,
-    eyebrow: "Loft & industrial",
-    title: "Firemní eventy & PR akce",
-    text: "Průmyslová okna, cihlové zdi, minimalistický styling. Květinová aktivace, kterou si hosté odnesou v kytici i na fotkách.",
+    image: venueBachelorette,
+    eyebrow: "Rozlučky se svobodou",
+    title: "Večer mezi kamarádkami",
+    text: "Světýlka, floristické karty, kolo štěstí. Vázání kytic jako hra, co rozproudí večer i bez taneční podložky.",
   },
   {
-    image: bouquetHands,
-    eyebrow: "Doma & u vás",
-    title: "Byty, ateliéry, terasy",
-    text: "Mini Flower Experience, DIY Kit nebo Flower Fortune — přijedu k vám, nebo pošlu kit kurýrem po celé ČR.",
+    image: venueGenderReveal,
+    eyebrow: "Rodinné oslavy",
+    title: "Gender reveal & miminkové oslavy",
+    text: "Modré a růžové hortenzie místo balónků. Elegantní odhalení, které zůstane na fotkách i ve vzpomínkách.",
+  },
+  {
+    image: venueWellnessStudio,
+    eyebrow: "Studia & wellness",
+    title: "Ženské kruhy a workshopy",
+    text: "Svíčky, meditační polštáře, tichá hudba. Vázání kytic jako společný rituál pro retreaty a dámské kruhy.",
+  },
+  {
+    image: venueCafePopup,
+    eyebrow: "Kavárny & pop-upy",
+    title: "Květinový pop-up",
+    text: "Bar s popsanými kbelíky přímo v provozu kavárny — hosté i kolemjdoucí si sami namíchají kytici.",
+  },
+  {
+    image: venueRetailPopup,
+    eyebrow: "Obchody & showroomy",
+    title: "Retail aktivace",
+    text: "Značkový flower bar uprostřed prodejny — moment, který si zákaznice vyfotí a spojí s vaší značkou.",
   },
 ];
 
@@ -296,7 +322,7 @@ function Venues() {
       <div className="mb-14 max-w-2xl">
         <p className="eyebrow">Kde LU tvoří</p>
         <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
-          Kdekoliv chcete — od <em className="italic">zahrady</em> po loft.
+          Kdekoliv chcete — od <em className="italic">zahrady</em> po firemní gala.
         </h2>
         <p className="mt-6 text-cocoa/80">
           Květinové zážitky přizpůsobím prostoru, ve kterém se odehrává váš den. Tady je pár

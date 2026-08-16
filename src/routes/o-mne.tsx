@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState, type SubmitEvent } from "react";
-import portrait from "@/assets/lucie-portrait.jpg";
+import flowerBarAction from "@/assets/lucie-flower-bar-action.jpg";
 import { ArrowUpRight } from "lucide-react";
 import { submitInquiry } from "@/lib/contact.functions";
 
@@ -79,45 +79,31 @@ function About() {
 
   return (
     <div className="bg-background">
-      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 pt-20 pb-24 lg:grid-cols-12 lg:gap-14 lg:px-10 lg:pt-28">
-        <div className="lg:col-span-7 lg:pt-10">
-          <p className="eyebrow">Za značkou LU</p>
-          <h1 className="mt-6 font-serif text-5xl leading-[1.05] text-espresso sm:text-6xl">
-            Jmenuji se Lucie a <em className="italic">tvořím zážitky</em>, po kterých doma zůstane
-            vůně.
-          </h1>
-          <div className="mt-10 space-y-6 text-lg leading-relaxed text-cocoa/85">
-            <p>
-              Ke květinám jsem se dostala oklikou — přes marketing, styling a několik let strávených
-              mezi butikovými značkami v Paříži. Zjistila jsem, že to, co mě baví nejvíc, není
-              samotná kytice, ale okamžik, který kolem ní vzniká.
-            </p>
-            <p>
-              LU jsem založila v roce 2022 v Praze jako značku, která květiny nedává na piedestal —
-              dává je do rukou. Pracuji se ženami, páry a značkami, které chtějí, aby jejich moment
-              zůstal v paměti jinak, než jen jako pěkná fotka.
-            </p>
-            <p className="font-serif text-2xl text-espresso italic">
-              „Nedělám floristiku. Dělám zážitky, ve kterých květiny jenom hrají hlavní roli."
-            </p>
-          </div>
+      <section className="relative isolate overflow-hidden">
+        <div aria-hidden className="absolute inset-0 -z-10">
+          <img src={flowerBarAction} alt="" className="h-full w-full object-cover" />
         </div>
 
-        <div className="lg:col-span-5">
-          <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-[2px]">
-              <img
-                src={portrait}
-                alt="Portrét Lucie"
-                width={1200}
-                height={1504}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -right-4 w-52 bg-blush p-5 lg:-right-8">
-              <p className="font-serif text-xl leading-tight text-espresso italic">Lucie K.</p>
-              <p className="mt-1 text-[0.7rem] uppercase tracking-[0.22em] text-cocoa/70">
-                Florální designérka
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+          <div className="ml-auto max-w-md rounded-[2px] border border-champagne/40 bg-cream p-8 shadow-[0_20px_50px_-20px_rgba(94,70,59,0.45)] sm:p-10">
+            <p className="eyebrow">Za značkou LU</p>
+            <h1 className="mt-5 font-serif text-4xl leading-[1.05] text-espresso sm:text-5xl">
+              Jmenuji se Lucie a <em className="italic">tvořím zážitky</em>, po kterých doma zůstane
+              vůně.
+            </h1>
+            <div className="mt-8 space-y-5 text-base leading-relaxed text-cocoa/85">
+              <p>
+                Ke květinám jsem se dostala oklikou — přes marketing, styling a několik let
+                strávených mezi butikovými značkami v Paříži. Zjistila jsem, že to, co mě baví
+                nejvíc, není samotná kytice, ale okamžik, který kolem ní vzniká.
+              </p>
+              <p>
+                LU jsem založila v roce 2022 v Praze jako značku, která květiny nedává na piedestal
+                — dává je do rukou. Pracuji se ženami, páry a značkami, které chtějí, aby jejich
+                moment zůstal v paměti jinak, než jen jako pěkná fotka.
+              </p>
+              <p className="font-serif text-xl text-espresso italic">
+                „Nedělám floristiku. Dělám zážitky, ve kterých květiny jenom hrají hlavní roli."
               </p>
             </div>
           </div>

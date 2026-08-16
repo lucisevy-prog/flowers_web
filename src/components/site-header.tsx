@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import logoMark from "@/assets/logo-mark.png";
 
 const nav = [
   { to: "/", label: "Domů" },
@@ -27,8 +28,12 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-        <Link to="/" className="group flex items-baseline gap-2">
-          <span className="font-serif text-3xl leading-none tracking-tight text-espresso">LU</span>
+        <Link
+          to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="group flex items-center gap-3"
+        >
+          <img src={logoMark} alt="LU by Lucie" className="h-12 w-auto sm:h-14" />
           <span className="hidden text-[0.65rem] uppercase tracking-[0.32em] text-cocoa/70 sm:inline">
             by Lucie
           </span>

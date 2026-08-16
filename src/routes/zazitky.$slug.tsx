@@ -68,6 +68,7 @@ function ExperienceDetail() {
             <div className="mt-10">
               <Link
                 to="/kontakt"
+                search={{ zazitek: exp.slug }}
                 className="inline-flex items-center gap-3 rounded-full bg-espresso px-7 py-4 text-xs uppercase tracking-[0.22em] text-cream hover:bg-cocoa"
               >
                 Poptat tento zážitek
@@ -140,6 +141,7 @@ function ExperienceDetail() {
                   </ul>
                   <Link
                     to="/kontakt"
+                    search={{ zazitek: exp.slug }}
                     className={`mt-10 inline-flex items-center gap-2 self-start text-xs uppercase tracking-[0.22em] ${
                       t.featured ? "text-cream" : "text-espresso"
                     }`}
