@@ -234,7 +234,9 @@ function ExperienceDetail() {
               <div className="rounded-[2px] border border-champagne/50 bg-blush/40 p-8">
                 <p className="eyebrow">{exp.extraGuest.label}</p>
                 <p className="mt-3 font-serif text-3xl text-espresso">{exp.extraGuest.price}</p>
-                <p className="mt-2 text-sm text-cocoa/70">nad rámec základní ceny</p>
+                <p className="mt-2 text-sm text-cocoa/70">
+                  {exp.extraGuest.note ?? "nad rámec základní ceny"}
+                </p>
               </div>
             ) : null}
           </div>

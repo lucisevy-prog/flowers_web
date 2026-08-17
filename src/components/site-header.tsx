@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, ArrowUpRight } from "lucide-react";
 import logoMark from "@/assets/logo-mark.png";
 
 const nav = [
@@ -24,10 +24,26 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-500 ${
-        scrolled ? "border-b border-border/60 bg-background/85 backdrop-blur-md" : "bg-transparent"
+        scrolled ? "border-b border-border/60 bg-background/90 backdrop-blur-md shadow-xs" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+      {/* Top Instagram Announcement Bar */}
+      <div className="border-b border-champagne/25 bg-gradient-to-r from-cream via-blush/30 to-cream py-1.5 px-4 text-center text-[0.72rem] tracking-wider text-cocoa/90">
+        <a
+          href="https://instagram.com/lu.byluci"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center justify-center gap-2 hover:text-espresso"
+        >
+          <Instagram className="h-3.5 w-3.5 text-champagne shrink-0 transition-transform group-hover:scale-110" />
+          <span>
+            Sledujte nás na Instagramu <strong className="font-semibold text-espresso">@lu.byluci</strong> pro reelska, atmosféru v pohybu & novinky
+          </span>
+          <ArrowUpRight className="h-3 w-3 text-champagne shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      </div>
+
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link
           to="/"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

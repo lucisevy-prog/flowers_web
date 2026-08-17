@@ -29,7 +29,7 @@ export type Experience = {
   idealFor: string[];
   tiers?: Tier[];
   priceBlocks?: { label: string; value: string; note?: string }[];
-  extraGuest?: { label: string; price: string };
+  extraGuest?: { label: string; price: string; note?: string };
   deliveryZones?: { icon: string; label: string; price: string; note?: string }[];
 };
 
@@ -163,8 +163,8 @@ export const experiences: Experience[] = [
       "DIY Flower Bar Kit je kompletní designový set, který vám zapůjčíme na 24 hodin. Získáte všechno profesionální vybavení, stylové doplňky a přesný návod, jak bar na místě sestavit. Vy si jen zajistíte své oblíbené květiny a můžete začít tvořit. Květiny ani obsluha nejsou součástí kitu — máte tak plnou kontrolu nad rozpočtem a stylem: nakoupíte přesně tolik květin, kolik potřebujete, přesně v druzích a barvách, které milujete.",
     image: diyKit,
     duration: "zápůjčka na 24 hodin",
-    guests: "libovolný počet (dle počtu kitů)",
-    from: "3 900 Kč / 24 hodin",
+    guests: "libovolný počet",
+    from: "3 900 Kč / 24 hod",
     audience: ["Rozlučky se svobodou", "Narozeniny", "Zahradní párty"],
     steps: [
       {
@@ -174,7 +174,7 @@ export const experiences: Experience[] = [
       {
         title: "Vyzvednutí a příprava",
         description:
-          "Kit si u nás vyzvednete (nebo vám ho po dohodě doručíme). Podle našeho návodu bar snadno sestavíte za 15 minut.",
+          "Kit si u nás vyzvednete (nebo vám ho doručíme). Podle našeho návodu bar snadno sestavíte za 15 minut.",
       },
       {
         title: "Vaše párty, vaše pravidla",
@@ -197,9 +197,9 @@ export const experiences: Experience[] = [
     ],
     priceBlocks: [
       {
-        label: "Cena za 24 hodin",
+        label: "Cena za pronájem (24 hod)",
         value: "3 900 Kč",
-        note: "jednotná cena za pronájem",
+        note: "jednotná pevná cena za pronájem setu",
       },
       {
         label: "Vratná kauce na inventář",
@@ -211,7 +211,7 @@ export const experiences: Experience[] = [
   },
   {
     slug: "baby-shower-bloom",
-    title: "Baby Shower Bloom Experience",
+    title: "Gender Reveal / Baby Shower Bloom",
     eyebrow: "Intimní oslava",
     shortDescription:
       "Květinové tipování pohlaví, které si všichni zapamatují — interaktivní koutek plný prémiových hortenzií v růžových a modrých tónech.",
@@ -219,9 +219,9 @@ export const experiences: Experience[] = [
       "Baby Shower Bloom Experience je interaktivní květinový koutek plný prémiových hortenzií v růžových a modrých tónech. Vy a vaši hosté nebudete jen pasivně čekat na odhalení — každý se aktivně zapojí do kreativního tipování a zároveň tím vznikne krásná vzpomínka pro budoucí rodiče.",
     image: babyShower,
     duration: "60–90 minut",
-    guests: "od 10 hostů",
-    from: "6 900 Kč",
-    audience: ["Nastávající rodiče", "Rodinné oslavy"],
+    guests: "základní cena pro 10 hostů",
+    from: "6 900 Kč (pro 10 hostů)",
+    audience: ["Nastávající rodiče", "Rodinné oslavy", "Baby shower"],
     steps: [
       {
         title: "Příprava scény",
@@ -247,17 +247,25 @@ export const experiences: Experience[] = [
       "Prémiové hortenzie — čerstvé, bohaté květy v růžové a modré barvě pro hlasování",
       "Kompletní designový inventář: nádoby a váza na hortenzie, stojánky, materiály, tabulky",
       "Hlasovací kartičky — stylové tiskoviny z vysokogramážního papíru a zlatá pera pro psaní vzkazů",
-      "Doprava a instalace — vše nachystáme, vy se staráte jen o své hosty",
+      "Doprava, instalace i úklid — vše nachystáme a uklidíme, vy se staráte jen o své hosty",
     ],
     idealFor: [
       "Páry, které nechtějí kýč",
-      "Malé rodinné oslavy",
+      "Malé rodinné oslavy a Gender Reveal párty",
       "Fotograficky zdokumentovaný moment",
     ],
     priceBlocks: [
-      { label: "Základní cena", value: "6 900 Kč", note: "kompletní balíček pro 10 hostů" },
+      {
+        label: "Základní cena (pro 10 hostů)",
+        value: "6 900 Kč",
+        note: "kompletní balíček pro 10 hostů včetně květin a inventáře",
+      },
     ],
-    extraGuest: { label: "Každý další host", price: "+ 300 Kč / os." },
+    extraGuest: {
+      label: "Každý další host navíc",
+      price: "+ 300 Kč / os.",
+      note: "pro neomezený počet dalších hostů",
+    },
     deliveryZones: deliveryWithSetup,
   },
   {
@@ -270,8 +278,8 @@ export const experiences: Experience[] = [
       "Flower Fortune je luxusní zážitkový box, který si u nás vyzvednete nebo vám předáme na domluveném místě. Najdete v něm vše od čerstvých prémiových květin až po designové Květinové kolo. Celým programem vás plynule provede naše Kniha zážitku — nemusíte se bát, že byste nevěděly, co dělat, scénář vás povede krok za krokem. Žádný stres z organizace, jen čistá radost ze společného času.",
     image: flowerFortune,
     duration: "cca 2–3 hodiny",
-    guests: "nevěsta + 5 družiček",
-    from: "6 900 Kč",
+    guests: "budoucí nevěsta + 5 kamarádek",
+    from: "6 900 Kč (pro 6 osob)",
     audience: ["Rozlučky se svobodou", "Ženské kruhy", "Baby shower"],
     steps: [
       {
@@ -298,17 +306,21 @@ export const experiences: Experience[] = [
     ],
     idealFor: [
       "Rozlučky se svobodou, které chtějí hloubku, styl a magickou atmosféru",
-      "Ženské kruhy a baby shower",
+      "Ženské kruhy a dámská setkání",
       "Nevěsty, co chtějí poklidnější start večera místo klasické rozlučky",
     ],
     priceBlocks: [
       {
-        label: "Základní cena",
+        label: "Základní cena (nevěsta + 5 kamarádek)",
         value: "6 900 Kč",
-        note: "kompletní Flower Fortune Box pro nevěstu a 5 družiček",
+        note: "kompletní Flower Fortune Box pro nevěstu a 5 kamarádek",
       },
     ],
-    extraGuest: { label: "Každá další družička", price: "+ 600 Kč / os." },
+    extraGuest: {
+      label: "Každá další účastnice / kamarádka",
+      price: "+ 600 Kč / os.",
+      note: "včetně dárkové tašky a dalších květin",
+    },
     deliveryZones: defaultDelivery,
   },
   {
@@ -321,8 +333,8 @@ export const experiences: Experience[] = [
       "Hvězdný Flower Bar je intimní, kreativní a zábavný květinový zážitek. Není to floristický kurz — je to hra s energií čtyř živlů: Ohně, Vody, Vzduchu a Země. Každá z vás si v tajnosti vybere svůj živel a podle něj „uváže“ kytici, která vypráví její osobní příběh. Dokážou ostatní na konci večera uhodnout, kým opravdu jste?",
     image: hvezdnyFlowerBar,
     duration: "cca 2–3 hodiny",
-    guests: "od 6 žen",
-    from: "6 900 Kč",
+    guests: "základní cena pro 6 žen",
+    from: "6 900 Kč (pro 6 žen)",
     audience: ["Dámská jízda", "Narozeniny", "Teambuilding"],
     steps: [
       {
@@ -358,9 +370,17 @@ export const experiences: Experience[] = [
       "Večer, na který budete vzpomínat celý rok",
     ],
     priceBlocks: [
-      { label: "Základní cena", value: "6 900 Kč", note: "kompletní balíček pro 6 žen" },
+      {
+        label: "Základní cena (pro 6 žen)",
+        value: "6 900 Kč",
+        note: "kompletní balíček pro 6 žen včetně květin a tiskovin",
+      },
     ],
-    extraGuest: { label: "Každá další žena", price: "+ 600 Kč / os." },
+    extraGuest: {
+      label: "Každá další žena navíc",
+      price: "+ 600 Kč / os.",
+      note: "včetně další porce prémiových květin a tiskovin",
+    },
     deliveryZones: defaultDelivery,
   },
 ];
@@ -368,3 +388,4 @@ export const experiences: Experience[] = [
 export function getExperience(slug: string) {
   return experiences.find((e) => e.slug === slug);
 }
+

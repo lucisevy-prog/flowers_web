@@ -185,12 +185,13 @@ function Contact() {
           />
         </aside>
 
-        {/* Row 2 on desktop: Contact Form on the right */}
         <div className="lg:col-span-8 lg:col-start-5 lg:row-start-2">
-          <p className="mb-8 font-serif text-xl leading-snug text-espresso italic">
-            Váš stůl, vaše společnost a květinový rituál připravený do posledního detailu. Stačí si
-            vybrat svůj termín.
-          </p>
+          <div className="mb-8 border-l-2 border-champagne/60 pl-4 py-1">
+            <p className="font-serif text-xl sm:text-2xl leading-snug text-espresso italic">
+              „Váš stůl, vaše společnost a květinový rituál připravený do posledního detailu. Stačí si
+              vybrat svůj termín.“
+            </p>
+          </div>
           <form
             onSubmit={handleSubmit}
             className="rounded-[2px] border border-border bg-card p-8 sm:p-12"
