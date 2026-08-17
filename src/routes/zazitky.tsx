@@ -71,18 +71,25 @@ function ZazitkyIndex() {
             dámských kruhů až po velkolepé svatby a firemní gala.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-8 flex flex-wrap gap-2.5">
             {experiences.map((e, i) => (
-              <a
+              <button
+                type="button"
                 key={e.slug}
-                href={`#zazitek-${e.slug}`}
-                className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/70 px-3.5 py-1.5 text-xs font-medium text-espresso/80 backdrop-blur-sm transition-all hover:border-champagne hover:bg-card hover:text-espresso"
+                onClick={() => {
+                  const target = document.getElementById(`zazitek-${e.slug}`);
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                    window.history.pushState(null, "", `#zazitek-${e.slug}`);
+                  }
+                }}
+                className="cursor-pointer inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/80 px-4 py-2 text-xs font-medium text-espresso transition-all duration-300 hover:border-champagne hover:bg-champagne/15 hover:shadow-xs"
               >
                 <span className="font-serif font-bold text-champagne">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span>{e.title}</span>
-              </a>
+              </button>
             ))}
           </div>
         </div>
@@ -100,10 +107,14 @@ function ZazitkyIndex() {
               <article
                 id={`zazitek-${e.slug}`}
                 key={e.slug}
-                className={`group relative flex flex-col overflow-hidden rounded-[4px] border ${theme.border} ${theme.bg} transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_40px_-14px_rgba(94,70,59,0.16)]`}
+                className={`scroll-mt-32 group relative flex flex-col overflow-hidden rounded-[4px] border ${theme.border} ${theme.bg} transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_40px_-14px_rgba(94,70,59,0.16)]`}
               >
-                {/* Image box */}
-                <div className="relative aspect-[16/11] w-full overflow-hidden bg-cream/40">
+                {/* Image box - clickable */}
+                <Link
+                  to="/zazitky/$slug"
+                  params={{ slug: e.slug }}
+                  className="relative aspect-[16/11] w-full overflow-hidden bg-cream/40 block"
+                >
                   <img
                     src={e.image}
                     alt={e.title}
@@ -118,13 +129,15 @@ function ZazitkyIndex() {
                     </span>
                     <span>{e.eyebrow}</span>
                   </div>
-                </div>
+                </Link>
 
                 {/* Content box */}
                 <div className="flex flex-1 flex-col p-6 sm:p-7">
-                  <h2 className="font-serif text-2xl leading-snug text-espresso group-hover:text-champagne transition-colors duration-300">
-                    {e.title}
-                  </h2>
+                  <Link to="/zazitky/$slug" params={{ slug: e.slug }}>
+                    <h2 className="font-serif text-2xl leading-snug text-espresso group-hover:text-champagne transition-colors duration-300">
+                      {e.title}
+                    </h2>
+                  </Link>
                   <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-cocoa/80">
                     {e.shortDescription}
                   </p>
