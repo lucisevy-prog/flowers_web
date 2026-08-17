@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState, type SubmitEvent } from "react";
 import { Mail, MessageCircle, MapPin, ArrowUpRight, Instagram } from "lucide-react";
@@ -145,8 +145,8 @@ function Contact() {
             <ContactRow
               icon={<Mail className="h-4 w-4" />}
               label="E-mail"
-              value="hello@lubylucie.cz"
-              href="mailto:hello@lubylucie.cz"
+              value="lubyluci.studio@gmail.com"
+              href="mailto:lubyluci.studio@gmail.com"
             />
             <ContactRow
               icon={<MessageCircle className="h-4 w-4" />}
@@ -157,8 +157,8 @@ function Contact() {
             <ContactRow
               icon={<Instagram className="h-4 w-4" />}
               label="Instagram"
-              value="@lubylucie"
-              href="https://instagram.com"
+              value="@lu.byluci"
+              href="https://instagram.com/lu.byluci"
             />
             <ContactRow
               icon={<MapPin className="h-4 w-4" />}
@@ -187,6 +187,10 @@ function Contact() {
 
         {/* Row 2 on desktop: Contact Form on the right */}
         <div className="lg:col-span-8 lg:col-start-5 lg:row-start-2">
+          <p className="mb-8 font-serif text-xl leading-snug text-espresso italic">
+            Váš stůl, vaše společnost a květinový rituál připravený do posledního detailu. Stačí si
+            vybrat svůj termín.
+          </p>
           <form
             onSubmit={handleSubmit}
             className="rounded-[2px] border border-border bg-card p-8 sm:p-12"
@@ -241,30 +245,30 @@ function Contact() {
                 </select>
               </Field>
 
-              <Field label="Příležitost">
+              <Field label="Typ akce">
                 <select name="occasion" className="lu-input" defaultValue="">
                   <option value="" disabled>
                     Vyberte…
                   </option>
                   <option>Svatba</option>
                   <option>Rozlučka se svobodou</option>
+                  <option>Baby shower</option>
+                  <option>Narozeniny</option>
                   <option>Firemní event</option>
-                  <option>Narozeniny / oslava</option>
-                  <option>Baby shower / gender reveal</option>
-                  <option>Jiné</option>
+                  <option>Opening</option>
+                  <option>Jiná příležitost</option>
                 </select>
               </Field>
 
-              <Field label="Počet hostů">
+              <Field label="Předpokládaný počet hostů">
                 <select name="guestCount" className="lu-input" defaultValue="">
                   <option value="" disabled>
                     Vyberte…
                   </option>
-                  <option>Do 10</option>
-                  <option>10–30</option>
-                  <option>30–80</option>
-                  <option>80–200</option>
-                  <option>200+</option>
+                  <option>Do 10 hostů</option>
+                  <option>10–20 hostů</option>
+                  <option>20–50 hostů</option>
+                  <option>50 a více</option>
                 </select>
               </Field>
 
@@ -291,11 +295,16 @@ function Contact() {
 
             <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs text-cocoa/60">
-                Odesláním souhlasíte se zpracováním údajů pro účely komunikace.
+                Odesláním formuláře berete na vědomí zpracování osobních údajů za účelem vyřízení
+                vaší poptávky v souladu se{" "}
+                <Link to="/zasady-ochrany-osobnich-udaju" className="underline">
+                  Zásadami ochrany osobních údajů
+                </Link>
+                .
               </p>
               <button
                 type="submit"
-                disabled={status === "pending"}
+                disabled={status === "pending" || status === "success"}
                 className="inline-flex items-center gap-3 rounded-full bg-espresso px-8 py-4 text-xs uppercase tracking-[0.22em] text-cream hover:bg-cocoa disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {status === "success"
@@ -307,12 +316,20 @@ function Contact() {
               </button>
             </div>
 
+            {status === "success" ? (
+              <p className="mt-4 text-sm text-cocoa/80">
+                <strong className="text-espresso">Děkujeme za vaši poptávku!</strong> Všechno v
+                pořádku dorazilo. Do e-mailu jsme vám poslali shrnutí a do 24 hodin se vám ozveme s
+                potvrzením dostupnosti vašeho termínu.
+              </p>
+            ) : null}
+
             {status === "error" ? (
               <p className="mt-4 text-sm text-red-600">
                 Něco se pokazilo a poptávku se nepodařilo odeslat. Zkuste to prosím znovu, nebo mi
                 napište přímo na{" "}
-                <a href="mailto:hello@lubylucie.cz" className="underline">
-                  hello@lubylucie.cz
+                <a href="mailto:lubyluci.studio@gmail.com" className="underline">
+                  lubyluci.studio@gmail.com
                 </a>
                 .
               </p>

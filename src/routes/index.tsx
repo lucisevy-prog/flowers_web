@@ -22,6 +22,7 @@ function Index() {
       <Hero />
       <UspBar />
       <Split />
+      <Statement />
       <Venues />
       <HowItWorks />
       <CtaBanner />
@@ -39,6 +40,10 @@ function Hero() {
             Květinový bar, <br className="hidden sm:block" />o kterém budou hosté mluvit{" "}
             <em className="italic text-cocoa">ještě cestou domů.</em>
           </h1>
+          <p className="mt-6 max-w-xl font-serif text-xl leading-snug text-espresso italic">
+            Tvoříme prostor, kde se krása květin propojuje s hlubokým zážitkem, smíchem a
+            vzpomínkou, kterou si odnesete domů.
+          </p>
 
           <div className="mt-8 border-l border-champagne/40 pl-6 space-y-4 max-w-xl">
             <p className="font-sans text-lg leading-relaxed text-cocoa/90">
@@ -80,16 +85,16 @@ function Hero() {
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2px]">
             <img
               src={heroImg}
-              alt="Signature Flower Bar LU"
+              alt="Premium Flower Bar LU"
               width={819}
               height={1024}
               className="h-full w-full object-cover"
             />
           </div>
           <div className="absolute -bottom-8 -left-6 hidden w-56 rounded-[2px] border border-champagne/40 bg-cream p-5 shadow-[0_20px_50px_-20px_rgba(94,70,59,0.35)] sm:block lg:-left-12">
-            <p className="eyebrow">Signature</p>
+            <p className="eyebrow">Premium</p>
             <p className="mt-2 font-serif text-2xl leading-tight text-espresso">Flower Bar</p>
-            <p className="mt-2 text-xs text-cocoa/70">Náš vlajkový zážitek pro 15–300 hostů.</p>
+            <p className="mt-2 text-xs text-cocoa/70">Náš vlajkový zážitek do 70 hostů.</p>
           </div>
         </div>
       </div>
@@ -103,10 +108,26 @@ function Hero() {
 }
 
 const usps = [
-  { title: "Moment, který si každý fotí", emoji: "📸" },
-  { title: "Hosté jsou součástí dění", emoji: "🌸" },
-  { title: "Atmosféra, která propojuje", emoji: "🤍" },
-  { title: "Kytička pro ně jako pozornost domů", emoji: "💐" },
+  {
+    title: "Pouze prémiové květiny",
+    text: "Všechny stonky osobně vybíráme pro vaši akci.",
+    emoji: "🌸",
+  },
+  {
+    title: "Odnášíte si květiny domů",
+    text: "Zážitek nekončí na místě.",
+    emoji: "🎁",
+  },
+  {
+    title: "Hotové koncepty bez starostí",
+    text: "Vše vymyslíme a připravíme za vás.",
+    emoji: "✨",
+  },
+  {
+    title: "Fotogenický zážitek",
+    text: "Vzpomínky, které se sdílí.",
+    emoji: "📸",
+  },
 ];
 
 function UspBar() {
@@ -114,7 +135,7 @@ function UspBar() {
     <section className="relative border-y border-border/50 bg-gradient-to-b from-cream/40 to-cream/80 py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {usps.map(({ title, emoji }) => (
+          {usps.map(({ title, text, emoji }) => (
             <div
               key={title}
               className="group relative flex items-center gap-5 rounded-[4px] border border-border/40 bg-card/35 p-6 backdrop-blur-[2px] transition-all duration-500 hover:-translate-y-0.5 hover:border-champagne/40 hover:bg-card/90 hover:shadow-[0_12px_24px_-10px_rgba(94,70,59,0.12)]"
@@ -126,6 +147,7 @@ function UspBar() {
                 <h3 className="font-serif text-base sm:text-[1.05rem] text-espresso leading-snug font-medium">
                   {title}
                 </h3>
+                <p className="mt-1 text-xs leading-snug text-cocoa/70">{text}</p>
               </div>
             </div>
           ))}
@@ -151,7 +173,7 @@ function Split() {
           image={bouquetHands}
           eyebrow="Pro vás osobně"
           title="Svatby, rozlučky & oslavy"
-          text="Signature Flower Bar na svatbu, poetická Flower Fortune pro rozlučku, komorní Mini Experience pro nejbližší kruh. Každý zážitek je vytvořen v paletě, která ladí s vaším dnem."
+          text="Premium Flower Bar na svatbu, poetická Flower Fortune pro rozlučku, komorní Hvězdný Flower Bar pro nejbližší kruh. Každý zážitek je vytvořen v paletě, která ladí s vaším dnem."
           audience={["Svatby", "Rozlučky", "Baby shower", "Narozeniny"]}
           to="/zazitky"
           cta="Zážitky pro vás"
@@ -163,7 +185,7 @@ function Split() {
           text="Aktivace, které si hosté odnesou v kytici i na fotkách. Od launche produktu po galavečer — vytvářím florální kout, který funguje jako prémiový brand touchpoint."
           audience={["Launches", "Galavečery", "Konference", "Gifting"]}
           to="/kontakt"
-          search={{ zazitek: "signature-flower-bar" }}
+          search={{ zazitek: "premium-flower-bar" }}
           cta="Poptat firemní event"
           variant="rose"
         />
@@ -234,18 +256,18 @@ function HowItWorks() {
   const steps = [
     {
       n: "01",
-      title: "Konzultace",
-      text: "Sejdeme se osobně či online, doladíme paletu a atmosféru.",
+      title: "Napíšete nám o své akci",
+      text: "Vyplníte krátký formulář a my vám doporučíme ten pravý zážitek.",
     },
     {
       n: "02",
-      title: "Příprava",
-      text: "Ručně sestavuji květiny, styling a všechny detaily akce.",
+      title: "Vše připravíme za vás",
+      text: "Nakoupíme prémiové květiny, připravíme koncept a vše kompletně předáme nebo doručíme.",
     },
     {
       n: "03",
-      title: "Zážitek",
-      text: "Přijedu, postavím prostor a provedu vás i hosty celým momentem.",
+      title: "Vy si jen užíváte",
+      text: "Květiny vždy vám nebo vašim hostům zůstávají.",
     },
   ];
   return (
@@ -316,6 +338,18 @@ const venues = [
   },
 ];
 
+function Statement() {
+  return (
+    <section className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-10">
+      <p className="font-serif text-3xl leading-snug text-espresso sm:text-4xl">
+        Nejde jen o to uvázat kytku. Jde o pocit zpomalit,{" "}
+        <em className="italic text-cocoa">být plně spolu</em> a prožít čas, který jen tak rychle
+        nevyprchá.
+      </p>
+    </section>
+  );
+}
+
 function Venues() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
@@ -374,17 +408,17 @@ function CtaBanner() {
         <div className="relative z-10 max-w-2xl">
           <p className="eyebrow">Připraveni?</p>
           <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
-            Ať váš další okamžik <em className="italic">rozkvete</em>.
+            Váš zážitek začíná <em className="italic">jednou zprávou</em>.
           </h2>
           <p className="mt-5 text-cocoa/80">
             Napište mi. Odpovídám během 24 hodin s návrhem palety, formátu a orientační kalkulací.
           </p>
-          <Link
-            to="/kontakt"
+          <a
+            href="https://wa.me/420777992589?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20z%C3%A1jem%20o%20kv%C4%9Btinov%C3%BD%20z%C3%A1%C5%BEitek%20LU."
             className="mt-8 inline-flex items-center gap-3 rounded-full bg-espresso px-7 py-4 text-xs uppercase tracking-[0.22em] text-cream hover:bg-cocoa"
           >
-            Poptat zážitek <ArrowUpRight className="h-4 w-4" />
-          </Link>
+            Poslat poptávku <ArrowUpRight className="h-4 w-4" />
+          </a>
         </div>
         <div aria-hidden className="cta-glow pointer-events-none absolute inset-0 -z-0" />
       </div>

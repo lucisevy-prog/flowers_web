@@ -20,7 +20,7 @@
  */
 
 const SHARED_SECRET = "REPLACE_ME"; // musí být identická s INQUIRY_SHEET_WEBHOOK_SECRET
-const NOTIFY_EMAIL = "luci.sevy@gmail.com";
+const NOTIFY_EMAIL = "lubyluci.studio@gmail.com";
 
 const HEADERS = [
   "Čas",
@@ -87,6 +87,31 @@ function doPost(e) {
     });
   } catch (err) {
     console.error("Inquiry saved but notification email failed: " + err);
+  }
+
+  // Confirmation email back to the customer — separate try/catch so a
+  // failure here (e.g. invalid address) never masks the successful save
+  // above or blocks the internal notification.
+  if (payload.email) {
+    try {
+      MailApp.sendEmail({
+        to: payload.email,
+        subject: "Vaše poptávka dorazila — brzy se ozveme 🌸",
+        body:
+          "Dobrý den,\n\n" +
+          "děkujeme za váš zájem o květinové zážitky LU.\n\n" +
+          "Vaše poptávka nám dorazila a my se vám ozveme do 24 hodin s potvrzením dostupnosti termínu a dalšími informacemi k rezervaci.\n\n" +
+          "Než se ozveme, připomínáme, jak celý proces funguje:\n" +
+          "1. Potvrzení termínu — do 24 hodin vám napíšeme, zda je váš termín volný.\n" +
+          "2. Záloha — termín je závazně rezervován až po připsání zálohy 50 % z celkové ceny na náš účet.\n" +
+          "3. Doplatek — zbývající částku hradíte nejpozději 7 dní před akcí.\n\n" +
+          "Těšíme se na společný zážitek.\n" +
+          "LU by Lucie — Květinové zážitky\n" +
+          "lubyluci.studio@gmail.com · 777 992 589 · www.lubyluci.cz",
+      });
+    } catch (err) {
+      console.error("Inquiry saved but customer confirmation email failed: " + err);
+    }
   }
 
   return jsonResponse({ ok: true });

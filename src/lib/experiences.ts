@@ -1,8 +1,8 @@
 import heroFlowerBar from "@/assets/hero-flower-bar.jpg";
 import diyKit from "@/assets/diy-kit.jpg";
-import genderReveal from "@/assets/gender-reveal.jpg";
+import babyShower from "@/assets/gender-reveal.jpg";
 import flowerFortune from "@/assets/flower-fortune.jpg";
-import miniExperience from "@/assets/mini-experience.jpg";
+import hvezdnyFlowerBar from "@/assets/mini-experience.jpg";
 
 export type Tier = {
   name: string;
@@ -71,92 +71,84 @@ const deliveryWithSetup = [
 
 export const experiences: Experience[] = [
   {
-    slug: "signature-flower-bar",
-    title: "Signature Flower Bar",
+    slug: "premium-flower-bar",
+    title: "Premium Flower Bar",
     eyebrow: "Vlajkový zážitek",
     shortDescription:
-      "Interaktivní květinový bar, kde si každý host uváže vlastní kytici pod odborným vedením.",
+      "Prémiový květinový bar s kompletním servisem — interaktivní, estetický a voňavý koutek, kde se hosté z pasivních diváků stávají tvůrci.",
     longDescription:
-      "Signature Flower Bar je vlajkový zážitek LU. Přivezeme kompletní styling — dřevěné stoly, hedvábné stuhy, keramické vázy, desítky odrůd sezónních květin ve vaší paletě. Vaši hosté si sami vážou kytici, kterou si odnesou domů jako živou vzpomínku na den.",
+      "PREMIUM Flower Bar od LU je interaktivní, estetický a voňavý koutek, kde se vaši hosté z pasivních diváků stávají tvůrci. Na vaši akci přivezeme kompletně vybavený, minimalistický bar plný těch nejkrásnějších prémiových květin. Vaši hosté si sami vytvoří svou vlastní kombinaci květin, kterou si umístí do speciální květinové taštičky a dozdobí stužkou dle svého výběru.",
     image: heroFlowerBar,
-    duration: "2–4 hodiny",
-    guests: "6–300 hostů",
-    from: "od 18 900 Kč",
-    audience: ["Svatby", "Firemní eventy", "Oslavy životních milníků"],
+    duration: "2–3 hodiny",
+    guests: "do 70 hostů",
+    from: "od 15 000 Kč",
+    audience: ["Svatby", "Firemní eventy & brand aktivace", "Tiskové konference & VIP večírky"],
     steps: [
       {
-        title: "Konzultace & moodboard",
+        title: "Návrh na míru",
         description:
-          "Sejdeme se osobně nebo online. Doladíme paletu, atmosféru a logistiku podle vašeho prostoru a hostů.",
+          "Společně si ujasníme styl, barevnou paletu a atmosféru vaší akce. Květiny i design baru přizpůsobíme tak, aby dokonale ladily s konceptem vašeho eventu.",
       },
       {
-        title: "Styling na místě",
+        title: "Instalace bez starostí",
         description:
-          "Přivezeme kompletní set-up — bar, květiny, nářadí, stuhy, keramiku. Prostor připravíme 2 hodiny před startem.",
+          "V den akce přijedeme na místo s předstihem. Postavíme stylový bar, naaranžujeme čerstvé prémiové květiny a připravíme veškeré náčiní. Vy se o nic nestaráte.",
       },
       {
-        title: "Zážitek pro hosty",
+        title: "Zážitek na akci",
         description:
-          "Provedu vaše hosty celým procesem — od výběru květin po finální stuhu. Součástí je fotograficky vděčné zákoutí.",
+          "Bar se otevírá v předem domluvený čas. Hosté chodí, vybírají si stonky, kombinují barvy a vůně. Jsme jim po celou dobu k dispozici. Jde o zážitek, ne o složitý workshop, který by narušoval vaši akci.",
       },
       {
-        title: "Kytice domů",
-        description:
-          "Každý host odchází s vlastní autorskou kyticí zabalenou v prémiovém papíru — vzpomínka, která ožívá doma.",
+        title: "Dárek, který si odnáší domů",
+        description: "Hosté si tak z vaší akce odnášejí ten nejkrásnější personalizovaný dárek.",
       },
     ],
     included: [
-      "Kompletní květinový bar včetně stylingu",
-      "8–14 odrůd prémiových sezónních květin",
-      "Keramické vázy, stuhy, papír na balení",
-      "Osobní vedení Lucie po celou dobu",
-      "Photo-friendly zákoutí s brand detaily",
-      "Doprava v rámci Prahy zdarma",
+      "Prémiová květinová selekce — jen ty nejkrásnější, nejčerstvější a nejzajímavější sezónní květiny (pivoňky, eukalypt, prémiové růže atd.)",
+      "Kompletní inventář LU: stylový mobilní bar, floristické nůžky, stužky, květinové tašky",
+      "Naše osobní přítomnost po celou dobu trvání baru (standardně 2 hodiny)",
+      "Logistika a úklid: doprava na místo, instalace, deinstalace a kompletní úklid prostoru po akci",
     ],
     idealFor: [
-      "Svatby, které nechtějí být stereotypní",
-      "Firemní eventy s důrazem na zážitek značky",
-      "Významné narozeniny a jubilea",
-      "Launche produktů a PR akce",
+      "Svatby — perfektní oživení odpoledního programu a nádherný dárek pro svatebčany",
+      "Firemní eventy & brand aktivace — originální způsob, jak zaujmout klientky, partnerky nebo zaměstnance",
+      "Tiskové konference & VIP večírky — vysoce fotogenický prvek pro sociální sítě vašich hostů",
     ],
     tiers: [
       {
         name: "Petite",
-        tagline: "Komorní setkání",
-        price: "od 18 900 Kč",
-        guests: "do 15 hostů",
+        tagline: "Komorní oslavy",
+        price: "15 000 Kč",
+        guests: "do 20 hostů",
         highlights: [
-          "6–8 odrůd květin",
-          "Kompaktní bar 1,5 m",
-          "1,5 hod. styling na místě",
-          "Doprava Praha",
+          "2 hodiny naší asistence na místě",
+          "Kompletní inventář",
+          "Dárkové balení pro každého hosta",
         ],
       },
       {
         name: "Signature",
-        tagline: "Nejvyhledávanější",
-        price: "od 34 900 Kč",
-        guests: "16–60 hostů",
+        tagline: "Nejoblíbenější",
+        price: "19 000 Kč",
+        guests: "do 40 hostů",
         featured: true,
         highlights: [
-          "10–12 odrůd + doplňky",
-          "Bar 3 m + styling koutu",
-          "3 hod. plný servis",
-          "Doprava Praha + Střední Čechy",
-          "Fotografický kout s LU signature",
+          "2 hodiny naší asistence na místě",
+          "Rozšířený inventář a design baru",
+          "Dárkové balení pro každého hosta",
         ],
       },
       {
         name: "Grand",
-        tagline: "Velké eventy",
-        price: "od 68 900 Kč",
-        guests: "60+ hostů",
+        tagline: "Velkolepé eventy",
+        price: "27 000 Kč",
+        guests: "do 70 hostů",
         highlights: [
-          "14+ odrůd, prémiové květiny",
-          "Bar 5+ m, 2 asistentky",
-          "Full-day servis",
-          "Doprava kdekoliv v ČR",
-          "Branding & tisky na míru",
+          "3 hodiny naší asistence na místě",
+          "Exkluzivní selekce květin",
+          "Prioritní plánování konceptu na míru",
+          "Dárkové balení pro každého hosta",
         ],
       },
     ],
@@ -166,193 +158,209 @@ export const experiences: Experience[] = [
     title: "DIY Flower Bar Kit",
     eyebrow: "Zážitek na doma",
     shortDescription:
-      "Prémiový kit s čerstvými květinami a vším potřebným, který si odnesete nebo dostanete dovezený domů.",
+      "Váš vlastní květinový bar, jednoduše a bez starostí — kompletní designový set, který si zapůjčíte na 24 hodin.",
     longDescription:
-      "DIY Flower Bar Kit přináší LU zážitek do vaší kuchyně. Ručně sestavená krabice obsahuje čerstvé květiny, sušiny, nůžky, provázek, hedvábnou stuhu a autorské karty s návodem. Ideální dárek, aktivita na dámskou jízdu nebo klidný večer sama pro sebe.",
+      "DIY Flower Bar Kit je kompletní designový set, který vám zapůjčíme na 24 hodin. Získáte všechno profesionální vybavení, stylové doplňky a přesný návod, jak bar na místě sestavit. Vy si jen zajistíte své oblíbené květiny a můžete začít tvořit. Květiny ani obsluha nejsou součástí kitu — máte tak plnou kontrolu nad rozpočtem a stylem: nakoupíte přesně tolik květin, kolik potřebujete, přesně v druzích a barvách, které milujete.",
     image: diyKit,
-    duration: "45–90 minut na doma",
-    guests: "1–8 osob (více kitů)",
-    from: "2 690 Kč",
-    audience: ["Dárky", "Rozlučky se svobodou", "Firemní gifting"],
+    duration: "zápůjčka na 24 hodin",
+    guests: "libovolný počet (dle počtu kitů)",
+    from: "3 900 Kč / 24 hodin",
+    audience: ["Rozlučky se svobodou", "Narozeniny", "Zahradní párty"],
     steps: [
       {
-        title: "Objednávka & paleta",
-        description:
-          "Vyberete si paletu (Blush, Sunset, Botanical, Muted) a datum dodání. Připravím kit v požadovaném počtu.",
+        title: "Rezervace termínu",
+        description: "Vyberete si datum své akce a zarezervujete si kit včas.",
       },
       {
-        title: "Doručení",
+        title: "Vyzvednutí a příprava",
         description:
-          "Osobně předám v Praze nebo doručím kurýrem po celé ČR. Balené tak, aby květiny přijely v perfektním stavu.",
+          "Kit si u nás vyzvednete (nebo vám ho po dohodě doručíme). Podle našeho návodu bar snadno sestavíte za 15 minut.",
       },
       {
-        title: "Váš vlastní bar",
-        description:
-          "Otevřete krabici, vytvoříte podle přiloženého návodu a užijete si tichý tvůrčí moment. Ideálně s vínem.",
+        title: "Vaše párty, vaše pravidla",
+        description: "Užijete si vaši událost s květinovým barem podle svého.",
+      },
+      {
+        title: "Vrácení inventáře",
+        description: "Druhý den nám set jednoduše vrátíte zpět.",
       },
     ],
     included: [
-      "6–10 stonků čerstvých květin + sušiny",
-      "Hedvábná stuha, jutový provázek",
-      "Prémiové nůžky (zůstávají vám)",
-      "Autorská karta s návodem",
-      "Balení jako dárek",
+      "Kompletní inventář LU: květinový stojan s nádobami na květiny, boho slunečník, barový stolek, profesionální floristické nůžky a doplňky",
+      "Materiál na balení: stuhy a dárkové tašky, aby si hosté odnesli své kytice bezpečně a elegantně domů",
+      "„How-to“ manuál — přehledný návod krok za krokem, jak bar sestavit. Zvládne to úplně každý.",
     ],
     idealFor: [
-      "Rozlučky se svobodou doma",
-      "Firemní dárky pro klientky",
-      "Narozeninový dárek",
-      "Slow-evening pro sebe",
+      "Rozlučky se svobodou, které si chcete „odmoderovat“ samy",
+      "Narozeninové a zahradní párty s plnou kontrolou nad rozpočtem",
+      "Kohokoliv, kdo chce styl podle sebe — vlastní druhy a barvy květin",
     ],
     priceBlocks: [
       {
-        label: "Cena za pronájem",
-        value: "2 690 Kč",
+        label: "Cena za 24 hodin",
+        value: "3 900 Kč",
         note: "jednotná cena za pronájem",
+      },
+      {
+        label: "Vratná kauce na inventář",
+        value: "2 000 Kč",
+        note: "vrací se ihned po kontrole kompletního a nepoškozeného vybavení",
       },
     ],
     deliveryZones: defaultDelivery,
   },
   {
-    slug: "gender-reveal-bloom",
-    title: "Gender Reveal Bloom Experience",
+    slug: "baby-shower-bloom",
+    title: "Baby Shower Bloom Experience",
     eyebrow: "Intimní oslava",
     shortDescription:
-      "Elegantní odhalení pohlaví miminka skrze dvě zapečetěné květinové kompozice.",
+      "Květinové tipování pohlaví, které si všichni zapamatují — interaktivní koutek plný prémiových hortenzií v růžových a modrých tónech.",
     longDescription:
-      "Zapomeňte na balónky a konfety. Gender Reveal Bloom Experience je editoriální oslava pro nejužší kruh — dvě zapečetěné vázy odhalí barvu ve stejný okamžik, doprovázené vůní a fotogenickým stylingem, který zůstane ve vzpomínkách i v albu.",
-    image: genderReveal,
+      "Baby Shower Bloom Experience je interaktivní květinový koutek plný prémiových hortenzií v růžových a modrých tónech. Vy a vaši hosté nebudete jen pasivně čekat na odhalení — každý se aktivně zapojí do kreativního tipování a zároveň tím vznikne krásná vzpomínka pro budoucí rodiče.",
+    image: babyShower,
     duration: "60–90 minut",
-    guests: "4–20 hostů",
-    from: "8 900 Kč",
+    guests: "od 10 hostů",
+    from: "6 900 Kč",
     audience: ["Nastávající rodiče", "Rodinné oslavy"],
     steps: [
       {
-        title: "Diskrétní domluva",
+        title: "Příprava scény",
         description:
-          "S vámi nebo přes prostředníka domluvíme barvu tak, aby zůstala tajemstvím pro pár.",
+          "Dorazíme na místo ještě před příchodem hostů. Naaranžujeme designovou stanici s čerstvými hortenziemi v barvách baby pink a baby blue, skleněnými vázičkami a doplňky.",
       },
       {
-        title: "Styling na místě",
-        description: "Připravím stůl, dvě zapečetěné kompozice, svíčky a rámování pro fotografii.",
+        title: "Květinové hlasování",
+        description:
+          "Každý host si vybere barvu hortenzie podle toho, jestli tipuje holčičku (pink), nebo chlapečka (blue), a květinu vloží do příslušné vázy.",
       },
       {
-        title: "Okamžik reveal",
+        title: "Vzkazy a tipy",
+        description: "Na designové kartičky napíší hosté zlatým perem své tipy na pohlaví miminka.",
+      },
+      {
+        title: "Odhalení a dárek domů",
         description:
-          "Ve zvolený moment se odhalí barva — pink, blue nebo autorská alternativa (muted mint, dusty coral).",
+          "Po odhalení pohlaví si nastávající maminka odnáší domů kytici s hortenziemi jako vzpomínku na tento den a truhličku se všemi kartičkovými tipy od svých nejbližších.",
       },
     ],
     included: [
-      "Dvě zapečetěné květinové kompozice",
-      "Kompletní stolní styling",
-      "Autorské kartičky Team Pink / Blue",
-      "Svíčky a doplňky",
-      "Osobní obsluha 90 minut",
+      "Prémiové hortenzie — čerstvé, bohaté květy v růžové a modré barvě pro hlasování",
+      "Kompletní designový inventář: nádoby a váza na hortenzie, stojánky, materiály, tabulky",
+      "Hlasovací kartičky — stylové tiskoviny z vysokogramážního papíru a zlatá pera pro psaní vzkazů",
+      "Doprava a instalace — vše nachystáme, vy se staráte jen o své hosty",
     ],
     idealFor: [
       "Páry, které nechtějí kýč",
       "Malé rodinné oslavy",
-      "Fotografy zdokumentovaný moment",
+      "Fotograficky zdokumentovaný moment",
     ],
-    priceBlocks: [{ label: "Základní cena", value: "8 900 Kč", note: "platí pro 10 hostů" }],
-    extraGuest: { label: "Každý další host", price: "+ 390 Kč / os." },
+    priceBlocks: [
+      { label: "Základní cena", value: "6 900 Kč", note: "kompletní balíček pro 10 hostů" },
+    ],
+    extraGuest: { label: "Každý další host", price: "+ 300 Kč / os." },
     deliveryZones: deliveryWithSetup,
   },
   {
     slug: "flower-fortune",
     title: "Flower Fortune",
-    eyebrow: "Poetický okamžik",
-    shortDescription: "Malá kytice s ručně psaným vzkazem jako květinová věštba pro každého hosta.",
+    eyebrow: "Poetický rituál",
+    shortDescription:
+      "Květinový rituál pro nezapomenutelnou rozlučku se svobodou — luxusní zážitkový box plný květin, věšteckých karet a Knihy zážitku.",
     longDescription:
-      "Flower Fortune je poetický zážitek pro rozlučky, ženské kruhy a intimní setkání. Každá hostka si vylosuje jednu malou kytici s ručně psaným vzkazem — jako květinovou věštbu, kterou si odnese domů.",
+      "Flower Fortune je luxusní zážitkový box, který si u nás vyzvednete nebo vám předáme na domluveném místě. Najdete v něm vše od čerstvých prémiových květin až po designové Květinové kolo. Celým programem vás plynule provede naše Kniha zážitku — nemusíte se bát, že byste nevěděly, co dělat, scénář vás povede krok za krokem. Žádný stres z organizace, jen čistá radost ze společného času.",
     image: flowerFortune,
-    duration: "45 minut",
-    guests: "6–20 hostek",
-    from: "4 900 Kč",
+    duration: "cca 2–3 hodiny",
+    guests: "nevěsta + 5 družiček",
+    from: "6 900 Kč",
     audience: ["Rozlučky se svobodou", "Ženské kruhy", "Baby shower"],
     steps: [
       {
-        title: "Autorské vzkazy",
+        title: "Naladění, smích a vůně",
         description:
-          "Připravím sadu ručně psaných karet — poetických, humorných nebo laděných k tématu vaší oslavy.",
+          "Pustíte si náš exkluzivní playlist, přiťuknete si proseccem a vytáhnete si karty s citáty. Celý prostor se rozvoní čerstvými květinami.",
       },
       {
-        title: "Styling & losování",
+        title: "Květinové kolo a kytice plná lásky",
         description:
-          "Malé kytice naaranžuji na stůl. Každá hostka si vylosuje tu svou a přečte si vzkaz nahlas.",
+          "Roztáčíte květinové kolo, čtete nevěstě věštby a stonek po stonku pro ni společně skládáte kytici. Nevěsta vám na oplátku vybere květiny do vašich dárkových taštiček.",
       },
       {
-        title: "Sdílený moment",
+        title: "Slzy dojetí a vzpomínka na celý život",
         description:
-          "Zážitek přirozeně otevře konverzaci — o přáních, obavách i o tom, co vás spojuje.",
+          "Napíšete nevěstě osobní dopisy, které si otevře v tichu večer před svatbou. Domů odcházíte s kyticí, dopisy a voňavými taštičkami na památku.",
       },
     ],
     included: [
-      "8–20 mini kytiček dle počtu hostek",
-      "Ručně psané autorské karty",
-      "Styling stolu",
-      "Facilitace momentu Lucií",
+      "Zapůjčíme a po akci vrátíte: designové Květinové kolo, Kniha zážitku s kompletním scénářem a QR kódem na playlist, sady karet (Alter Ego, Kytice přání, Neoficiální pravidla manželství, Květinový kód), floristické nůžky, stuhy, vázy",
+      "Zůstává vám na památku: selekce prémiových čerstvých květin (cca 80 stonků)",
+      "Dárkové papírové taštičky s logem LU pro každou kamarádku/družičku",
+      "Dopisy nevěstě s obálkami z luxusního papíru a rozlučková kytice pro nevěstu",
     ],
     idealFor: [
-      "Rozlučky se svobodou pro 6–12 kamarádek",
-      "Baby shower",
-      "Retreat a ženské víkendy",
+      "Rozlučky se svobodou, které chtějí hloubku, styl a magickou atmosféru",
+      "Ženské kruhy a baby shower",
+      "Nevěsty, co chtějí poklidnější start večera místo klasické rozlučky",
     ],
     priceBlocks: [
       {
         label: "Základní cena",
-        value: "4 900 Kč",
-        note: "platí pro 5 kamarádek + budoucí nevěsta",
+        value: "6 900 Kč",
+        note: "kompletní Flower Fortune Box pro nevěstu a 5 družiček",
       },
     ],
-    extraGuest: { label: "Každá další účastnice", price: "+ 490 Kč / os." },
+    extraGuest: { label: "Každá další družička", price: "+ 600 Kč / os." },
     deliveryZones: defaultDelivery,
   },
   {
-    slug: "mini-flower-experience",
-    title: "Mini Flower Experience",
-    eyebrow: "Intimní zážitek",
-    shortDescription: "Komorní květinový zážitek pro 2–6 osob u vás doma nebo na vybraném místě.",
+    slug: "hvezdny-flower-bar",
+    title: "Hvězdný Flower Bar",
+    eyebrow: "Zážitkový večer",
+    shortDescription:
+      "Zážitkový večer vázání kytic podle čtyř živlů — hra s energií Ohně, Vody, Vzduchu a Země, kde kytice vypráví váš osobní příběh.",
     longDescription:
-      "Mini Flower Experience je nejintimnější formát LU. Přijedu k vám s vybraným setem květin a společně strávíme tichý večer u vázání kytic, dobrého vína a rozhovorů. Ideální jako dárek nebo způsob, jak oslavit s nejbližšími.",
-    image: miniExperience,
-    duration: "90 minut",
-    guests: "2–6 osob",
-    from: "7 900 Kč",
-    audience: ["Dárek", "Blízcí přátelé", "Rodina"],
+      "Hvězdný Flower Bar je intimní, kreativní a zábavný květinový zážitek. Není to floristický kurz — je to hra s energií čtyř živlů: Ohně, Vody, Vzduchu a Země. Každá z vás si v tajnosti vybere svůj živel a podle něj „uváže“ kytici, která vypráví její osobní příběh. Dokážou ostatní na konci večera uhodnout, kým opravdu jste?",
+    image: hvezdnyFlowerBar,
+    duration: "cca 2–3 hodiny",
+    guests: "od 6 žen",
+    from: "6 900 Kč",
+    audience: ["Dámská jízda", "Narozeniny", "Teambuilding"],
     steps: [
       {
-        title: "Dohoda o místě & datu",
-        description: "U vás doma, na chatě, v ateliéru — přijedu s kompletním setem.",
+        title: "Vůně, hudba a první poselství",
+        description:
+          "Na úvod si pustíte hudbu, nalijete si sklenku něčeho dobrého a přivítáte 4 živly.",
       },
       {
-        title: "Tichý večer",
-        description: "Provedu vás tvorbou vlastních kytic ve vzdušném, nespěchavém tempu.",
+        title: "Živlová výzva a tvoření",
+        description:
+          "V naprosté tajnosti si najdete svůj živel — Oheň, Vodu, Vzduch nebo Zemi — a podle tajného receptu vybíráte ty pravé květiny. Tvoříte srdcem, ne hlavou.",
       },
       {
-        title: "Odchod se vzpomínkou",
-        description: "Každý si odnese svou kytici a klid, který v takovém večeru vzniká.",
+        title: "Šepot květin a tipovačka",
+        description:
+          "Položíte kytice vedle sebe a společně hádáte, která kytice patří ke kterému živlu. Budete možná překvapené, jak přesně dokážou květiny odhalit vaše nitro.",
+      },
+      {
+        title: "Dopis sobě",
+        description:
+          "Napíšete dopis sami sobě, svému budoucímu Já. Zalepíte do obálky a otevřete za 3 měsíce, abyste si připomněly energii tohoto večera.",
       },
     ],
     included: [
-      "Sada sezónních květin pro každou účastnici",
-      "Vázy, stuhy, papír, nůžky",
-      "Osobní vedení Lucií 90 minut",
-      "Doprava v rámci Prahy",
+      "80 stonků prémiových čerstvých květin — každá z vás si domů odnese bohatou kytičku",
+      "Kompletní designové tiskoviny: karta čtyř živlů, průvodce večerem, karty Šepot květin, živlové otázky, dopisy sobě s obálkami",
+      "Floristické vybavení k zapůjčení: profesionální nůžky, stylové vázy a stuhy na svázání kytic",
+      "Květinové tašky, svíčka, olejíčky",
     ],
     idealFor: [
-      "Dárek pro maminku, sestru, kamarádku",
-      "Malá oslava narozenin",
-      "Klidný večer se ženami z rodiny",
+      "Dámskou jízdu nebo oslavu narozenin",
+      "Teambuilding s hlubším propojením",
+      "Večer, na který budete vzpomínat celý rok",
     ],
     priceBlocks: [
-      {
-        label: "Základní cena",
-        value: "7 900 Kč",
-        note: "platí pro 6 žen",
-      },
+      { label: "Základní cena", value: "6 900 Kč", note: "kompletní balíček pro 6 žen" },
     ],
-    extraGuest: { label: "Každá další žena", price: "+ 590 Kč / os." },
+    extraGuest: { label: "Každá další žena", price: "+ 600 Kč / os." },
     deliveryZones: defaultDelivery,
   },
 ];

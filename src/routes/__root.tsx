@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Signature Flower Bar, DIY kity a intimní zážitky.",
+          "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
       },
       { name: "author", content: "LU by Lucie" },
       {
@@ -96,7 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Signature Flower Bar, DIY kity a intimní zážitky.",
+          "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -107,10 +107,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "twitter:description",
         content:
-          "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Signature Flower Bar, DIY kity a intimní zážitky.",
+          "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
       },
-      { property: "og:image", content: "/og-image.jpg" },
-      { name: "twitter:image", content: "/og-image.jpg" },
+      { property: "og:image", content: "https://www.lubyluci.cz/og-image.jpg" },
+      { name: "twitter:image", content: "https://www.lubyluci.cz/og-image.jpg" },
     ],
     links: [
       {

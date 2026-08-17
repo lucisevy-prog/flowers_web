@@ -184,8 +184,8 @@ function About() {
           {status === "error" ? (
             <p className="text-sm text-red-600">
               Něco se pokazilo. Zkuste to prosím znovu, nebo mi napište přímo na{" "}
-              <a href="mailto:hello@lubylucie.cz" className="underline">
-                hello@lubylucie.cz
+              <a href="mailto:lubyluci.studio@gmail.com" className="underline">
+                lubyluci.studio@gmail.com
               </a>
               .
             </p>

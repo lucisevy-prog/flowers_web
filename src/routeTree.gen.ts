@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ZazitkyRouteImport } from './routes/zazitky'
+import { Route as ZasadyOchranyOsobnichUdajuRouteImport } from './routes/zasady-ochrany-osobnich-udaju'
+import { Route as ObchodniPodminkyRouteImport } from './routes/obchodni-podminky'
 import { Route as OMneRouteImport } from './routes/o-mne'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IndexRouteImport } from './routes/index'
@@ -18,6 +20,17 @@ import { Route as ZazitkySlugRouteImport } from './routes/zazitky.$slug'
 const ZazitkyRoute = ZazitkyRouteImport.update({
   id: '/zazitky',
   path: '/zazitky',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZasadyOchranyOsobnichUdajuRoute =
+  ZasadyOchranyOsobnichUdajuRouteImport.update({
+    id: '/zasady-ochrany-osobnich-udaju',
+    path: '/zasady-ochrany-osobnich-udaju',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ObchodniPodminkyRoute = ObchodniPodminkyRouteImport.update({
+  id: '/obchodni-podminky',
+  path: '/obchodni-podminky',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OMneRoute = OMneRouteImport.update({
@@ -45,6 +58,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/kontakt': typeof KontaktRoute
   '/o-mne': typeof OMneRoute
+  '/obchodni-podminky': typeof ObchodniPodminkyRoute
+  '/zasady-ochrany-osobnich-udaju': typeof ZasadyOchranyOsobnichUdajuRoute
   '/zazitky': typeof ZazitkyRouteWithChildren
   '/zazitky/$slug': typeof ZazitkySlugRoute
 }
@@ -52,6 +67,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/kontakt': typeof KontaktRoute
   '/o-mne': typeof OMneRoute
+  '/obchodni-podminky': typeof ObchodniPodminkyRoute
+  '/zasady-ochrany-osobnich-udaju': typeof ZasadyOchranyOsobnichUdajuRoute
   '/zazitky': typeof ZazitkyRouteWithChildren
   '/zazitky/$slug': typeof ZazitkySlugRoute
 }
@@ -60,21 +77,47 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/kontakt': typeof KontaktRoute
   '/o-mne': typeof OMneRoute
+  '/obchodni-podminky': typeof ObchodniPodminkyRoute
+  '/zasady-ochrany-osobnich-udaju': typeof ZasadyOchranyOsobnichUdajuRoute
   '/zazitky': typeof ZazitkyRouteWithChildren
   '/zazitky/$slug': typeof ZazitkySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/kontakt' | '/o-mne' | '/zazitky' | '/zazitky/$slug'
+  fullPaths:
+    | '/'
+    | '/kontakt'
+    | '/o-mne'
+    | '/obchodni-podminky'
+    | '/zasady-ochrany-osobnich-udaju'
+    | '/zazitky'
+    | '/zazitky/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/kontakt' | '/o-mne' | '/zazitky' | '/zazitky/$slug'
-  id: '__root__' | '/' | '/kontakt' | '/o-mne' | '/zazitky' | '/zazitky/$slug'
+  to:
+    | '/'
+    | '/kontakt'
+    | '/o-mne'
+    | '/obchodni-podminky'
+    | '/zasady-ochrany-osobnich-udaju'
+    | '/zazitky'
+    | '/zazitky/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/kontakt'
+    | '/o-mne'
+    | '/obchodni-podminky'
+    | '/zasady-ochrany-osobnich-udaju'
+    | '/zazitky'
+    | '/zazitky/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   KontaktRoute: typeof KontaktRoute
   OMneRoute: typeof OMneRoute
+  ObchodniPodminkyRoute: typeof ObchodniPodminkyRoute
+  ZasadyOchranyOsobnichUdajuRoute: typeof ZasadyOchranyOsobnichUdajuRoute
   ZazitkyRoute: typeof ZazitkyRouteWithChildren
 }
 
@@ -85,6 +128,20 @@ declare module '@tanstack/react-router' {
       path: '/zazitky'
       fullPath: '/zazitky'
       preLoaderRoute: typeof ZazitkyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zasady-ochrany-osobnich-udaju': {
+      id: '/zasady-ochrany-osobnich-udaju'
+      path: '/zasady-ochrany-osobnich-udaju'
+      fullPath: '/zasady-ochrany-osobnich-udaju'
+      preLoaderRoute: typeof ZasadyOchranyOsobnichUdajuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/obchodni-podminky': {
+      id: '/obchodni-podminky'
+      path: '/obchodni-podminky'
+      fullPath: '/obchodni-podminky'
+      preLoaderRoute: typeof ObchodniPodminkyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/o-mne': {
@@ -133,6 +190,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   KontaktRoute: KontaktRoute,
   OMneRoute: OMneRoute,
+  ObchodniPodminkyRoute: ObchodniPodminkyRoute,
+  ZasadyOchranyOsobnichUdajuRoute: ZasadyOchranyOsobnichUdajuRoute,
   ZazitkyRoute: ZazitkyRouteWithChildren,
 }
 export const routeTree = rootRouteImport

@@ -19,10 +19,10 @@ export function SiteFooter() {
           </p>
           <div className="mt-8 flex flex-wrap gap-6 text-sm text-cream/70">
             <a
-              href="mailto:hello@lubylucie.cz"
+              href="mailto:lubyluci.studio@gmail.com"
               className="inline-flex items-center gap-2 hover:text-champagne"
             >
-              <Mail className="h-4 w-4" /> hello@lubylucie.cz
+              <Mail className="h-4 w-4" /> lubyluci.studio@gmail.com
             </a>
             <a
               href="https://wa.me/420777992589"
@@ -31,10 +31,10 @@ export function SiteFooter() {
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/lu.byluci"
               className="inline-flex items-center gap-2 hover:text-champagne"
             >
-              <Instagram className="h-4 w-4" /> @lubylucie
+              <Instagram className="h-4 w-4" /> @lu.byluci
             </a>
           </div>
         </div>
@@ -81,6 +81,14 @@ export function SiteFooter() {
       <div className="border-t border-cream/10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-6 text-xs text-cream/50 sm:flex-row lg:px-10">
           <p>© {new Date().getFullYear()} LU by Lucie. Vytvořeno s láskou.</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link to="/obchodni-podminky" className="hover:text-champagne">
+              Obchodní podmínky
+            </Link>
+            <Link to="/zasady-ochrany-osobnich-udaju" className="hover:text-champagne">
+              Zásady ochrany osobních údajů
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

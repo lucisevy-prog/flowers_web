@@ -9,7 +9,7 @@ export const Route = createFileRoute("/zazitky")({
       {
         name: "description",
         content:
-          "Pět květinových formátů od LU by Lucie — Signature Flower Bar, DIY Kit, Gender Reveal Bloom, Flower Fortune, Mini Experience.",
+          "Pět květinových formátů od LU by Lucie — Premium Flower Bar, DIY Kit, Baby Shower Bloom, Flower Fortune, Hvězdný Flower Bar.",
       },
       { property: "og:title", content: "Zážitky — LU by Lucie" },
       {
