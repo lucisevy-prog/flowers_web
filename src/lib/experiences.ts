@@ -1,4 +1,4 @@
-import heroFlowerBar from "@/assets/hero-flower-bar.jpg";
+import premiumFlowerBar from "@/assets/premium-flower-bar.jpg";
 import diyKit from "@/assets/diy-kit.jpg";
 import babyShower from "@/assets/gender-reveal.jpg";
 import flowerFortune from "@/assets/flower-fortune.jpg";
@@ -78,7 +78,7 @@ export const experiences: Experience[] = [
       "Prémiový květinový bar s kompletním servisem — interaktivní, estetický a voňavý koutek, kde se hosté z pasivních diváků stávají tvůrci.",
     longDescription:
       "Dámy, chcete, aby vaše svatba, firemní večírek nebo oslava byla nezapomenutelná? Obyčejná květinová výzdoba lidi nepřekvapí. Dopřejte jim zážitek, který zapojí všechny jejich smysly a stane se hlavním tématem všech rozhovorů.",
-    image: heroFlowerBar,
+    image: premiumFlowerBar,
     duration: "2–3 hodiny",
     guests: "do 70 hostů",
     from: "od 15 000 Kč",
