@@ -75,7 +75,7 @@ export const experiences: Experience[] = [
     title: "Premium Flower Bar",
     eyebrow: "Vlajkový zážitek",
     shortDescription:
-      "Prémiový květinový bar s kompletním servisem — interaktivní, estetický a voňavý koutek, kde se hosté z pasivních diváků stávají tvůrci.",
+      "Chcete, aby vaše svatba, firemní večírek nebo oslava byla nezapomenutelná? Klasická květinová výzdoba je standard. Dopřejte jim zážitek, který zapojí všechny jejich smysly a stane se hlavním tématem všech rozhovorů.",
     longDescription:
       "Dámy, chcete, aby vaše svatba, firemní večírek nebo oslava byla nezapomenutelná? Obyčejná květinová výzdoba lidi nepřekvapí. Dopřejte jim zážitek, který zapojí všechny jejich smysly a stane se hlavním tématem všech rozhovorů.",
     image: premiumFlowerBar,
