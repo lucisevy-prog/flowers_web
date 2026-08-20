@@ -32,8 +32,8 @@ function Index() {
 function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 pt-16 pb-24 lg:grid-cols-12 lg:gap-8 lg:px-10 lg:pt-24 lg:pb-32">
-        <div className="fade-up lg:col-span-6 lg:pt-14">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 pt-8 pb-24 lg:grid-cols-12 lg:gap-8 lg:px-10 lg:pt-10 lg:pb-32">
+        <div className="fade-up lg:col-span-6">
           <p className="eyebrow">Praha · Střední Čechy</p>
           <h1 className="mt-6 font-serif text-[2.75rem] leading-[1.1] text-espresso sm:text-[3.5rem] lg:text-[4.2rem]">
             Květinové zážitky, <br className="hidden sm:block" />
