@@ -273,7 +273,7 @@ export const experiences: Experience[] = [
     title: "Flower Fortune",
     eyebrow: "Hravá rozlučka",
     shortDescription:
-      "Květinový rituál pro nezapomenutelnou rozlučku se svobodou — luxusní zážitkový box plný květin, věšteckých karet a Knihy zážitku.",
+      "Hledáte pro nevěstu program, který bude mít hloubku, styl a magickou atmosféru? Zapomeňte na běžné rozlučky anebo tohle připravte jako poklidnější start vašeho „divočejšího“ večera. Prožijte společně čas plný smíchu, květin, emocí a předpovídání budoucnosti.",
     longDescription:
       "Dámy, hledáte pro nevěstu program, který bude mít hloubku, styl a magickou atmosféru? Zapomeňte na běžné rozlučky anebo tohle připravte jako poklidnější start vašeho „divočejšího“ večera. Prožijte společně čas plný smíchu, květin, emocí a předpovídání budoucnosti.",
     image: flowerFortune,
