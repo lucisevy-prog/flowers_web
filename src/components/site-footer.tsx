@@ -5,13 +5,7 @@ import logoMark from "@/assets/logo-mark.png";
 export function SiteFooter() {
   return (
     <footer className="mt-32 border-t border-border/60 bg-espresso text-cream">
-      <div className="mx-auto max-w-7xl px-6 pt-14 lg:px-10">
-        <p className="text-center font-serif text-4xl uppercase tracking-[0.12em] text-champagne sm:text-5xl lg:text-left lg:text-6xl">
-          Live Uniquely
-        </p>
-      </div>
-
-      <div className="mx-auto grid max-w-7xl gap-14 px-6 pt-10 pb-20 lg:grid-cols-4 lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-14 px-6 pt-20 pb-20 lg:grid-cols-4 lg:px-10">
         <div className="lg:col-span-2">
           <Link
             to="/"
