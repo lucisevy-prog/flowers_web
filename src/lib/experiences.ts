@@ -77,7 +77,7 @@ export const experiences: Experience[] = [
     shortDescription:
       "Prémiový květinový bar s kompletním servisem — interaktivní, estetický a voňavý koutek, kde se hosté z pasivních diváků stávají tvůrci.",
     longDescription:
-      "PREMIUM Flower Bar od LU je interaktivní, estetický a voňavý koutek, kde se vaši hosté z pasivních diváků stávají tvůrci. Na vaši akci přivezeme kompletně vybavený, minimalistický bar plný těch nejkrásnějších prémiových květin. Vaši hosté si sami vytvoří svou vlastní kombinaci květin, kterou si umístí do speciální květinové taštičky a dozdobí stužkou dle svého výběru.",
+      "Dámy, chcete, aby vaše svatba, firemní večírek nebo oslava byla nezapomenutelná? Obyčejná květinová výzdoba lidi nepřekvapí. Dopřejte jim zážitek, který zapojí všechny jejich smysly a stane se hlavním tématem všech rozhovorů.",
     image: heroFlowerBar,
     duration: "2–3 hodiny",
     guests: "do 70 hostů",
@@ -156,11 +156,11 @@ export const experiences: Experience[] = [
   {
     slug: "diy-flower-bar-kit",
     title: "DIY Flower Bar Kit",
-    eyebrow: "Zážitek na doma",
+    eyebrow: "Ve vaší režii",
     shortDescription:
       "Váš vlastní květinový bar, jednoduše a bez starostí — kompletní designový set, který si zapůjčíte na 24 hodin.",
     longDescription:
-      "DIY Flower Bar Kit je kompletní designový set, který vám zapůjčíme na 24 hodin. Získáte všechno profesionální vybavení, stylové doplňky a přesný návod, jak bar na místě sestavit. Vy si jen zajistíte své oblíbené květiny a můžete začít tvořit. Květiny ani obsluha nejsou součástí kitu — máte tak plnou kontrolu nad rozpočtem a stylem: nakoupíte přesně tolik květin, kolik potřebujete, přesně v druzích a barvách, které milujete.",
+      "Dámy, chcete na své zahradní párty, openingu, svatbě nebo oslavě zažít kouzlo květinového baru, ale chcete si celou akci „odmoderovat“ sami a mít plnou kontrolu nad rozpočtem?",
     image: diyKit,
     duration: "zápůjčka na 24 hodin",
     guests: "libovolný počet",
@@ -211,17 +211,17 @@ export const experiences: Experience[] = [
   },
   {
     slug: "baby-shower-bloom",
-    title: "Gender Reveal / Baby Shower Bloom",
+    title: "Gender Reveal Bloom",
     eyebrow: "Intimní oslava",
     shortDescription:
       "Květinové tipování pohlaví, které si všichni zapamatují — interaktivní koutek plný prémiových hortenzií v růžových a modrých tónech.",
     longDescription:
-      "Baby Shower Bloom Experience je interaktivní květinový koutek plný prémiových hortenzií v růžových a modrých tónech. Vy a vaši hosté nebudete jen pasivně čekat na odhalení — každý se aktivně zapojí do kreativního tipování a zároveň tím vznikne krásná vzpomínka pro budoucí rodiče.",
+      "Dámy, chystáte slavnostní oznámení pohlaví očekávaného miminka? Zapojte své hosty do květinového hlasování, které vytvoří nádhernou atmosféru, zábavu, krásné fotky a pro vás opravdovou vzpomínku, kterou si odnesete domů.",
     image: babyShower,
     duration: "60–90 minut",
     guests: "základní cena pro 10 hostů",
     from: "6 900 Kč (pro 10 hostů)",
-    audience: ["Nastávající rodiče", "Rodinné oslavy", "Baby shower"],
+    audience: ["Nastávající rodiče", "Rodinné oslavy", "Gender Reveal"],
     steps: [
       {
         title: "Příprava scény",
@@ -271,13 +271,13 @@ export const experiences: Experience[] = [
   {
     slug: "flower-fortune",
     title: "Flower Fortune",
-    eyebrow: "Poetický rituál",
+    eyebrow: "Hravá rozlučka",
     shortDescription:
       "Květinový rituál pro nezapomenutelnou rozlučku se svobodou — luxusní zážitkový box plný květin, věšteckých karet a Knihy zážitku.",
     longDescription:
-      "Flower Fortune je luxusní zážitkový box, který si u nás vyzvednete nebo vám předáme na domluveném místě. Najdete v něm vše od čerstvých prémiových květin až po designové Květinové kolo. Celým programem vás plynule provede naše Kniha zážitku — nemusíte se bát, že byste nevěděly, co dělat, scénář vás povede krok za krokem. Žádný stres z organizace, jen čistá radost ze společného času.",
+      "Dámy, hledáte pro nevěstu program, který bude mít hloubku, styl a magickou atmosféru? Zapomeňte na běžné rozlučky anebo tohle připravte jako poklidnější start vašeho „divočejšího“ večera. Prožijte společně čas plný smíchu, květin, emocí a předpovídání budoucnosti.",
     image: flowerFortune,
-    duration: "cca 2–3 hodiny",
+    duration: "cca 2 hodiny",
     guests: "budoucí nevěsta + 5 kamarádek",
     from: "6 900 Kč (pro 6 osob)",
     audience: ["Rozlučky se svobodou", "Ženské kruhy", "Baby shower"],
@@ -285,7 +285,7 @@ export const experiences: Experience[] = [
       {
         title: "Naladění, smích a vůně",
         description:
-          "Pustíte si náš exkluzivní playlist, přiťuknete si proseccem a vytáhnete si karty s citáty. Celý prostor se rozvoní čerstvými květinami.",
+          "Pustíte si náš exkluzivní playlist, přiťuknete si proseccem a vytáhnete si první sadu karet. Celý prostor se rozvoní čerstvými květinami.",
       },
       {
         title: "Květinové kolo a kytice plná lásky",
@@ -326,13 +326,13 @@ export const experiences: Experience[] = [
   {
     slug: "hvezdny-flower-bar",
     title: "Hvězdný Flower Bar",
-    eyebrow: "Zážitkový večer",
+    eyebrow: "Ženský večer",
     shortDescription:
       "Zážitkový večer vázání kytic podle čtyř živlů — hra s energií Ohně, Vody, Vzduchu a Země, kde kytice vypráví váš osobní příběh.",
     longDescription:
-      "Hvězdný Flower Bar je intimní, kreativní a zábavný květinový zážitek. Není to floristický kurz — je to hra s energií čtyř živlů: Ohně, Vody, Vzduchu a Země. Každá z vás si v tajnosti vybere svůj živel a podle něj „uváže“ kytici, která vypráví její osobní příběh. Dokážou ostatní na konci večera uhodnout, kým opravdu jste?",
+      "Dámy, chcete zažít dámskou jízdu, oslavu narozenin nebo teambuilding, na který budete vzpomínat celý rok? Otevřete dveře své intuici. Prožijte magický večer se 4 živly s hlubokým propojením, smíchem a vůní čerstvých květin.",
     image: hvezdnyFlowerBar,
-    duration: "cca 2–3 hodiny",
+    duration: "cca 2 hodiny",
     guests: "základní cena pro 6 žen",
     from: "6 900 Kč (pro 6 žen)",
     audience: ["Dámská jízda", "Narozeniny", "Teambuilding"],
@@ -388,4 +388,3 @@ export const experiences: Experience[] = [
 export function getExperience(slug: string) {
   return experiences.find((e) => e.slug === slug);
 }
-

@@ -64,7 +64,7 @@ function ZazitkyIndex() {
         <div className="max-w-3xl">
           <p className="eyebrow">Katalog 5 zážitků</p>
           <h1 className="mt-4 font-serif text-4xl leading-[1.1] text-espresso sm:text-5xl lg:text-6xl">
-            Vyberte si svůj <em className="italic text-cocoa">květinový zážitek</em>.
+            Který z <em className="italic text-cocoa">pěti květinových zážitků</em> bude ten váš?
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-cocoa/85 sm:text-lg">
             Každý formát je navržen pro jinou atmosféru, prostor i počet hostů — od komorních

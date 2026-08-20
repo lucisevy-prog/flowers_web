@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef } from "react";
-import { Play, Pause, Volume2, Sparkles, Heart, Flower2, ExternalLink } from "lucide-react";
+import { Play, Pause, Sparkles, Heart, Flower2 } from "lucide-react";
 import logoMark from "@/assets/logo-mark.png";
+
+// Hostovaný soubor — po nahrání finální nahrávky do public/audio/ stačí zde
+// upravit název souboru, žádná další změna kódu není potřeba.
+const AUDIO_SRC = "/audio/hvezdny-flower-bar.mp3";
 
 export const Route = createFileRoute("/playlist")({
   head: () => ({
@@ -12,6 +16,7 @@ export const Route = createFileRoute("/playlist")({
         content:
           "Hudební podkres pro chvíli ticha a psaní dopisu sobě sama. Propojte se s energií čtyř živlů.",
       },
+      { name: "robots", content: "noindex" },
     ],
   }),
   component: PlaylistPage,
@@ -21,89 +26,13 @@ export function PlaylistPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Relaxing harmonic soundscape generator using Web Audio API for an instant working experience
-  const audioCtxRef = useRef<AudioContext | null>(null);
-  const oscillatorNodesRef = useRef<OscillatorNode[]>([]);
-  const gainNodeRef = useRef<GainNode | null>(null);
-
   const toggleSound = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
     if (isPlaying) {
-      stopAmbient();
-      setIsPlaying(false);
+      audio.pause();
     } else {
-      startAmbient();
-      setIsPlaying(true);
-    }
-  };
-
-  const startAmbient = () => {
-    try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const ctx = new AudioCtx();
-      audioCtxRef.current = ctx;
-
-      const masterGain = ctx.createGain();
-      masterGain.gain.setValueAtTime(0.01, ctx.currentTime);
-      masterGain.gain.exponentialRampToValueAtTime(0.18, ctx.currentTime + 3);
-      masterGain.connect(ctx.destination);
-      gainNodeRef.current = masterGain;
-
-      // 4 Elements chord: Warm meditative harmonic frequencies (432Hz inspired, 4 elements resonance)
-      const freqs = [108, 216, 324, 432, 540, 648];
-      const nodes: OscillatorNode[] = [];
-
-      freqs.forEach((f, idx) => {
-        const osc = ctx.createOscillator();
-        const panner = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
-        const oscGain = ctx.createGain();
-
-        osc.type = idx % 2 === 0 ? "sine" : "triangle";
-        osc.frequency.setValueAtTime(f, ctx.currentTime);
-
-        // subtle frequency oscillation (breathing effect)
-        const lfo = ctx.createOscillator();
-        lfo.frequency.setValueAtTime(0.1 + idx * 0.05, ctx.currentTime);
-        const lfoGain = ctx.createGain();
-        lfoGain.gain.setValueAtTime(1.5, ctx.currentTime);
-        lfo.connect(osc.frequency);
-        lfo.start();
-
-        oscGain.gain.setValueAtTime(0.15 / (idx + 1), ctx.currentTime);
-
-        if (panner) {
-          panner.pan.value = (idx % 2 === 0 ? -1 : 1) * 0.4;
-          osc.connect(oscGain);
-          oscGain.connect(panner);
-          panner.connect(masterGain);
-        } else {
-          osc.connect(oscGain);
-          oscGain.connect(masterGain);
-        }
-
-        osc.start();
-        nodes.push(osc);
-      });
-
-      oscillatorNodesRef.current = nodes;
-    } catch {
-      // Fallback
-    }
-  };
-
-  const stopAmbient = () => {
-    if (gainNodeRef.current && audioCtxRef.current) {
-      try {
-        gainNodeRef.current.gain.exponentialRampToValueAtTime(
-          0.0001,
-          audioCtxRef.current.currentTime + 1
-        );
-        setTimeout(() => {
-          audioCtxRef.current?.close();
-          audioCtxRef.current = null;
-        }, 1000);
-      } catch {
-        audioCtxRef.current?.close();
-      }
+      void audio.play();
     }
   };
 
@@ -126,8 +55,7 @@ export function PlaylistPage() {
 
         {/* Exact heading requested */}
         <h1 className="mt-8 font-serif text-3xl leading-snug text-espresso sm:text-4xl lg:text-5xl">
-          Dámy, hudební podkres pro vaši{" "}
-          <em className="italic text-cocoa">chvíli ticha</em>
+          Dámy, hudební podkres pro vaši <em className="italic text-cocoa">chvíli ticha</em>
         </h1>
 
         {/* Exact text requested */}
@@ -177,15 +105,14 @@ export function PlaylistPage() {
             </div>
           )}
 
-          {/* Optional external Spotify link */}
-          <a
-            href="https://open.spotify.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.18em] text-cocoa/70 underline decoration-champagne underline-offset-4 hover:text-espresso"
-          >
-            Otevřít playlist na Spotify <ExternalLink className="h-3 w-3" />
-          </a>
+          <audio
+            ref={audioRef}
+            src={AUDIO_SRC}
+            preload="none"
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            onEnded={() => setIsPlaying(false)}
+          />
         </div>
 
         {/* Quote / mood footer */}

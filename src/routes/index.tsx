@@ -36,12 +36,12 @@ function Hero() {
         <div className="fade-up lg:col-span-6 lg:pt-14">
           <p className="eyebrow">Praha · Střední Čechy</p>
           <h1 className="mt-6 font-serif text-[2.75rem] leading-[1.1] text-espresso sm:text-[3.5rem] lg:text-[4.2rem]">
-            Květinový bar, <br className="hidden sm:block" />o kterém budou hosté mluvit{" "}
-            <em className="italic text-cocoa">ještě cestou domů.</em>
+            Květinové zážitky, <br className="hidden sm:block" />
+            které si <em className="italic text-cocoa">odnesete domů.</em>
           </h1>
           <p className="mt-6 max-w-xl font-serif text-xl leading-snug text-espresso italic">
-            Tvoříme prostor, kde se krása květin propojuje s hlubokým zážitkem, smíchem a
-            vzpomínkou, kterou si odnesete domů.
+            Interaktivní flower bar a zážitkové balíčky s prémiovými květinami pro svatby, rozlučky,
+            eventy a výjimečné oslavy.
           </p>
 
           <div className="mt-8 border-l border-champagne/40 pl-6 space-y-4 max-w-xl">
@@ -75,7 +75,7 @@ function Hero() {
           <div className="mt-14 flex items-center gap-4 text-sm text-cocoa/70">
             <span className="hairline" />
             <span className="italic font-serif text-base text-cocoa">
-              „Zážitek, který voní ještě týden po akci."
+              „Vy si vyberete, my se postaráme."
             </span>
           </div>
         </div>
@@ -163,7 +163,7 @@ function Split() {
         <p className="eyebrow">Pro koho tvořím</p>
         <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
           Intimní zážitek pro šest žen <em className="italic text-cocoa">i</em> velkolepý večer pro
-          stovky hostů.
+          desítky hostů.
         </h2>
       </div>
 
@@ -172,8 +172,8 @@ function Split() {
           image={bouquetHands}
           eyebrow="Pro vás osobně"
           title="Svatby, rozlučky & oslavy"
-          text="Premium Flower Bar na svatbu, poetická Flower Fortune pro rozlučku, komorní Hvězdný Flower Bar pro nejbližší kruh. Každý zážitek je vytvořen v paletě, která ladí s vaším dnem."
-          audience={["Svatby", "Rozlučky", "Baby shower", "Narozeniny"]}
+          text="Vytvoříme pro vás a vaše kamarádky nezapomenutelný květinový rituál, na který budete vzpomínat pokaždé, když se podíváte na fotky."
+          audience={["Svatby", "Rozlučky", "Gender Reveal", "Narozeniny"]}
           to="/zazitky"
           cta="Zážitky pro vás"
         />
@@ -181,7 +181,7 @@ function Split() {
           image={corporateEvent}
           eyebrow="Pro vaši značku"
           title="Firemní eventy & PR"
-          text="Aktivace, které si hosté odnesou v kytici i na fotkách. Od launche produktu po galavečer — vytvářím florální kout, který funguje jako prémiový brand touchpoint."
+          text="Oživte svůj prostor vůní a estetikou. Připravíme pro vaše klienty zážitek, o kterém budou mluvit a sdílet ho na sítích. Vy se staráte o své hosty, my o atmosféru."
           audience={["Launches", "Galavečery", "Konference", "Gifting"]}
           to="/kontakt"
           search={{ zazitek: "premium-flower-bar" }}
@@ -276,7 +276,7 @@ const visualInspirations = [
   },
   {
     image: venueGenderReveal,
-    forWhom: "Gender Reveal & Baby Shower",
+    forWhom: "Gender Reveal",
     where: "Rodinné oslavy, zahrady i domov",
   },
   {
@@ -323,8 +323,12 @@ function Venues() {
               />
             </div>
             <figcaption className="flex flex-1 flex-col justify-center p-5 sm:p-6 bg-card/90">
-              <p className="font-serif text-xl text-espresso sm:text-2xl font-medium">{v.forWhom}</p>
-              <p className="mt-1.5 text-xs tracking-wide uppercase text-cocoa/70 font-sans">{v.where}</p>
+              <p className="font-serif text-xl text-espresso sm:text-2xl font-medium">
+                {v.forWhom}
+              </p>
+              <p className="mt-1.5 text-xs tracking-wide uppercase text-cocoa/70 font-sans">
+                {v.where}
+              </p>
             </figcaption>
           </figure>
         ))}
@@ -442,4 +446,3 @@ function CtaBanner() {
     </section>
   );
 }
-

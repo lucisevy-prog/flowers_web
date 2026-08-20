@@ -188,8 +188,8 @@ function Contact() {
         <div className="lg:col-span-8 lg:col-start-5 lg:row-start-2">
           <div className="mb-8 border-l-2 border-champagne/60 pl-4 py-1">
             <p className="font-serif text-xl sm:text-2xl leading-snug text-espresso italic">
-              „Váš stůl, vaše společnost a květinový rituál připravený do posledního detailu. Stačí si
-              vybrat svůj termín.“
+              „Váš stůl, vaše společnost a květinový rituál připravený do posledního detailu. Stačí
+              si vybrat svůj termín.“
             </p>
           </div>
           <form
@@ -253,7 +253,7 @@ function Contact() {
                   </option>
                   <option>Svatba</option>
                   <option>Rozlučka se svobodou</option>
-                  <option>Baby shower</option>
+                  <option>Gender Reveal</option>
                   <option>Narozeniny</option>
                   <option>Firemní event</option>
                   <option>Opening</option>

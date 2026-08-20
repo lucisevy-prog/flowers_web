@@ -24,7 +24,9 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-500 ${
-        scrolled ? "border-b border-border/60 bg-background/90 backdrop-blur-md shadow-xs" : "bg-transparent"
+        scrolled
+          ? "border-b border-border/60 bg-background/90 backdrop-blur-md shadow-xs"
+          : "bg-transparent"
       }`}
     >
       {/* Top Instagram Announcement Bar */}
@@ -37,7 +39,9 @@ export function SiteHeader() {
         >
           <Instagram className="h-3.5 w-3.5 text-champagne shrink-0 transition-transform group-hover:scale-110" />
           <span>
-            Sledujte nás na Instagramu <strong className="font-semibold text-espresso">@lu.byluci</strong> pro reelska, atmosféru v pohybu & novinky
+            Sledujte nás na Instagramu{" "}
+            <strong className="font-semibold text-espresso">@lu.byluci</strong> pro reelska,
+            atmosféru v pohybu & novinky
           </span>
           <ArrowUpRight className="h-3 w-3 text-champagne shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>

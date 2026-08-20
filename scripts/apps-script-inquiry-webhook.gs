@@ -5,8 +5,19 @@
  * ručně vkládá do Apps Scriptu napojeného na Google Sheet. Web na něj volá
  * jako na webhook (viz src/lib/contact.functions.ts).
  *
+ * Skript zapisuje podle NÁZVU SLOUPCE v prvním řádku tabulky (ne podle
+ * pořadí) — takže si mezi ně můžeš kdykoli přidat vlastní interní sloupce
+ * (např. "Stav", "Poznámka", "Zaplaceno") a script je nechá být. Sloupec
+ * "Dny do akce" skript vůbec nezapisuje — je to výpočetní sloupec, počítej
+ * si ho vlastním vzorcem přímo v tabulce.
+ *
  * Nasazení:
- * 1. Vytvoř (nebo otevři) Google Sheet, kam se mají poptávky ukládat.
+ * 1. Otevři Google Sheet, kam se mají poptávky ukládat. V prvním řádku musí
+ *    být přesně tyto názvy sloupců (v libovolném pořadí, klidně proložené
+ *    dalšími vlastními sloupci):
+ *      Datum a čas poptávky, Jméno, E-mail, Telefon, Datum akce,
+ *      Typ zážitku, Typ akce, Předpokládaný počet hostů, Lokalita,
+ *      Řekněte mi víc
  * 2. Rozšíření → Apps Script. Smaž výchozí obsah Code.gs a vlož tento skript.
  * 3. Níže doplň SHARED_SECRET (stejná hodnota, kterou dostaneš jako
  *    INQUIRY_SHEET_WEBHOOK_SECRET) a případně NOTIFY_EMAIL.
@@ -22,17 +33,19 @@
 const SHARED_SECRET = "REPLACE_ME"; // musí být identická s INQUIRY_SHEET_WEBHOOK_SECRET
 const NOTIFY_EMAIL = "lubyluci.studio@gmail.com";
 
-const HEADERS = [
-  "Čas",
-  "Jméno",
-  "E-mail",
-  "Telefon",
-  "Datum akce",
-  "Typ zážitku",
-  "Příležitost",
-  "Počet hostů",
-  "Lokalita",
-  "Zpráva",
+// Název sloupce v tabulce → jak se hodnota získá z poptávky.
+// Sloupce, které tu nejsou (interní i "Dny do akce"), skript nikdy nezapisuje.
+const COLUMNS = [
+  { header: "Datum a čas poptávky", value: () => new Date() },
+  { header: "Jméno", value: (p) => p.name || "" },
+  { header: "E-mail", value: (p) => p.email || "" },
+  { header: "Telefon", value: (p) => p.phone || "" },
+  { header: "Datum akce", value: (p) => p.eventDate || "" },
+  { header: "Typ zážitku", value: (p) => p.experience || "" },
+  { header: "Typ akce", value: (p) => p.occasion || "" },
+  { header: "Předpokládaný počet hostů", value: (p) => p.guestCount || "" },
+  { header: "Lokalita", value: (p) => p.location || "" },
+  { header: "Řekněte mi víc", value: (p) => p.message || "" },
 ];
 
 function doPost(e) {
@@ -48,21 +61,25 @@ function doPost(e) {
   }
 
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+  // Prázdná tabulka bez hlavičky — založíme ji podle COLUMNS. Existuje-li už
+  // hlavička (běžný případ), necháme ji přesně tak, jak si ji Lucie nastavila.
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(HEADERS);
+    sheet.appendRow(COLUMNS.map((c) => c.header));
   }
-  sheet.appendRow([
-    new Date(),
-    payload.name || "",
-    payload.email || "",
-    payload.phone || "",
-    payload.eventDate || "",
-    payload.experience || "",
-    payload.occasion || "",
-    payload.guestCount || "",
-    payload.location || "",
-    payload.message || "",
-  ]);
+
+  const lastCol = Math.max(sheet.getLastColumn(), 1);
+  const headerRow = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+  const newRow = sheet.getLastRow() + 1;
+
+  COLUMNS.forEach(({ header, value }) => {
+    const colIndex = headerRow.indexOf(header) + 1; // 0 = not found
+    if (colIndex > 0) {
+      sheet.getRange(newRow, colIndex).setValue(value(payload));
+    } else {
+      console.error('Sloupec "' + header + '" nebyl v tabulce nalezen, hodnota se nezapsala.');
+    }
+  });
 
   // The sheet row is the record of truth — a broken/quota-limited mail send
   // must not look like a failed submission, so this is a soft best-effort.
@@ -73,10 +90,10 @@ function doPost(e) {
       payload.phone ? "Telefon: " + payload.phone : null,
       payload.eventDate ? "Datum akce: " + payload.eventDate : null,
       payload.experience ? "Typ zážitku: " + payload.experience : null,
-      payload.occasion ? "Příležitost: " + payload.occasion : null,
-      payload.guestCount ? "Počet hostů: " + payload.guestCount : null,
+      payload.occasion ? "Typ akce: " + payload.occasion : null,
+      payload.guestCount ? "Předpokládaný počet hostů: " + payload.guestCount : null,
       payload.location ? "Lokalita: " + payload.location : null,
-      payload.message ? "\nZpráva:\n" + payload.message : null,
+      payload.message ? "\nŘekněte mi víc:\n" + payload.message : null,
     ].filter(Boolean);
 
     MailApp.sendEmail({
