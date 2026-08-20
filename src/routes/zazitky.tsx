@@ -70,28 +70,22 @@ function ZazitkyIndex() {
             Každý formát je navržen pro jinou atmosféru, prostor i počet hostů — od komorních
             dámských kruhů až po velkolepé svatby a firemní gala.
           </p>
+        </div>
 
-          <div className="mt-8 flex flex-wrap gap-2.5">
-            {experiences.map((e, i) => (
-              <button
-                type="button"
-                key={e.slug}
-                onClick={() => {
-                  const target = document.getElementById(`zazitek-${e.slug}`);
-                  if (target) {
-                    target.scrollIntoView({ behavior: "smooth", block: "start" });
-                    window.history.pushState(null, "", `#zazitek-${e.slug}`);
-                  }
-                }}
-                className="cursor-pointer inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/80 px-4 py-2 text-xs font-medium text-espresso transition-all duration-300 hover:border-champagne hover:bg-champagne/15 hover:shadow-xs"
-              >
-                <span className="font-serif font-bold text-champagne">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span>{e.title}</span>
-              </button>
-            ))}
-          </div>
+        <div className="mt-8 flex flex-nowrap gap-2.5 overflow-x-auto pb-1 -mx-6 px-6 lg:-mx-10 lg:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {experiences.map((e, i) => (
+            <Link
+              key={e.slug}
+              to="/zazitky/$slug"
+              params={{ slug: e.slug }}
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border/80 bg-card/80 px-4 py-2 text-xs font-medium text-espresso transition-all duration-300 hover:border-champagne hover:bg-champagne/15 hover:shadow-xs"
+            >
+              <span className="font-serif font-bold text-champagne">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>{e.title}</span>
+            </Link>
+          ))}
         </div>
       </section>
 
