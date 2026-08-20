@@ -401,7 +401,7 @@ function HowItWorks() {
         <div className="mb-16 max-w-2xl">
           <p className="eyebrow !text-champagne">Jak to funguje</p>
           <h2 className="mt-4 font-serif text-4xl leading-tight text-cream sm:text-5xl">
-            Tři kroky od <em className="italic">první zprávy</em> po vzpomínku, která zůstane.
+            Vy si vyberete, <em className="italic">my se postaráme.</em>
           </h2>
         </div>
         <div className="grid gap-12 lg:grid-cols-3">
