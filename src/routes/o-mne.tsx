@@ -24,22 +24,29 @@ export const Route = createFileRoute("/o-mne")({
   component: About,
 });
 
-const pillars = [
+const formats = [
   {
-    title: "Detail",
-    text: "Věřím v hedvábné stuhy, ručně psané kartičky a květiny vybírané kus po kuse. Detail dělá zážitek.",
+    title: "Intimní rituál",
+    text: "Dokážu vytvořit hluboký, intimní rituál pro menší skupiny (6 až 20 žen) na rozlučkách se svobodou, narozeninách nebo gender reveal.",
   },
   {
-    title: "Vůně & smysly",
-    text: "Každý zážitek má svou vůni. Pracuji jen se sezónními, aromatickými odrůdami — nikdy s dovezenou 'plastovou' krásou.",
+    title: "Velkolepý flower bar",
+    text: "Zároveň umím postavit velkolepý flower bar, který se stane hlavním zážitkovým bodem na větších firemních eventech pro desítky až stovku hostů.",
+  },
+];
+
+const principles = [
+  {
+    title: "Prémiové květiny vždy",
+    text: "Nekompromisní kvalita při každém zážitku, bez výjimky. Pracuji jen s těmi nejkrásnějšími a nejčerstvějšími stonky.",
   },
   {
-    title: "Intimita",
-    text: "Ať je hostů šest nebo tři sta, cíl je stejný: aby každý z nich cítil, že tento moment vznikl pro něj.",
+    title: "Odnesete si kus krásy domů",
+    text: "Naše koncepty jsou navržené tak, aby zážitek bavil, někdy dojal a stal se třešinkou každé události.",
   },
   {
-    title: "Řemeslo",
-    text: "Vzdělávám se u florálních ateliérů v Paříži, Kodani a Amsterdamu. Tradice a inovace v každém aranžmá.",
+    title: "Dokonalost v detailech",
+    text: "Od vizuálního zpracování barů až po doprovodné rituály – vše má svůj jasný estetický řád.",
   },
 ];
 
@@ -88,38 +95,68 @@ function About() {
           <div className="ml-auto max-w-md rounded-[2px] border border-champagne/40 bg-cream p-8 shadow-[0_20px_50px_-20px_rgba(94,70,59,0.45)] sm:p-10">
             <p className="eyebrow">Za značkou LU</p>
             <h1 className="mt-5 font-serif text-4xl leading-[1.05] text-espresso sm:text-5xl">
-              Jmenuji se Lucie a <em className="italic">tvořím zážitky</em>, po kterých doma zůstane
-              vůně.
+              Ahoj, jsem <em className="italic">Luci</em>.
             </h1>
             <div className="mt-8 space-y-5 text-base leading-relaxed text-cocoa/85">
               <p>
-                Ke květinám jsem se dostala oklikou — přes marketing, styling a několik let
-                strávených mezi butikovými značkami v Paříži. Zjistila jsem, že to, co mě baví
-                nejvíc, není samotná kytice, ale okamžik, který kolem ní vzniká.
+                Ke květinám jsem se dostala před pár lety, když jsem dostala úplně volnou ruku k
+                přípravě květinové výzdoby pro dvě velké akce. Tehdy jsem pochopila, jak silnou
+                atmosféru a emoce dokážou květiny vytvořit, zvlášť když se k nim přistoupí ještě
+                jinak.
               </p>
               <p>
-                LU jsem založila v roce 2022 v Praze jako značku, která květiny nedává na piedestal
-                — dává je do rukou. Pracuji se ženami, páry a značkami, které chtějí, aby jejich
-                moment zůstal v paměti jinak, než jen jako pěkná fotka.
+                Nemám květinářství a nepořádám tradiční workshopy na vázání kytic nebo výrobu věnců.
+                Jsem ale velká požitkářka milující vše krásné a milé — mám ráda, když je lidem kolem
+                mě dobře, a jsem fanynkou neotřelých a originálních věcí a zážitků. Proto jsem
+                založila značku LU, abych mohla přispět svou troškou do mlýna 🙂
               </p>
               <p className="font-serif text-xl text-espresso italic">
-                „Nedělám floristiku. Dělám zážitky, ve kterých květiny jenom hrají hlavní roli."
+                „Připravila jsem Květinové zážitky — vše pro vás a takové, jaké u nás běžně
+                neuvidíte."
               </p>
             </div>
           </div>
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+        <div className="max-w-2xl">
+          <p className="eyebrow">Od intimní oslavy po větší firemní event</p>
+          <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
+            Mám ráda rozmanitost a dynamiku.
+          </h2>
+          <p className="mt-5 text-cocoa/80">
+            Moje zážitky jsou navržené tak, aby se přizpůsobily jakémukoli formátu akce:
+          </p>
+        </div>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+          {formats.map((f) => (
+            <div
+              key={f.title}
+              className="rounded-[2px] border border-champagne/40 bg-cream p-8 shadow-[0_20px_50px_-30px_rgba(94,70,59,0.35)]"
+            >
+              <h3 className="font-serif text-2xl text-espresso">{f.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-cocoa/80">{f.text}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-12 max-w-2xl text-cocoa/80">
+          Každý z našich pěti konceptů má svá specifika. Doporučuji si rozkliknout detaily
+          jednotlivých zážitků v sekci{" "}
+          <Link to="/zazitky" className="underline decoration-champagne underline-offset-4">
+            Zážitky
+          </Link>
+          , kde najdete podrobný popis, pro koho se hodí a co přesně zahrnují.
+        </p>
+      </section>
+
       <section className="bg-cocoa text-cream">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <div className="max-w-xl">
-            <p className="eyebrow !text-champagne">Hodnotové pilíře</p>
-            <h2 className="mt-4 font-serif text-4xl text-cream sm:text-5xl">
-              Čtyři principy, které vedou <em className="italic">každou akci</em>.
-            </h2>
+            <p className="eyebrow !text-champagne">Na čem si zakládám</p>
           </div>
-          <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {pillars.map((p, i) => (
+          <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {principles.map((p, i) => (
               <div key={p.title} className="border-t border-cream/20 pt-6">
                 <p className="font-serif text-4xl text-champagne">
                   {String(i + 1).padStart(2, "0")}
@@ -133,12 +170,14 @@ function About() {
       </section>
 
       <section className="mx-auto max-w-3xl px-6 py-28 text-center lg:px-10">
-        <p className="eyebrow">Krátká zpráva</p>
+        <p className="eyebrow">Nejste si jistí?</p>
         <h2 className="mt-4 font-serif text-4xl text-espresso sm:text-5xl">
-          Máte v hlavě moment, který si zaslouží květiny?
+          Pomůžu vám vybrat ten pravý zážitek.
         </h2>
         <p className="mt-6 text-cocoa/80">
-          Napište mi pár slov — datum, prostor, počet hostů. Ozvu se do 24 hodin.
+          Nejste si jistí, který formát je pro vaši akci ten pravý, nebo máte specifické přání?
+          Právě od toho jsem tu já. Vyplňte krátký formulář, napište mi svou představu a já vám
+          doporučím řešení, které bude na vaší akci fungovat nejlépe.
         </p>
 
         <form onSubmit={handleSubmit} className="mx-auto mt-12 grid max-w-xl gap-4 text-left">
