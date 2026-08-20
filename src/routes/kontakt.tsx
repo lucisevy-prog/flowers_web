@@ -81,8 +81,7 @@ function Contact() {
             <div className="lg:col-span-5">
               <p className="eyebrow">Jak to funguje s cenou?</p>
               <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
-                Transparentně. <br className="hidden sm:block" />
-                <em className="italic">Bez skrytých poplatků.</em>
+                Vše víte předem <span aria-hidden>🙂</span>
               </h2>
               <p className="mt-6 text-base leading-relaxed text-cocoa/80">
                 U každého květinového zážitku vidíte jasnou základní cenu, která platí pro stanovený
@@ -262,15 +261,14 @@ function Contact() {
               </Field>
 
               <Field label="Předpokládaný počet hostů">
-                <select name="guestCount" className="lu-input" defaultValue="">
-                  <option value="" disabled>
-                    Vyberte…
-                  </option>
-                  <option>Do 10 hostů</option>
-                  <option>10–20 hostů</option>
-                  <option>20–50 hostů</option>
-                  <option>50 a více</option>
-                </select>
+                <input
+                  name="guestCount"
+                  type="number"
+                  min={1}
+                  inputMode="numeric"
+                  className="lu-input"
+                  placeholder="Např. 25"
+                />
               </Field>
 
               <Field label="Lokalita">

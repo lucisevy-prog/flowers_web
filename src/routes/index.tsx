@@ -108,24 +108,19 @@ function Hero() {
 
 const usps = [
   {
-    title: "Pouze prémiové květiny",
-    text: "Všechny stonky osobně vybíráme pro vaši akci.",
+    title: "Prémiové květiny vždy",
+    text: "Nekompromisní kvalita při každém zážitku, bez výjimky. Pracuji jen s těmi nejkrásnějšími a nejčerstvějšími stonky.",
     emoji: "🌸",
   },
   {
-    title: "Odnášíte si květiny domů",
-    text: "Zážitek nekončí na místě.",
+    title: "Odnesete si kus krásy domů",
+    text: "Naše koncepty jsou navržené tak, aby zážitek bavil, někdy dojal a stal se třešinkou každé události.",
     emoji: "🎁",
   },
   {
-    title: "Hotové koncepty bez starostí",
-    text: "Vše vymyslíme a připravíme za vás.",
+    title: "Dokonalost v detailech",
+    text: "Od vizuálního zpracování barů až po doprovodné rituály – vše má svůj jasný estetický řád.",
     emoji: "✨",
-  },
-  {
-    title: "Fotogenický zážitek",
-    text: "Vzpomínky, které se sdílí.",
-    emoji: "📸",
   },
 ];
 
@@ -133,7 +128,8 @@ function UspBar() {
   return (
     <section className="relative border-y border-border/50 bg-gradient-to-b from-cream/40 to-cream/80 py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <p className="eyebrow text-center lg:text-left">Na čem si zakládám</p>
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {usps.map(({ title, text, emoji }) => (
             <div
               key={title}
