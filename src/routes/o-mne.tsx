@@ -172,7 +172,7 @@ function About() {
       <section className="mx-auto max-w-3xl px-6 py-28 text-center lg:px-10">
         <p className="eyebrow">Nejste si jistí?</p>
         <h2 className="mt-4 font-serif text-4xl text-espresso sm:text-5xl">
-          Pomůžu vám vybrat ten pravý zážitek.
+          Který z pěti květinových zážitků bude ten váš?
         </h2>
         <p className="mt-6 text-cocoa/80">
           Nejste si jistí, který formát je pro vaši akci ten pravý, nebo máte specifické přání?
