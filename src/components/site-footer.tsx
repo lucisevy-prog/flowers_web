@@ -21,7 +21,7 @@ export function SiteFooter() {
             <img src={logoMark} alt="LU by Lucie" className="h-24 w-auto" />
           </Link>
           <p className="mt-6 max-w-md font-serif text-2xl leading-snug text-cream/90">
-            Květinové zážitky, které si odnesete domů — v kytici i ve vzpomínce.
+            LIVE UNIQUELY
           </p>
           <div className="mt-8 flex flex-wrap gap-6 text-sm text-cream/70">
             <a

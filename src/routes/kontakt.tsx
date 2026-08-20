@@ -81,7 +81,7 @@ function Contact() {
             <div className="lg:col-span-5">
               <p className="eyebrow">Jak to funguje s cenou?</p>
               <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
-                Vše víte předem <span aria-hidden>🙂</span>
+                Vše víte předem
               </h2>
               <p className="mt-6 text-base leading-relaxed text-cocoa/80">
                 U každého květinového zážitku vidíte jasnou základní cenu, která platí pro stanovený
