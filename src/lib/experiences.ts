@@ -158,7 +158,7 @@ export const experiences: Experience[] = [
     title: "DIY Flower Bar Kit",
     eyebrow: "Ve vaší režii",
     shortDescription:
-      "Váš vlastní květinový bar, jednoduše a bez starostí — kompletní designový set, který si zapůjčíte na 24 hodin.",
+      "Chcete na své zahradní párty, openingu, svatbě nebo oslavě zažít kouzlo květinového baru, ale chcete si celou akci „odmoderovat“ sami a mít plnou kontrolu nad rozpočtem?",
     longDescription:
       "Dámy, chcete na své zahradní párty, openingu, svatbě nebo oslavě zažít kouzlo květinového baru, ale chcete si celou akci „odmoderovat“ sami a mít plnou kontrolu nad rozpočtem?",
     image: diyKit,
