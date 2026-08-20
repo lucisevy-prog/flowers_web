@@ -26,7 +26,7 @@ export type InquiryResult = { ok: true } | { ok: false; error: "config" | "send"
 // scripts/apps-script-inquiry-webhook.gs). Tyhle dvě proměnné jsou
 // INQUIRY_SHEET_WEBHOOK_URL (URL nasazené webové aplikace, končí na /exec) a
 // INQUIRY_SHEET_WEBHOOK_SECRET (sdílené heslo, které skript ověřuje) —
-// nastavují se jako Cloudflare secrets, ne přímo v kódu.
+// nastavují se jako Environment Variables na Vercelu, ne přímo v kódu.
 export const submitInquiry = createServerFn({ method: "POST" })
   .validator(inquirySchema)
   .handler(async ({ data }): Promise<InquiryResult> => {

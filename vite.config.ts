@@ -5,8 +5,9 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import { nitro } from "nitro/vite";
 
 // Response headers applied to every route, both for Nitro-handled (SSR)
-// responses and — via the `_headers` file Nitro derives from routeRules —
-// for static assets Cloudflare serves directly without invoking the Worker.
+// responses and — via the `vercel.json` headers config Nitro derives from
+// routeRules — for static assets Vercel serves directly from its edge
+// network without invoking the function.
 //
 // Content-Security-Policy is deliberately NOT set here: it needs a
 // per-request nonce (see src/lib/csp.ts + the root route's `headers()`) to
@@ -31,15 +32,14 @@ const securityRouteRules = {
 };
 
 // TanStack Start's Vite pipeline, configured directly: Tailwind, tsconfig
-// path aliases, TanStack Start pointed at src/server.ts, a Cloudflare build
-// via Nitro, and React.
+// path aliases, TanStack Start pointed at src/server.ts, a Vercel build via
+// Nitro, and React.
 export default defineConfig(({ command, mode }) => {
   const isDevBuild = command === "build" && mode === "development";
 
   // Vite exposes import.meta.env.VITE_* to client code automatically, but
-  // Nitro's SSR bundling for the Cloudflare build doesn't run those
-  // references through Vite's own transform, so they're inlined explicitly
-  // here too.
+  // Nitro's SSR bundling for the Vercel build doesn't run those references
+  // through Vite's own transform, so they're inlined explicitly here too.
   const env = loadEnv(mode, process.cwd(), "VITE_");
   const envDefine = Object.fromEntries(
     Object.entries(env).map(([key, value]) => [`import.meta.env.${key}`, JSON.stringify(value)]),
@@ -94,11 +94,11 @@ export default defineConfig(({ command, mode }) => {
         // (our SSR error wrapper) — Nitro/Vite build from this.
         server: { entry: "server" },
       }),
-      // Cloudflare build only — dev/preview don't need Nitro, and importing
-      // it needlessly slows dev server startup. Requires nitro >=3.0.260603-beta
+      // Vercel build only — dev/preview don't need Nitro, and importing it
+      // needlessly slows dev server startup. Requires nitro >=3.0.260603-beta
       // for the `defaultPreset` option used below.
       ...(command === "build"
-        ? [nitro({ defaultPreset: "cloudflare-module", routeRules: securityRouteRules })]
+        ? [nitro({ defaultPreset: "vercel", routeRules: securityRouteRules })]
         : []),
       viteReact(),
     ],
