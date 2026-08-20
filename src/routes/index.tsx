@@ -126,23 +126,23 @@ const usps = [
 
 function UspBar() {
   return (
-    <section className="relative border-y border-border/50 bg-gradient-to-b from-cream/40 to-cream/80 py-16">
+    <section className="relative border-y border-border/50 bg-gradient-to-b from-cream/40 to-cream/80 py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <p className="eyebrow text-center lg:text-left">Na čem si zakládám</p>
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-7 sm:grid-cols-3">
           {usps.map(({ title, text, emoji }) => (
             <div
               key={title}
-              className="group relative flex items-center gap-5 rounded-[4px] border border-border/40 bg-card/35 p-6 backdrop-blur-[2px] transition-all duration-500 hover:-translate-y-0.5 hover:border-champagne/40 hover:bg-card/90 hover:shadow-[0_12px_24px_-10px_rgba(94,70,59,0.12)]"
+              className="group relative flex items-center gap-6 rounded-[4px] border border-border/40 bg-card/35 p-7 backdrop-blur-[2px] transition-all duration-500 hover:-translate-y-0.5 hover:border-champagne/40 hover:bg-card/90 hover:shadow-[0_12px_24px_-10px_rgba(94,70,59,0.12)]"
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-champagne/25 bg-cream/90 shadow-[0_4px_12px_rgba(94,70,59,0.04)] text-xl transition-transform duration-500 group-hover:scale-105">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-champagne/25 bg-cream/90 shadow-[0_4px_12px_rgba(94,70,59,0.04)] text-2xl transition-transform duration-500 group-hover:scale-105">
                 {emoji}
               </div>
               <div>
-                <h3 className="font-serif text-base sm:text-[1.05rem] text-espresso leading-snug font-medium">
+                <h3 className="font-serif text-lg sm:text-xl text-espresso leading-snug font-medium">
                   {title}
                 </h3>
-                <p className="mt-1 text-xs leading-snug text-cocoa/70">{text}</p>
+                <p className="mt-1.5 text-sm leading-snug text-cocoa/70">{text}</p>
               </div>
             </div>
           ))}
