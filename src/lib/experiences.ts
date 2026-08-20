@@ -328,7 +328,7 @@ export const experiences: Experience[] = [
     title: "Hvězdný Flower Bar",
     eyebrow: "Ženský večer",
     shortDescription:
-      "Zážitkový večer vázání kytic podle čtyř živlů — hra s energií Ohně, Vody, Vzduchu a Země, kde kytice vypráví váš osobní příběh.",
+      "Chcete zažít dámskou jízdu, oslavu narozenin nebo teambuilding, na který budete vzpomínat celý rok? Otevřete dveře své intuici. Prožijte magický večer se 4 živly s hlubokým propojením, smíchem a vůní čerstvých květin.",
     longDescription:
       "Dámy, chcete zažít dámskou jízdu, oslavu narozenin nebo teambuilding, na který budete vzpomínat celý rok? Otevřete dveře své intuici. Prožijte magický večer se 4 živly s hlubokým propojením, smíchem a vůní čerstvých květin.",
     image: hvezdnyFlowerBar,
