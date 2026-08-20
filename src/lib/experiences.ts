@@ -214,7 +214,7 @@ export const experiences: Experience[] = [
     title: "Gender Reveal Bloom",
     eyebrow: "Intimní oslava",
     shortDescription:
-      "Květinové tipování pohlaví, které si všichni zapamatují — interaktivní koutek plný prémiových hortenzií v růžových a modrých tónech.",
+      "Chystáte slavnostní oznámení pohlaví očekávaného miminka? Zapojte své hosty do květinového hlasování, které vytvoří nádhernou atmosféru, zábavu, krásné fotky a pro vás opravdovou vzpomínku, kterou si odnesete domů.",
     longDescription:
       "Dámy, chystáte slavnostní oznámení pohlaví očekávaného miminka? Zapojte své hosty do květinového hlasování, které vytvoří nádhernou atmosféru, zábavu, krásné fotky a pro vás opravdovou vzpomínku, kterou si odnesete domů.",
     image: babyShower,
