@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MessageCircle, MapPin } from "lucide-react";
-import logoFull from "@/assets/logo-full.png";
+import logoMark from "@/assets/logo-mark.png";
 
 export function SiteFooter() {
   return (
@@ -18,7 +18,7 @@ export function SiteFooter() {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="inline-block"
           >
-            <img src={logoFull} alt="LU by Lucie — Květinové zážitky" className="h-32 w-auto" />
+            <img src={logoMark} alt="LU by Lucie" className="h-24 w-auto" />
           </Link>
           <p className="mt-6 max-w-md font-serif text-2xl leading-snug text-cream/90">
             Květinové zážitky, které si odnesete domů — v kytici i ve vzpomínce.
