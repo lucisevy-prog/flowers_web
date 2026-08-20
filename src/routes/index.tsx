@@ -80,12 +80,12 @@ function Hero() {
           </div>
         </div>
 
-        <div className="fade-up relative lg:col-span-6">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2px]">
+        <div className="fade-up relative lg:col-span-6 lg:self-center">
+          <div className="relative aspect-[3/2] overflow-hidden rounded-[2px]">
             <img
               src={heroImg}
-              alt="Premium Flower Bar LU"
-              width={819}
+              alt="Premium Flower Bar LU — květinový bar a kytice v papírové tašce"
+              width={1536}
               height={1024}
               className="h-full w-full object-cover"
             />
