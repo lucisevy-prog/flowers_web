@@ -33,7 +33,7 @@ const cardThemes: Record<string, { bg: string; border: string; badgeBg: string }
   "premium-flower-bar": {
     bg: "bg-[#f8f3eb]",
     border: "border-champagne/50 hover:border-champagne",
-    badgeBg: "bg-champagne/20 text-espresso",
+    badgeBg: "bg-champagne/95 text-espresso",
   },
   "diy-flower-bar-kit": {
     bg: "bg-[#faf6f1]",
@@ -43,7 +43,7 @@ const cardThemes: Record<string, { bg: string; border: string; badgeBg: string }
   "baby-shower-bloom": {
     bg: "bg-[#fcf2f4]",
     border: "border-[#edd6db] hover:border-[#dfb5bc]",
-    badgeBg: "bg-blush/60 text-espresso",
+    badgeBg: "bg-blush/95 text-espresso",
   },
   "flower-fortune": {
     bg: "bg-[#f8f1f5]",
