@@ -56,7 +56,7 @@ export function SiteHeader() {
           <img
             src={logoFull}
             alt="LU by Lucie — Květinové zážitky"
-            className="h-24 w-auto sm:h-28"
+            className="h-16 w-auto sm:h-20"
           />
         </Link>
 
