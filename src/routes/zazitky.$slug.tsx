@@ -1,6 +1,42 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getExperience, experiences, type Experience } from "@/lib/experiences";
 import { ArrowUpRight, Check, Clock, Users, Sparkle } from "lucide-react";
+import miniKoloStesti from "@/assets/mini-kolo_stesti.png";
+import miniNuzky from "@/assets/mini-nuzky.png";
+import miniSlunecnik from "@/assets/mini-slunecnik.png";
+import miniStojanNaStuhy from "@/assets/mini-stojan_na_stuhy.png";
+import miniZrcadlo from "@/assets/mini-zrcadlo.png";
+
+// Drobné dekorativní rekvizity z reálných fotek klientky, přiřazené k
+// zážitku, kde se skutečně objevují — jemný detail v rohu hero fotky,
+// ne nic, co by konkurovalo hlavní fotografii.
+const heroProps: Record<string, { src: string; className: string }[]> = {
+  "flower-fortune": [
+    {
+      src: miniKoloStesti,
+      className: "-bottom-8 -left-8 w-32 rotate-6 sm:w-40",
+    },
+  ],
+  "diy-flower-bar-kit": [
+    { src: miniNuzky, className: "-top-6 -right-6 w-24 rotate-6 sm:w-28" },
+    {
+      src: miniStojanNaStuhy,
+      className: "-bottom-10 -left-10 w-36 -rotate-3 sm:w-44",
+    },
+  ],
+  "premium-flower-bar": [
+    {
+      src: miniSlunecnik,
+      className: "-top-10 -right-10 w-40 rotate-3 sm:w-48",
+    },
+  ],
+  "baby-shower-bloom": [
+    {
+      src: miniZrcadlo,
+      className: "-bottom-10 -right-8 w-28 rotate-3 sm:w-32",
+    },
+  ],
+};
 
 export const Route = createFileRoute("/zazitky/$slug")({
   loader: ({ params }) => {
@@ -77,10 +113,19 @@ function ExperienceDetail() {
             </div>
           </div>
 
-          <div className="lg:col-span-6">
+          <div className="relative lg:col-span-6">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2px]">
               <img src={exp.image} alt={exp.title} className="h-full w-full object-cover" />
             </div>
+            {(heroProps[exp.slug] ?? []).map((prop) => (
+              <img
+                key={prop.src}
+                src={prop.src}
+                alt=""
+                aria-hidden="true"
+                className={`pointer-events-none absolute hidden drop-shadow-[0_12px_20px_rgba(94,70,59,0.18)] sm:block ${prop.className}`}
+              />
+            ))}
           </div>
         </div>
       </section>

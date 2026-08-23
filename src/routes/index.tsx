@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-flower-bar.jpg";
+import miniTaska from "@/assets/mini-taska_LU.png";
 import bouquetHands from "@/assets/bouquet-hands.jpg";
 import corporateEvent from "@/assets/corporate-event.jpg";
 import venueCorporateGala from "@/assets/venue-corporate-gala.jpg";
@@ -95,6 +96,12 @@ function Hero() {
             <p className="mt-2 font-serif text-2xl leading-tight text-espresso">Flower Bar</p>
             <p className="mt-2 text-xs text-cocoa/70">Náš vlajkový zážitek do 70 hostů.</p>
           </div>
+          <img
+            src={miniTaska}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-8 -right-4 hidden w-24 rotate-6 drop-shadow-[0_12px_20px_rgba(94,70,59,0.18)] sm:block lg:-right-8 lg:w-28"
+          />
         </div>
       </div>
 
