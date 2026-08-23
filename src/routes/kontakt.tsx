@@ -4,7 +4,9 @@ import { useState, type SubmitEvent } from "react";
 import { Mail, MessageCircle, MapPin, ArrowUpRight, Instagram } from "lucide-react";
 import { experiences } from "@/lib/experiences";
 import { submitInquiry } from "@/lib/contact.functions";
+import { SuccessModal } from "@/components/success-modal";
 import moodboardCollage from "@/assets/moodboard-collage.png";
+import vizitkaKeepsake from "@/assets/vizitka-keepsake.png";
 
 type ContactSearch = { zazitek?: string };
 
@@ -35,6 +37,7 @@ type SubmitStatus = "idle" | "pending" | "success" | "error";
 function Contact() {
   const submitInquiryFn = useServerFn(submitInquiry);
   const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const { zazitek } = Route.useSearch();
   const preselectedExperience = experiences.find((e) => e.slug === zazitek)?.title ?? "";
 
@@ -62,6 +65,7 @@ function Contact() {
       });
       if (result.ok) {
         setStatus("success");
+        setShowSuccessModal(true);
         form.reset();
       } else {
         setStatus("error");
@@ -130,7 +134,13 @@ function Contact() {
         </div>
 
         {/* Row 2 on desktop: Sidebar on the left (starts at form level) */}
-        <aside className="lg:col-span-4 lg:row-start-2">
+        <aside className="relative lg:col-span-4 lg:row-start-2">
+          <img
+            src={vizitkaKeepsake}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-12 right-0 hidden w-40 -rotate-6 opacity-90 sm:block lg:-right-8 lg:w-48"
+          />
           <p className="eyebrow">Napište mi</p>
           <h1 className="mt-6 font-serif text-5xl leading-[1.05] text-espresso sm:text-6xl">
             Rozkveťme <em className="italic">váš okamžik</em>.
@@ -315,14 +325,6 @@ function Contact() {
               </button>
             </div>
 
-            {status === "success" ? (
-              <p className="mt-4 text-sm text-cocoa/80">
-                <strong className="text-espresso">Děkujeme za vaši poptávku!</strong> Všechno v
-                pořádku dorazilo. Do e-mailu jsme vám poslali shrnutí a do 24 hodin se vám ozveme s
-                potvrzením dostupnosti vašeho termínu.
-              </p>
-            ) : null}
-
             {status === "error" ? (
               <p className="mt-4 text-sm text-red-600">
                 Něco se pokazilo a poptávku se nepodařilo odeslat. Zkuste to prosím znovu, nebo mi
@@ -336,6 +338,17 @@ function Contact() {
           </form>
         </div>
       </section>
+
+      <SuccessModal
+        open={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Děkujeme za vaši poptávku!"
+      >
+        <p>
+          Všechno v pořádku dorazilo. Do e-mailu jsme vám poslali shrnutí a do 24 hodin se vám
+          ozveme s potvrzením dostupnosti vašeho termínu.
+        </p>
+      </SuccessModal>
     </div>
   );
 }

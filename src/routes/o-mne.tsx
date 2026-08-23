@@ -2,8 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState, type SubmitEvent } from "react";
 import flowerBarAction from "@/assets/lucie-flower-bar-action.jpg";
+import intimniRitualImg from "@/assets/o-mne-intimni-ritual.png";
+import velkolepyBarImg from "@/assets/o-mne-velkolepy-bar.png";
 import { ArrowUpRight } from "lucide-react";
 import { submitInquiry } from "@/lib/contact.functions";
+import { SuccessModal } from "@/components/success-modal";
 
 export const Route = createFileRoute("/o-mne")({
   head: () => ({
@@ -28,10 +31,12 @@ const formats = [
   {
     title: "Intimní rituál",
     text: "Dokážu vytvořit hluboký, intimní rituál pro menší skupiny (6 až 20 žen) na rozlučkách se svobodou, narozeninách nebo gender reveal.",
+    image: intimniRitualImg,
   },
   {
     title: "Velkolepý flower bar",
     text: "Zároveň umím postavit velkolepý flower bar, který se stane hlavním zážitkovým bodem na větších firemních eventech pro desítky až stovku hostů.",
+    image: velkolepyBarImg,
   },
 ];
 
@@ -55,6 +60,7 @@ type SubmitStatus = "idle" | "pending" | "success" | "error";
 function About() {
   const submitInquiryFn = useServerFn(submitInquiry);
   const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -74,6 +80,7 @@ function About() {
       });
       if (result.ok) {
         setStatus("success");
+        setShowSuccessModal(true);
         form.reset();
       } else {
         setStatus("error");
@@ -133,9 +140,10 @@ function About() {
           {formats.map((f) => (
             <div
               key={f.title}
-              className="rounded-[2px] border border-champagne/40 bg-cream p-8 shadow-[0_20px_50px_-30px_rgba(94,70,59,0.35)]"
+              className="flex flex-col items-center rounded-[2px] border border-champagne/40 bg-cream p-8 text-center shadow-[0_20px_50px_-30px_rgba(94,70,59,0.35)]"
             >
-              <h3 className="font-serif text-2xl text-espresso">{f.title}</h3>
+              <img src={f.image} alt="" className="h-44 w-44 object-contain sm:h-52 sm:w-52" />
+              <h3 className="mt-4 font-serif text-2xl text-espresso">{f.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-cocoa/80">{f.text}</p>
             </div>
           ))}
@@ -238,6 +246,14 @@ function About() {
           </Link>
         </p>
       </section>
+
+      <SuccessModal
+        open={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Zpráva odeslána!"
+      >
+        <p>Děkujeme, ozvu se vám do 24 hodin.</p>
+      </SuccessModal>
     </div>
   );
 }
