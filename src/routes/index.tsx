@@ -51,8 +51,8 @@ function Hero() {
               domů.
             </p>
             <p className="font-sans text-base leading-relaxed text-cocoa/70 italic">
-              Květinové momenty, které se v Čechách teprve začínají objevovat. Otevřou ale vaše
-              kreativní Já i srdce.
+              Květinové momenty, které se v Čechách teprve začínají objevovat. A vy budete první,
+              kdo je hostům nabídne.
             </p>
           </div>
 

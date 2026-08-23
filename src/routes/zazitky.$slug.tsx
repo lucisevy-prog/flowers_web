@@ -151,6 +151,9 @@ function ExperienceDetail() {
                 </div>
               ))}
             </div>
+            <p className="mt-10 max-w-2xl text-sm text-cocoa/70">
+              Orientační velikost akce. Každý detail i finální rozpočet doladíme společně na míru.
+            </p>
           </div>
         </section>
       ) : null}

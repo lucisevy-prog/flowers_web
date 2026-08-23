@@ -31,6 +31,20 @@
  *    INQUIRY_SHEET_WEBHOOK_URL.
  * 6. Při každé změně skriptu je potřeba udělat "Nové nasazení" znovu
  *    (Apps Script needs a new deployment version to pick up code changes).
+ *
+ * DŮLEŽITÉ — odesílatel e-mailů: MailApp.sendEmail vždy posílá jako ten
+ * Google účet, který script autorizoval/nasadil ("Spustit jako: Já"), bez
+ * ohledu na to, co je v kódu — `name` níže mění jen zobrazované jméno
+ * ("LU by Lucie <tvuj-ucet@gmail.com>"), ne skutečnou adresu odesílatele.
+ * Pokud má komunikace s klienty chodit z lubyluci.studio@gmail.com, jsou
+ * dvě reálné možnosti:
+ *  a) Sheet + Apps Script vlastnit/autorizovat přímo z účtu
+ *     lubyluci.studio@gmail.com (nejjednodušší, doporučeno), nebo
+ *  b) v Gmailu osobního účtu nastavit lubyluci.studio@gmail.com jako
+ *     ověřenou "Send mail as" alias adresu (Nastavení → Účty a import →
+ *     Odesílat poštu jako) a pak níže v sendEmail() doplnit
+ *     `from: "lubyluci.studio@gmail.com"` — bez ověřené aliasy tohle
+ *     odeslání e-mailu rovnou shodí chybou.
  */
 
 const SHARED_SECRET = "REPLACE_ME"; // musí být identická s INQUIRY_SHEET_WEBHOOK_SECRET
@@ -107,6 +121,7 @@ function doPost(e) {
     MailApp.sendEmail({
       to: NOTIFY_EMAIL,
       replyTo: payload.email || NOTIFY_EMAIL,
+      name: "LU by Lucie",
       subject: "Nová poptávka od " + (payload.name || "?"),
       body: lines.join("\n"),
     });
@@ -121,6 +136,7 @@ function doPost(e) {
     try {
       MailApp.sendEmail({
         to: payload.email,
+        name: "LU by Lucie",
         subject: "Vaše poptávka dorazila — brzy se ozveme 🌸",
         body:
           "Dobrý den,\n\n" +
