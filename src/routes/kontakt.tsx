@@ -134,13 +134,7 @@ function Contact() {
         </div>
 
         {/* Row 2 on desktop: Sidebar on the left (starts at form level) */}
-        <aside className="relative lg:col-span-4 lg:row-start-2">
-          <img
-            src={vizitkaKeepsake}
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-12 right-0 hidden w-40 -rotate-6 opacity-90 sm:block lg:-right-8 lg:w-48"
-          />
+        <aside className="lg:col-span-4 lg:row-start-2">
           <p className="eyebrow">Napište mi</p>
           <h1 className="mt-6 font-serif text-5xl leading-[1.05] text-espresso sm:text-6xl">
             Rozkveťme <em className="italic">váš okamžik</em>.
@@ -186,12 +180,20 @@ function Contact() {
             </a>
           </div>
 
-          <img
-            src={moodboardCollage}
-            alt="Nálada LU by Lucie — Flower Bar, Kniha zážitku, Flower Fortune a další"
-            className="mx-auto mt-14 h-auto w-full max-w-xs"
-            loading="lazy"
-          />
+          <div className="relative mt-14">
+            <img
+              src={vizitkaKeepsake}
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-10 -right-4 w-40 -rotate-6 sm:w-48 lg:-right-10 lg:w-56"
+            />
+            <img
+              src={moodboardCollage}
+              alt="Nálada LU by Lucie — Flower Bar, Kniha zážitku, Flower Fortune a další"
+              className="relative mx-auto h-auto w-full max-w-xs"
+              loading="lazy"
+            />
+          </div>
         </aside>
 
         <div className="lg:col-span-8 lg:col-start-5 lg:row-start-2">
