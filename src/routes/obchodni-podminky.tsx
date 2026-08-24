@@ -7,6 +7,7 @@ export const Route = createFileRoute("/obchodni-podminky")({
       { title: "Všeobecné obchodní podmínky — LU by Lucie" },
       { name: "robots", content: "noindex" },
     ],
+    links: [{ rel: "canonical", href: "https://www.lubyluci.cz/obchodni-podminky" }],
   }),
   component: ObchodniPodminky,
 });

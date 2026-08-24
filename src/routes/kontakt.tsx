@@ -28,6 +28,9 @@ export const Route = createFileRoute("/kontakt")({
         content: "Poptejte květinový zážitek — svatby, rozlučky, firemní eventy.",
       },
     ],
+    // Canonical deliberately omits the ?zazitek= preselect param — it's the
+    // same page/content regardless of which experience is pre-filled.
+    links: [{ rel: "canonical", href: "https://www.lubyluci.cz/kontakt" }],
   }),
   component: Contact,
 });

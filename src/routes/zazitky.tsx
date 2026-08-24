@@ -17,6 +17,7 @@ export const Route = createFileRoute("/zazitky")({
         content: "5 originálních květinových zážitků pro svatby, rozlučky a firemní eventy.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.lubyluci.cz/zazitky" }],
   }),
   component: ZazitkyLayout,
 });

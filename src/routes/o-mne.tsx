@@ -23,6 +23,7 @@ export const Route = createFileRoute("/o-mne")({
         content: "Za značkou LU stojí Lucie — florální designérka a stylistka.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.lubyluci.cz/o-mne" }],
   }),
   component: About,
 });

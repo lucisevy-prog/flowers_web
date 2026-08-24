@@ -7,6 +7,7 @@ export const Route = createFileRoute("/zasady-ochrany-osobnich-udaju")({
       { title: "Zásady ochrany osobních údajů — LU by Lucie" },
       { name: "robots", content: "noindex" },
     ],
+    links: [{ rel: "canonical", href: "https://www.lubyluci.cz/zasady-ochrany-osobnich-udaju" }],
   }),
   component: ZasadyOchranyOsobnichUdaju,
 });

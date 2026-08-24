@@ -12,6 +12,9 @@ import venueBachelorette from "@/assets/venue-bachelorette.jpg";
 import { ArrowUpRight, Instagram } from "lucide-react";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    links: [{ rel: "canonical", href: "https://www.lubyluci.cz/" }],
+  }),
   component: Index,
 });
 

@@ -78,53 +78,88 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     if (!nonce) return undefined;
     return { "Content-Security-Policy": buildContentSecurityPolicy(nonce) };
   },
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky" },
-      {
-        name: "description",
-        content:
-          "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
-      },
-      { name: "author", content: "LU by Lucie" },
-      {
-        property: "og:title",
-        content: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky",
-      },
-      {
-        property: "og:description",
-        content:
-          "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "twitter:title",
-        content: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
-      },
-      { property: "og:image", content: "https://www.lubyluci.cz/og-image.jpg" },
-      { name: "twitter:image", content: "https://www.lubyluci.cz/og-image.jpg" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Karla:wght@300;400;500;600&display=swap",
-      },
-    ],
-  }),
+  head: () => {
+    const nonce = (getGlobalStartContext() as { cspNonce?: string } | undefined)?.cspNonce;
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { title: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky" },
+        {
+          name: "description",
+          content:
+            "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
+        },
+        { name: "author", content: "LU by Lucie" },
+        {
+          property: "og:title",
+          content: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky",
+        },
+        {
+          property: "og:description",
+          content:
+            "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
+        },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        {
+          name: "twitter:title",
+          content: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky",
+        },
+        {
+          name: "twitter:description",
+          content:
+            "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
+        },
+        { property: "og:image", content: "https://www.lubyluci.cz/og-image.jpg" },
+        { name: "twitter:image", content: "https://www.lubyluci.cz/og-image.jpg" },
+      ],
+      links: [
+        {
+          rel: "stylesheet",
+          href: appCss,
+        },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Karla:wght@300;400;500;600&display=swap",
+        },
+      ],
+      // Site-wide business facts as structured data — helps both classic
+      // search rich results and AI agents/answer engines extract who we are,
+      // where we operate and how to reach us without having to parse prose.
+      // Per-experience pricing lives in its own Service/Offer block on each
+      // /zazitky/$slug page instead of being duplicated here.
+      scripts: nonce
+        ? [
+            {
+              type: "application/ld+json",
+              nonce,
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Florist",
+                name: "LU by Lucie",
+                url: "https://www.lubyluci.cz",
+                image: "https://www.lubyluci.cz/og-image.jpg",
+                telephone: "+420777992589",
+                email: "lubyluci.studio@gmail.com",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "Kladenská 454/50",
+                  postalCode: "160 00",
+                  addressLocality: "Praha",
+                  addressCountry: "CZ",
+                },
+                areaServed: ["Praha", "Středočeský kraj"],
+                sameAs: ["https://www.instagram.com/lu.byluci"],
+                priceRange: "3 900 Kč – 27 000 Kč",
+              }),
+            },
+          ]
+        : [],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

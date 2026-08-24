@@ -1,6 +1,38 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { getGlobalStartContext } from "@tanstack/react-start";
 import { getExperience, experiences, type Experience } from "@/lib/experiences";
 import { ArrowUpRight, Check, Clock, Users, Sparkle } from "lucide-react";
+
+const SITE_URL = "https://www.lubyluci.cz";
+
+// Czech price strings ("od 15 000 Kč", "3 900 Kč / 24 hodin") -> a bare
+// number string schema.org's Offer.price expects. Falls back to the
+// original string if nothing numeric is found rather than emitting "0".
+// Deliberately anchored to the digits right before "Kč" — several price
+// strings have other numbers in them too ("3 900 Kč / 24 hod", "6 900 Kč
+// (pro 10 hostů)"), and a blind digit-strip would concatenate all of them.
+function parsePriceCzk(price: string): string {
+  const match = price.match(/([\d\s]+)\s*Kč/);
+  return match ? match[1].replace(/\s/g, "") : price;
+}
+
+// exp.image is a Vite-processed asset path ("/assets/xxx-HASH.jpg"), not a
+// full URL — og:image/twitter:image and JSON-LD both expect an absolute one.
+function absoluteUrl(path: string): string {
+  return path.startsWith("http") ? path : `${SITE_URL}${path}`;
+}
+
+function buildOffers(exp: Experience) {
+  if (exp.tiers?.length) {
+    return exp.tiers.map((t) => ({
+      "@type": "Offer" as const,
+      name: t.name,
+      price: parsePriceCzk(t.price),
+      priceCurrency: "CZK",
+    }));
+  }
+  return [{ "@type": "Offer" as const, price: parsePriceCzk(exp.from), priceCurrency: "CZK" }];
+}
 import miniKoloStesti from "@/assets/mini-kolo_stesti.png";
 import miniNuzky from "@/assets/mini-nuzky.png";
 import miniSlunecnik from "@/assets/mini-slunecnik.png";
@@ -48,15 +80,39 @@ export const Route = createFileRoute("/zazitky/$slug")({
     if (!loaderData)
       return { meta: [{ title: "Zážitek — LU by Lucie" }, { name: "robots", content: "noindex" }] };
     const { exp } = loaderData;
+    const nonce = (getGlobalStartContext() as { cspNonce?: string } | undefined)?.cspNonce;
     return {
       meta: [
         { title: `${exp.title} — LU by Lucie` },
         { name: "description", content: exp.shortDescription },
         { property: "og:title", content: `${exp.title} — LU by Lucie` },
         { property: "og:description", content: exp.shortDescription },
-        { property: "og:image", content: exp.image },
-        { property: "twitter:image", content: exp.image },
+        { property: "og:image", content: absoluteUrl(exp.image) },
+        { property: "twitter:image", content: absoluteUrl(exp.image) },
       ],
+      links: [{ rel: "canonical", href: `${SITE_URL}/zazitky/${exp.slug}` }],
+      // Per-experience Service + Offer schema — pricing, capacity and who
+      // provides it as machine-readable facts, not just prose an AI agent
+      // has to guess at.
+      scripts: nonce
+        ? [
+            {
+              type: "application/ld+json",
+              nonce,
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Service",
+                name: exp.title,
+                description: exp.shortDescription,
+                url: `${SITE_URL}/zazitky/${exp.slug}`,
+                image: absoluteUrl(exp.image),
+                provider: { "@type": "Florist", name: "LU by Lucie", url: SITE_URL },
+                areaServed: ["Praha", "Středočeský kraj"],
+                offers: buildOffers(exp),
+              }),
+            },
+          ]
+        : [],
     };
   },
   component: ExperienceDetail,
