@@ -1,6 +1,7 @@
 import { createFileRoute, Link, Outlet, useMatchRoute } from "@tanstack/react-router";
 import { experiences } from "@/lib/experiences";
 import { ArrowUpRight, Instagram } from "lucide-react";
+import miniStojanNaStuhy from "@/assets/mini-stojan_na_stuhy.png";
 
 export const Route = createFileRoute("/zazitky")({
   head: () => ({
@@ -61,7 +62,13 @@ const cardThemes: Record<string, { bg: string; border: string; badgeBg: string }
 function ZazitkyIndex() {
   return (
     <div className="bg-background">
-      <section className="mx-auto max-w-7xl px-6 pt-16 pb-12 lg:px-10 lg:pt-24">
+      <section className="relative mx-auto max-w-7xl px-6 pt-16 pb-12 lg:px-10 lg:pt-24">
+        <img
+          src={miniStojanNaStuhy}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute top-4 right-6 hidden w-40 rotate-3 opacity-90 lg:block lg:right-10 lg:w-52"
+        />
         <div className="max-w-3xl">
           <p className="eyebrow">Katalog 5 zážitků</p>
           <h1 className="mt-4 font-serif text-4xl leading-[1.1] text-espresso sm:text-5xl lg:text-6xl">

@@ -38,6 +38,7 @@ import miniNuzky from "@/assets/mini-nuzky.png";
 import miniSlunecnik from "@/assets/mini-slunecnik.png";
 import miniStojanNaStuhy from "@/assets/mini-stojan_na_stuhy.png";
 import miniZrcadlo from "@/assets/mini-zrcadlo.png";
+import miniTaska from "@/assets/mini-taska_LU.png";
 
 // Drobné dekorativní rekvizity z reálných fotek klientky, přiřazené k
 // zážitku, kde se skutečně objevují — jemný detail v rohu hero fotky,
@@ -66,6 +67,12 @@ const heroProps: Record<string, { src: string; className: string }[]> = {
     {
       src: miniZrcadlo,
       className: "-bottom-10 -right-8 w-28 rotate-3 sm:w-32",
+    },
+  ],
+  "hvezdny-flower-bar": [
+    {
+      src: miniTaska,
+      className: "-top-8 -right-6 w-24 rotate-6 sm:w-28",
     },
   ],
 };

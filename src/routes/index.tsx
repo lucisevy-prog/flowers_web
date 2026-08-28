@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-flower-bar.jpg";
-import miniTaska from "@/assets/mini-taska_LU.png";
+import miniSlunecnik from "@/assets/mini-slunecnik.png";
+import miniNuzky from "@/assets/mini-nuzky.png";
+import miniZrcadlo from "@/assets/mini-zrcadlo.png";
 import bouquetHands from "@/assets/bouquet-hands.jpg";
 import corporateEvent from "@/assets/corporate-event.jpg";
 import venueCorporateGala from "@/assets/venue-corporate-gala.jpg";
@@ -99,12 +101,6 @@ function Hero() {
             <p className="mt-2 font-serif text-2xl leading-tight text-espresso">Flower Bar</p>
             <p className="mt-2 text-xs text-cocoa/70">Náš vlajkový zážitek do 70 hostů.</p>
           </div>
-          <img
-            src={miniTaska}
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-8 -right-4 hidden w-24 rotate-6 drop-shadow-[0_12px_20px_rgba(94,70,59,0.18)] sm:block lg:-right-8 lg:w-28"
-          />
         </div>
       </div>
 
@@ -259,7 +255,13 @@ function SplitCard({
 
 function Statement() {
   return (
-    <section className="mx-auto max-w-4xl px-6 py-16 text-center lg:px-10">
+    <section className="relative mx-auto max-w-4xl px-6 py-16 text-center lg:px-10">
+      <img
+        src={miniSlunecnik}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute top-2 -left-4 hidden w-20 -rotate-6 opacity-90 sm:block lg:top-0 lg:-left-16 lg:w-28"
+      />
       <p className="font-serif text-3xl leading-snug text-espresso sm:text-4xl">
         Nejde jen o to uvázat kytku. Jde o pocit zpomalit,{" "}
         <em className="italic text-cocoa">být plně spolu</em> a prožít čas, který jen tak rychle
@@ -406,7 +408,13 @@ function HowItWorks() {
     },
   ];
   return (
-    <section className="bg-cocoa text-cream">
+    <section className="relative overflow-hidden bg-cocoa text-cream">
+      <img
+        src={miniNuzky}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-10 right-6 hidden w-28 rotate-12 opacity-80 sm:block lg:top-8 lg:right-16 lg:w-36"
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
         <div className="mb-16 max-w-2xl">
           <p className="eyebrow !text-champagne">Jak to funguje</p>
@@ -448,6 +456,12 @@ function CtaBanner() {
           </a>
         </div>
         <div aria-hidden className="cta-glow pointer-events-none absolute inset-0 -z-0" />
+        <img
+          src={miniZrcadlo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-8 -bottom-10 hidden w-32 rotate-6 opacity-80 sm:block lg:w-40"
+        />
       </div>
     </section>
   );

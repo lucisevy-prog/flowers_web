@@ -4,6 +4,7 @@ import { useState, type SubmitEvent } from "react";
 import flowerBarAction from "@/assets/lucie-flower-bar-action.jpg";
 import intimniRitualImg from "@/assets/o-mne-intimni-ritual.png";
 import velkolepyBarImg from "@/assets/o-mne-velkolepy-bar.png";
+import miniKoloStesti from "@/assets/mini-kolo_stesti.png";
 import { ArrowUpRight } from "lucide-react";
 import { submitInquiry } from "@/lib/contact.functions";
 import { SuccessModal } from "@/components/success-modal";
@@ -178,7 +179,13 @@ function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-6 py-28 text-center lg:px-10">
+      <section className="relative mx-auto max-w-3xl px-6 py-28 text-center lg:px-10">
+        <img
+          src={miniKoloStesti}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute top-6 -left-4 hidden w-24 -rotate-6 opacity-90 sm:block lg:top-2 lg:-left-16 lg:w-32"
+        />
         <p className="eyebrow">Nejste si jistí?</p>
         <h2 className="mt-4 font-serif text-4xl text-espresso sm:text-5xl">
           Který z pěti květinových zážitků bude ten váš?
