@@ -10,6 +10,9 @@
 
 const RESEND_API_URL = "https://api.resend.com/emails";
 const FROM_ADDRESS = "LU by Lucie <poptavky@lubyluci.cz>";
+// poptavky@lubyluci.cz je jen odesílací adresa (doména bez e-mailového
+// hostingu) — případná odpověď zákazníka jde na tuhle skutečnou schránku.
+const REPLY_TO_ADDRESS = "lubyluci.studio@gmail.com";
 
 export async function sendInquiryConfirmationEmail(name: string, email: string): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
@@ -30,6 +33,7 @@ export async function sendInquiryConfirmationEmail(name: string, email: string):
     body: JSON.stringify({
       from: FROM_ADDRESS,
       to: email,
+      reply_to: REPLY_TO_ADDRESS,
       subject: "Vaše poptávka dorazila — brzy se ozveme 🌸",
       html: buildConfirmationHtml(greeting),
       text: buildConfirmationText(greeting),
