@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { appendInquiryRow } from "./google-sheets";
 
 const inquirySchema = z.object({
   name: z.string().trim().min(1, "Zadejte prosím jméno."),
@@ -21,12 +22,16 @@ const inquirySchema = z.object({
 export type InquiryFormValues = z.infer<typeof inquirySchema>;
 export type InquiryResult = { ok: true } | { ok: false; error: "config" | "send" };
 
-// Poptávky se ukládají do Google Sheets a zároveň se odesílá upozornění na
-// Gmail — obojí obstarává jeden Google Apps Script webhook (viz
-// scripts/apps-script-inquiry-webhook.gs). Tyhle dvě proměnné jsou
-// INQUIRY_SHEET_WEBHOOK_URL (URL nasazené webové aplikace, končí na /exec) a
-// INQUIRY_SHEET_WEBHOOK_SECRET (sdílené heslo, které skript ověřuje) —
-// nastavují se jako Environment Variables na Vercelu, ne přímo v kódu.
+// Poptávky se ukládají do Google Sheets přímo přes servisní účet (Service
+// Account) — viz src/lib/google-sheets.ts a scripts/README-google-sheets.md
+// pro nastavení. Tři proměnné prostředí: GOOGLE_SERVICE_ACCOUNT_EMAIL,
+// GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY, GOOGLE_SHEET_ID — nastavují se na
+// Vercelu, ne přímo v kódu. (Dřívější řešení přes Google Apps Script webhook
+// bylo nahrazeno — permission dropdowny v Apps Scriptu se ukázaly jako
+// nespolehlivé napříč různými Google účty.)
+//
+// Notifikace o nové poptávce: Lucie si ji nastaví přímo v Sheets (Nástroje →
+// Oznámení o pravidlech), žádný kód pro to není potřeba.
 export const submitInquiry = createServerFn({ method: "POST" })
   .validator(inquirySchema)
   .handler(async ({ data }): Promise<InquiryResult> => {
@@ -34,37 +39,22 @@ export const submitInquiry = createServerFn({ method: "POST" })
       return { ok: true };
     }
 
-    const webhookUrl = process.env.INQUIRY_SHEET_WEBHOOK_URL;
-    const secret = process.env.INQUIRY_SHEET_WEBHOOK_SECRET;
-    if (!webhookUrl || !secret) {
+    if (
+      !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ||
+      !process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY ||
+      !process.env.GOOGLE_SHEET_ID
+    ) {
       console.error(
-        "submitInquiry: INQUIRY_SHEET_WEBHOOK_URL/INQUIRY_SHEET_WEBHOOK_SECRET is not set — cannot record the inquiry.",
+        "submitInquiry: GOOGLE_SERVICE_ACCOUNT_EMAIL/GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY/GOOGLE_SHEET_ID is not set — cannot record the inquiry.",
       );
       return { ok: false, error: "config" };
     }
 
     try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...data, secret }),
-      });
-      if (!response.ok) {
-        console.error(
-          "submitInquiry: webhook responded with",
-          response.status,
-          await response.text().catch(() => ""),
-        );
-        return { ok: false, error: "send" };
-      }
-      const result = (await response.json().catch(() => null)) as { ok?: boolean } | null;
-      if (!result?.ok) {
-        console.error("submitInquiry: webhook reported failure", result);
-        return { ok: false, error: "send" };
-      }
+      await appendInquiryRow(data);
       return { ok: true };
     } catch (error) {
-      console.error("submitInquiry: failed to call the inquiry webhook", error);
+      console.error("submitInquiry: failed to write the inquiry to Google Sheets", error);
       return { ok: false, error: "send" };
     }
   });
