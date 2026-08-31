@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { appendInquiryRow } from "./google-sheets";
+import { sendInquiryConfirmationEmail } from "./resend";
 
 // Telefon: /kontakt ho vyžaduje (viz `required` na inputu), /o-mne mini
 // formulář pole vůbec nemá a posílá prázdný řetězec — schéma je sdílené
@@ -46,6 +47,12 @@ export type InquiryResult = { ok: true } | { ok: false; error: "config" | "send"
 //
 // Notifikace o nové poptávce: Lucie si ji nastaví přímo v Sheets (Nástroje →
 // Oznámení o pravidlech), žádný kód pro to není potřeba.
+//
+// Potvrzovací e-mail zákazníkovi jde přes Resend (src/lib/resend.ts) —
+// RESEND_API_KEY proměnná na Vercelu. Je to čistě best-effort: pokud se
+// e-mail nepovede poslat (např. doména na Resendu ještě není ověřená),
+// poptávka v Sheets je zapsaná a je to jediné, na čem opravdu záleží —
+// chyba se jen zaloguje, uživatel dostane úspěšnou odpověď dál.
 export const submitInquiry = createServerFn({ method: "POST" })
   .validator(inquirySchema)
   .handler(async ({ data }): Promise<InquiryResult> => {
@@ -66,9 +73,16 @@ export const submitInquiry = createServerFn({ method: "POST" })
 
     try {
       await appendInquiryRow(data);
-      return { ok: true };
     } catch (error) {
       console.error("submitInquiry: failed to write the inquiry to Google Sheets", error);
       return { ok: false, error: "send" };
     }
+
+    try {
+      await sendInquiryConfirmationEmail(data.name, data.email);
+    } catch (error) {
+      console.error("submitInquiry: inquiry saved but confirmation email failed", error);
+    }
+
+    return { ok: true };
   });
