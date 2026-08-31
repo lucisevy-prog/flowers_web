@@ -239,8 +239,16 @@ function Contact() {
                   placeholder="jmeno@email.cz"
                 />
               </Field>
-              <Field label="Telefon">
-                <input name="phone" type="tel" className="lu-input" placeholder="+420" />
+              <Field label="Telefon *">
+                <input
+                  required
+                  name="phone"
+                  type="tel"
+                  pattern="\+?[0-9 ]{9,17}"
+                  title="Zadejte prosím platné telefonní číslo, např. +420 777 992 589"
+                  className="lu-input"
+                  placeholder="+420 777 992 589"
+                />
               </Field>
               <Field label="Datum akce">
                 <input name="eventDate" type="date" className="lu-input" />

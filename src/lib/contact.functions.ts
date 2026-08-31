@@ -2,10 +2,24 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { appendInquiryRow } from "./google-sheets";
 
+// Telefon: /kontakt ho vyžaduje (viz `required` na inputu), /o-mne mini
+// formulář pole vůbec nemá a posílá prázdný řetězec — schéma je sdílené
+// oběma, takže prázdnou hodnotu propouští, ale je-li vyplněná, musí
+// vypadat jako skutečné číslo (jen číslice/mezery/plus, aspoň 9 číslic).
+const phoneRegex = /^\+?[0-9 ]{9,17}$/;
+function isValidPhone(value: string): boolean {
+  return value === "" || (phoneRegex.test(value) && value.replace(/\D/g, "").length >= 9);
+}
+
 const inquirySchema = z.object({
   name: z.string().trim().min(1, "Zadejte prosím jméno."),
   email: z.string().trim().email("Zadejte prosím platný e-mail."),
-  phone: z.string().trim().optional().default(""),
+  phone: z
+    .string()
+    .trim()
+    .optional()
+    .default("")
+    .refine(isValidPhone, "Zadejte prosím platné telefonní číslo."),
   eventDate: z.string().trim().optional().default(""),
   experience: z.string().trim().optional().default(""),
   occasion: z.string().trim().optional().default(""),
