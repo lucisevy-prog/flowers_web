@@ -53,14 +53,26 @@ function formatCzechDate(iso: string): string {
   return `${d}.${mo}.${y}`;
 }
 
+// Serverless běží v UTC, ne v českém čase — `date.getHours()` a spol. by
+// tak zapisovaly čas o 1–2 hodiny posunutý (podle letního/zimního času).
+// Intl.DateTimeFormat s explicitní časovou zónou dá skutečný český čas bez
+// ohledu na to, kde server fyzicky běží.
+const czechDateTimeParts = new Intl.DateTimeFormat("cs-CZ", {
+  timeZone: "Europe/Prague",
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false,
+});
+
 function formatCzechDateTime(date: Date): string {
-  const d = String(date.getDate()).padStart(2, "0");
-  const mo = String(date.getMonth() + 1).padStart(2, "0");
-  const y = date.getFullYear();
-  const h = String(date.getHours()).padStart(2, "0");
-  const mi = String(date.getMinutes()).padStart(2, "0");
-  const s = String(date.getSeconds()).padStart(2, "0");
-  return `${d}.${mo}.${y} ${h}:${mi}:${s}`;
+  const parts = Object.fromEntries(
+    czechDateTimeParts.formatToParts(date).map((p) => [p.type, p.value]),
+  );
+  return `${parts.day}.${parts.month}.${parts.year} ${parts.hour}:${parts.minute}:${parts.second}`;
 }
 
 function base64url(input: Buffer | string): string {
