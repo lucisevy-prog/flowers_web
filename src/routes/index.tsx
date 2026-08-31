@@ -217,7 +217,11 @@ function SplitCard({
   variant?: "rose";
 }) {
   return (
-    <article className="group relative overflow-hidden rounded-[2px] border border-border/60 bg-card">
+    <Link
+      to={to}
+      search={search}
+      className="group relative block overflow-hidden rounded-[2px] border border-border/60 bg-card"
+    >
       <div className="relative aspect-[16/11] overflow-hidden">
         <img
           src={image}
@@ -240,16 +244,12 @@ function SplitCard({
             </li>
           ))}
         </ul>
-        <Link
-          to={to}
-          search={search}
-          className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-espresso"
-        >
+        <span className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-espresso">
           {cta}
-          <ArrowUpRight className="h-4 w-4" />
-        </Link>
+          <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </span>
       </div>
-    </article>
+    </Link>
   );
 }
 
