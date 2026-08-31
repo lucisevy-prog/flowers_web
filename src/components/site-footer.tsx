@@ -80,7 +80,18 @@ export function SiteFooter() {
 
       <div className="border-t border-cream/10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-6 text-xs text-cream/50 sm:flex-row lg:px-10">
-          <p>© {new Date().getFullYear()} LU by Lucie. Vytvořeno s láskou.</p>
+          <p>
+            © {new Date().getFullYear()} LU by Lucie. Web vytvořil{" "}
+            <a
+              href="https://www.aerisq.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-champagne/50 underline-offset-2 hover:text-champagne"
+            >
+              Aerisq
+            </a>
+            .
+          </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link to="/obchodni-podminky" className="hover:text-champagne">
               Obchodní podmínky
