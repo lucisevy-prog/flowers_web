@@ -93,23 +93,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "author", content: "LU by Lucie" },
         {
           property: "og:title",
-          content: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky",
+          content: "LU by Lucie — Flower bar & květinové zážitky",
         },
         {
           property: "og:description",
-          content:
-            "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
+          content: "Přinášíme na váš event emoci, tvoření a zážitek, který si hosté odnesou domů.",
         },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
         {
           name: "twitter:title",
-          content: "LU by Lucie — Květinové zážitky pro nezapomenutelné okamžiky",
+          content: "LU by Lucie — Flower bar & květinové zážitky",
         },
         {
           name: "twitter:description",
-          content:
-            "Prémiové květinové zážitky pro svatby, rozlučky se svobodou a firemní eventy v Praze a Středočeském kraji. Premium Flower Bar, DIY kity a intimní zážitky.",
+          content: "Přinášíme na váš event emoci, tvoření a zážitek, který si hosté odnesou domů.",
         },
         { property: "og:image", content: "https://www.lubyluci.cz/og-image.jpg" },
         { name: "twitter:image", content: "https://www.lubyluci.cz/og-image.jpg" },
