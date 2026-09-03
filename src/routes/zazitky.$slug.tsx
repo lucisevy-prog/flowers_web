@@ -33,12 +33,12 @@ function buildOffers(exp: Experience) {
   }
   return [{ "@type": "Offer" as const, price: parsePriceCzk(exp.from), priceCurrency: "CZK" }];
 }
-import miniKoloStesti from "@/assets/mini-kolo_stesti.png";
-import miniNuzky from "@/assets/mini-nuzky.png";
-import miniSlunecnik from "@/assets/mini-slunecnik.png";
-import miniStojanNaStuhy from "@/assets/mini-stojan_na_stuhy.png";
-import miniZrcadlo from "@/assets/mini-zrcadlo.png";
-import miniTaska from "@/assets/mini-taska_LU.png";
+import miniKoloStesti from "@/assets/mini-kolo_stesti.webp";
+import miniNuzky from "@/assets/mini-nuzky.webp";
+import miniSlunecnik from "@/assets/mini-slunecnik.webp";
+import miniStojanNaStuhy from "@/assets/mini-stojan_na_stuhy.webp";
+import miniZrcadlo from "@/assets/mini-zrcadlo.webp";
+import miniTaska from "@/assets/mini-taska_LU.webp";
 
 // Drobné dekorativní rekvizity z reálných fotek klientky, přiřazené k
 // zážitku, kde se skutečně objevují — jemný detail v rohu hero fotky,

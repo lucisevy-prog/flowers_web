@@ -1,7 +1,7 @@
 import { createFileRoute, Link, Outlet, useMatchRoute } from "@tanstack/react-router";
 import { experiences } from "@/lib/experiences";
 import { ArrowUpRight, Instagram } from "lucide-react";
-import miniStojanNaStuhy from "@/assets/mini-stojan_na_stuhy.png";
+import miniStojanNaStuhy from "@/assets/mini-stojan_na_stuhy.webp";
 
 export const Route = createFileRoute("/zazitky")({
   head: () => ({
@@ -67,6 +67,7 @@ function ZazitkyIndex() {
           src={miniStojanNaStuhy}
           alt=""
           aria-hidden="true"
+          loading="lazy"
           className="pointer-events-none absolute top-4 right-6 hidden w-40 rotate-3 opacity-90 lg:block lg:right-10 lg:w-52"
         />
         <div className="max-w-3xl">

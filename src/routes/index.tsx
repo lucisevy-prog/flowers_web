@@ -1,16 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero-flower-bar.jpg";
-import miniSlunecnik from "@/assets/mini-slunecnik.png";
-import miniNuzky from "@/assets/mini-nuzky.png";
-import miniZrcadlo from "@/assets/mini-zrcadlo.png";
-import bouquetHands from "@/assets/bouquet-hands.jpg";
-import corporateEvent from "@/assets/corporate-event.jpg";
-import venueCorporateGala from "@/assets/venue-corporate-gala.jpg";
-import venueWellnessStudio from "@/assets/venue-wellness-studio.jpg";
-import venueCafePopup from "@/assets/venue-cafe-popup.jpg";
-import venueGenderReveal from "@/assets/venue-gender-reveal.jpg";
-import venueBachelorette from "@/assets/venue-bachelorette.jpg";
+import heroImg from "@/assets/hero-flower-bar.webp";
+import miniSlunecnik from "@/assets/mini-slunecnik.webp";
+import miniNuzky from "@/assets/mini-nuzky.webp";
+import miniZrcadlo from "@/assets/mini-zrcadlo.webp";
+import bouquetHands from "@/assets/bouquet-hands.webp";
+import corporateEvent from "@/assets/corporate-event.webp";
+import venueCorporateGala from "@/assets/venue-corporate-gala.webp";
+import venueWellnessStudio from "@/assets/venue-wellness-studio.webp";
+import venueCafePopup from "@/assets/venue-cafe-popup.webp";
+import venueGenderReveal from "@/assets/venue-gender-reveal.webp";
+import venueBachelorette from "@/assets/venue-bachelorette.webp";
 import { ArrowUpRight, Instagram } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -260,6 +260,7 @@ function Statement() {
         src={miniSlunecnik}
         alt=""
         aria-hidden="true"
+        loading="lazy"
         className="pointer-events-none absolute top-2 -left-4 hidden w-20 -rotate-6 opacity-90 sm:block lg:top-0 lg:-left-16 lg:w-28"
       />
       <p className="font-serif text-3xl leading-snug text-espresso sm:text-4xl">
@@ -413,6 +414,7 @@ function HowItWorks() {
         src={miniNuzky}
         alt=""
         aria-hidden="true"
+        loading="lazy"
         className="pointer-events-none absolute -top-10 right-6 hidden w-28 rotate-12 opacity-80 sm:block lg:top-8 lg:right-16 lg:w-36"
       />
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
@@ -460,6 +462,7 @@ function CtaBanner() {
           src={miniZrcadlo}
           alt=""
           aria-hidden="true"
+          loading="lazy"
           className="pointer-events-none absolute -right-8 -bottom-10 hidden w-32 rotate-6 opacity-80 sm:block lg:w-40"
         />
       </div>

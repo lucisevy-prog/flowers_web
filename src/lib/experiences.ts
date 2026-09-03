@@ -1,8 +1,8 @@
-import premiumFlowerBar from "@/assets/premium-flower-bar.jpg";
-import diyKit from "@/assets/diy-kit.jpg";
-import babyShower from "@/assets/gender-reveal.jpg";
-import flowerFortune from "@/assets/flower-fortune.jpg";
-import hvezdnyFlowerBar from "@/assets/mini-experience.jpg";
+import premiumFlowerBar from "@/assets/premium-flower-bar.webp";
+import diyKit from "@/assets/diy-kit.webp";
+import babyShower from "@/assets/gender-reveal.webp";
+import flowerFortune from "@/assets/flower-fortune.webp";
+import hvezdnyFlowerBar from "@/assets/mini-experience.webp";
 
 export type Tier = {
   name: string;
