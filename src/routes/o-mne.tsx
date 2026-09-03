@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState, type SubmitEvent } from "react";
-import flowerBarAction from "@/assets/lucie-flower-bar-action.jpg";
-import intimniRitualImg from "@/assets/o-mne-intimni-ritual.png";
-import velkolepyBarImg from "@/assets/o-mne-velkolepy-bar.png";
-import miniKoloStesti from "@/assets/mini-kolo_stesti.png";
+import flowerBarAction from "@/assets/lucie-flower-bar-action.webp";
+import intimniRitualImg from "@/assets/o-mne-intimni-ritual.webp";
+import velkolepyBarImg from "@/assets/o-mne-velkolepy-bar.webp";
+import miniKoloStesti from "@/assets/mini-kolo_stesti.webp";
 import { ArrowUpRight } from "lucide-react";
 import { submitInquiry } from "@/lib/contact.functions";
 import { SuccessModal } from "@/components/success-modal";
@@ -57,7 +57,7 @@ const principles = [
   },
 ];
 
-type SubmitStatus = "idle" | "pending" | "success" | "error";
+type SubmitStatus = "idle" | "pending" | "success" | "error" | "rate_limited";
 
 function About() {
   const submitInquiryFn = useServerFn(submitInquiry);
@@ -85,7 +85,7 @@ function About() {
         setShowSuccessModal(true);
         form.reset();
       } else {
-        setStatus("error");
+        setStatus(result.error === "rate_limited" ? "rate_limited" : "error");
       }
     } catch (error) {
       console.error(error);
@@ -97,7 +97,14 @@ function About() {
     <div className="bg-background">
       <section className="relative isolate overflow-hidden">
         <div aria-hidden className="absolute inset-0 -z-10">
-          <img src={flowerBarAction} alt="" className="h-full w-full object-cover" />
+          <img
+            src={flowerBarAction}
+            alt=""
+            width={1024}
+            height={768}
+            fetchPriority="high"
+            className="h-full w-full object-cover"
+          />
         </div>
 
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
@@ -144,7 +151,14 @@ function About() {
               key={f.title}
               className="flex flex-col items-center rounded-[2px] border border-champagne/40 bg-cream p-8 text-center shadow-[0_20px_50px_-30px_rgba(94,70,59,0.35)]"
             >
-              <img src={f.image} alt="" className="h-44 w-44 object-contain sm:h-52 sm:w-52" />
+              <img
+                src={f.image}
+                alt=""
+                loading="lazy"
+                width={640}
+                height={640}
+                className="h-44 w-44 object-contain sm:h-52 sm:w-52"
+              />
               <h3 className="mt-4 font-serif text-2xl text-espresso">{f.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-cocoa/80">{f.text}</p>
             </div>
@@ -184,6 +198,7 @@ function About() {
           src={miniKoloStesti}
           alt=""
           aria-hidden="true"
+          loading="lazy"
           className="pointer-events-none absolute top-6 -left-4 hidden w-24 -rotate-6 opacity-90 sm:block lg:top-2 lg:-left-16 lg:w-32"
         />
         <p className="eyebrow">Nejste si jistí?</p>
@@ -239,6 +254,16 @@ function About() {
           {status === "error" ? (
             <p className="text-sm text-red-600">
               Něco se pokazilo. Zkuste to prosím znovu, nebo mi napište přímo na{" "}
+              <a href="mailto:lubyluci.studio@gmail.com" className="underline">
+                lubyluci.studio@gmail.com
+              </a>
+              .
+            </p>
+          ) : null}
+          {status === "rate_limited" ? (
+            <p className="text-sm text-red-600">
+              Zaznamenali jsme z tohoto zařízení víc zpráv za krátkou chvíli. Zkuste to prosím znovu
+              za pár minut, nebo mi napište přímo na{" "}
               <a href="mailto:lubyluci.studio@gmail.com" className="underline">
                 lubyluci.studio@gmail.com
               </a>

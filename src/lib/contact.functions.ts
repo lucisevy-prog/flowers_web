@@ -1,7 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
+import { getRequestIP } from "@tanstack/react-start/server";
 import { z } from "zod";
 import { appendInquiryRow } from "./google-sheets";
 import { sendInquiryConfirmationEmail } from "./resend";
+import { isRateLimited } from "./rate-limit";
 
 // Telefon: /kontakt ho vyžaduje (viz `required` na inputu), /o-mne mini
 // formulář pole vůbec nemá a posílá prázdný řetězec — schéma je sdílené
@@ -35,7 +37,7 @@ const inquirySchema = z.object({
 });
 
 export type InquiryFormValues = z.infer<typeof inquirySchema>;
-export type InquiryResult = { ok: true } | { ok: false; error: "config" | "send" };
+export type InquiryResult = { ok: true } | { ok: false; error: "config" | "send" | "rate_limited" };
 
 // Poptávky se ukládají do Google Sheets přímo přes servisní účet (Service
 // Account) — viz src/lib/google-sheets.ts a scripts/README-google-sheets.md
@@ -58,6 +60,17 @@ export const submitInquiry = createServerFn({ method: "POST" })
   .handler(async ({ data }): Promise<InquiryResult> => {
     if (data.company) {
       return { ok: true };
+    }
+
+    // Second line of defense behind the honeypot above — that one only
+    // stops bots that fill in every field they find; this one stops a
+    // script that skips the honeypot and hits the endpoint directly.
+    // xForwardedFor: true is safe here because Vercel's edge network is the
+    // only thing that can reach this function — the header can be trusted.
+    const ip = getRequestIP({ xForwardedFor: true }) ?? "unknown";
+    if (isRateLimited(ip)) {
+      console.warn(`submitInquiry: rate limit hit for ${ip}`);
+      return { ok: false, error: "rate_limited" };
     }
 
     if (

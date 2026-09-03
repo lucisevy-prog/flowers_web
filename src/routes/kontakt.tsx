@@ -5,8 +5,8 @@ import { Mail, MessageCircle, MapPin, ArrowUpRight, Instagram } from "lucide-rea
 import { experiences } from "@/lib/experiences";
 import { submitInquiry } from "@/lib/contact.functions";
 import { SuccessModal } from "@/components/success-modal";
-import moodboardCollage from "@/assets/moodboard-collage.png";
-import vizitkaKeepsake from "@/assets/vizitka-keepsake.png";
+import moodboardCollage from "@/assets/moodboard-collage.webp";
+import vizitkaKeepsake from "@/assets/vizitka-keepsake.webp";
 
 type ContactSearch = { zazitek?: string };
 
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/kontakt")({
   component: Contact,
 });
 
-type SubmitStatus = "idle" | "pending" | "success" | "error";
+type SubmitStatus = "idle" | "pending" | "success" | "error" | "rate_limited";
 
 function Contact() {
   const submitInquiryFn = useServerFn(submitInquiry);
@@ -71,7 +71,7 @@ function Contact() {
         setShowSuccessModal(true);
         form.reset();
       } else {
-        setStatus("error");
+        setStatus(result.error === "rate_limited" ? "rate_limited" : "error");
       }
     } catch (error) {
       console.error(error);
@@ -188,6 +188,7 @@ function Contact() {
               src={vizitkaKeepsake}
               alt=""
               aria-hidden="true"
+              loading="lazy"
               className="pointer-events-none absolute -top-10 -right-4 w-40 -rotate-6 sm:w-48 lg:-right-10 lg:w-56"
             />
             <img
@@ -342,6 +343,16 @@ function Contact() {
               <p className="mt-4 text-sm text-red-600">
                 Něco se pokazilo a poptávku se nepodařilo odeslat. Zkuste to prosím znovu, nebo mi
                 napište přímo na{" "}
+                <a href="mailto:lubyluci.studio@gmail.com" className="underline">
+                  lubyluci.studio@gmail.com
+                </a>
+                .
+              </p>
+            ) : null}
+            {status === "rate_limited" ? (
+              <p className="mt-4 text-sm text-red-600">
+                Zaznamenali jsme z tohoto zařízení víc poptávek za krátkou chvíli. Zkuste to prosím
+                znovu za pár minut, nebo mi napište přímo na{" "}
                 <a href="mailto:lubyluci.studio@gmail.com" className="underline">
                   lubyluci.studio@gmail.com
                 </a>
