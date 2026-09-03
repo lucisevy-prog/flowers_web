@@ -130,19 +130,6 @@ async function getAccessToken(clientEmail: string, privateKey: string): Promise<
   return data.access_token;
 }
 
-// Písmeno sloupce (0 = A, 25 = Z, 26 = AA, ...) — tabulka má 17 sloupců,
-// takže jednopísmenná abeceda bohatě stačí, ale počítáme to obecně.
-function columnLetter(index: number): string {
-  let n = index + 1;
-  let letters = "";
-  while (n > 0) {
-    const rem = (n - 1) % 26;
-    letters = String.fromCharCode(65 + rem) + letters;
-    n = Math.floor((n - 1) / 26);
-  }
-  return letters;
-}
-
 async function sheetsRequest(path: string, token: string, init?: RequestInit): Promise<unknown> {
   const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${path}`, {
     ...init,
@@ -186,28 +173,34 @@ export async function appendInquiryRow(payload: InquiryPayload): Promise<void> {
   )) as { values?: string[][] };
   const headerRow = headerData.values?.[0] ?? [];
 
-  const colData = (await sheetsRequest(
-    `${sheetId}/values/${encodeURIComponent(`${quotedSheet}!A:A`)}`,
-    token,
-  )) as { values?: string[][] };
-  const nextRow = (colData.values?.length ?? 0) + 1;
-
-  const data = COLUMNS.map(({ header, value }) => {
+  // Build one row, our values placed at their header's column index and
+  // everything else left blank — same per-column mapping as before, just
+  // assembled client-side instead of addressed as separate ranges.
+  const row = new Array<string>(headerRow.length).fill("");
+  let matched = 0;
+  for (const { header, value } of COLUMNS) {
     const colIndex = headerRow.indexOf(header);
     if (colIndex === -1) {
       console.error(`appendInquiryRow: column "${header}" not found in sheet header row.`);
-      return null;
+      continue;
     }
-    return {
-      range: `${quotedSheet}!${columnLetter(colIndex)}${nextRow}`,
-      values: [[value(payload)]],
-    };
-  }).filter((entry): entry is { range: string; values: string[][] } => entry !== null);
+    row[colIndex] = value(payload);
+    matched++;
+  }
+  if (matched === 0) return;
 
-  if (data.length === 0) return;
-
-  await sheetsRequest(`${sheetId}/values:batchUpdate`, token, {
-    method: "POST",
-    body: JSON.stringify({ valueInputOption: "USER_ENTERED", data }),
-  });
+  // values:append (not a client-computed "next row" + batchUpdate, as this
+  // used to work) lets the Sheets API itself find and lock the next empty
+  // row — atomic on Google's side. The old approach read column A's length
+  // to compute the next row, then wrote there separately; two inquiries
+  // submitted close together could both read the same length and one would
+  // silently overwrite the other with no error on either side.
+  await sheetsRequest(
+    `${sheetId}/values/${encodeURIComponent(`${quotedSheet}!A1`)}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
+    token,
+    {
+      method: "POST",
+      body: JSON.stringify({ values: [row] }),
+    },
+  );
 }
