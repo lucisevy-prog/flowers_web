@@ -23,7 +23,7 @@ export function ReviewCard({ review, compact = false }: { review: Review; compac
       </blockquote>
 
       <figcaption className="mt-auto pt-7">
-        <div className="flex items-center gap-4 border-t border-border pt-5">
+        <div className="flex min-h-[calc(4.75rem+1px)] items-center gap-4 border-t border-border pt-5">
           {review.photo ? (
             <img
               src={review.photo}

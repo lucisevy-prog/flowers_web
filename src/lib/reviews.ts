@@ -4,6 +4,7 @@
 //
 // Pořadí v poli = pořadí na /recenze (nejsilnější/nejkonkrétnější první).
 
+import photoPetraAdamova from "@/assets/review-petra-adamova.webp";
 import photoPetraS from "@/assets/review-petra-s.webp";
 
 export type Review = {
@@ -27,6 +28,7 @@ export const reviews: Review[] = [
   {
     name: "Petra Adamová",
     role: "Founder & CEO Velvet Society",
+    photo: photoPetraAdamova,
     text: "Za Velvet Society bych chtěla Lucii Ševčíkové a jejímu projektu Flower Bar z celého srdce poděkovat za krásnou spolupráci na našem Grand Openingu. Flower Bar nebyl jen doplňkem večera – stal se jeho nádhernou součástí. Celý nápad s květinami na naši akci doslova rozzářil a přinesl do ní radost, ženskost a krásnou energii. Dámy byly nadšené, s kytičkami se fotily, odnášely si je domů a bylo vidět, jakou jim udělaly radost. 🌸 Právě takové detaily vytvářejí emoci a vzpomínku, která zůstává ještě dlouho po skončení akce. Flower Bar považuji za originální a unikátní projekt s nádhernou myšlenkou a věřím, že má před sebou skvělou budoucnost. Lucii přeji mnoho úspěchů, štěstí a krásných příležitostí na její další cestě. A za Velvet Society mohu říct jediné – těším se na naši další spolupráci.",
     excerpt:
       "Flower Bar nebyl jen doplňkem večera – stal se jeho nádhernou součástí. … Dámy byly nadšené, s kytičkami se fotily, odnášely si je domů a bylo vidět, jakou jim udělaly radost. 🌸",
