@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { getGlobalStartContext } from "@tanstack/react-start";
+import { Analytics } from "@vercel/analytics/react";
 import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
@@ -194,6 +195,10 @@ function RootComponent() {
         </main>
         <SiteFooter />
       </div>
+      {/* Vercel Web Analytics — bez cookies, skript se načítá ze stejné
+          domény (/_vercel/insights/script.js), takže produkční CSP stačí.
+          Přechody mezi stránkami sleduje sám přes History API. */}
+      <Analytics />
     </QueryClientProvider>
   );
 }

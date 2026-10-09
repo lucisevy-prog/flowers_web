@@ -151,6 +151,7 @@ const sections: LegalSection[] = [
     heading: "13. Cookies",
     blocks: [
       "Webové stránky mohou používat technické cookies nezbytné pro jejich správné fungování.",
+      "Pro měření návštěvnosti používáme službu Vercel Web Analytics, která nepoužívá cookies ani neukládá žádné údaje do vašeho zařízení. Sbírá pouze anonymní a souhrnné údaje (např. navštívené stránky, typ zařízení a zemi původu) a nevytváří profily jednotlivých návštěvníků.",
       "Pokud budou v budoucnu používány také analytické, marketingové nebo jiné netechnické cookies vyžadující souhlas, budou návštěvníkům webu poskytnuty odpovídající informace a možnost jejich použití přijmout nebo odmítnout.",
       "Podle ÚOOÚ technické cookies nezbytné pro fungování webu souhlas nevyžadují. U netechnických cookies je naopak potřeba řešit předchozí souhlas a odmítnutí musí být stejně jednoduché jako jeho udělení.",
     ],

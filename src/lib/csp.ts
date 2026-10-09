@@ -15,9 +15,13 @@ export function generateNonce(): string {
 }
 
 export function buildContentSecurityPolicy(nonce: string): string {
+  // Vercel Analytics v produkci načítá skript ze stejné domény
+  // (/_vercel/insights/script.js), ale v `vite dev` sahá pro debug verzi na
+  // va.vercel-scripts.com — povoleno jen lokálně, produkce zůstává 'self'.
+  const devScriptHosts = import.meta.env.DEV ? " https://va.vercel-scripts.com" : "";
   const directives = [
     `default-src 'self'`,
-    `script-src 'self' 'nonce-${nonce}'`,
+    `script-src 'self' 'nonce-${nonce}'${devScriptHosts}`,
     // No nonce here on purpose: the app has zero inline style/style="" left
     // (see hero-glow/cta-glow/.lu-input in styles.css), so 'self' + the
     // Google Fonts host already cover every stylesheet. Adding the nonce
