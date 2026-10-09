@@ -12,6 +12,8 @@ import venueCafePopup from "@/assets/venue-cafe-popup.webp";
 import venueGenderReveal from "@/assets/venue-gender-reveal.webp";
 import venueBachelorette from "@/assets/venue-bachelorette.webp";
 import { ArrowUpRight, Instagram } from "lucide-react";
+import { reviews } from "@/lib/reviews";
+import { ReviewCard } from "@/components/review-card";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,6 +32,7 @@ function Index() {
       <Venues />
       <InstagramSection />
       <HowItWorks />
+      <ReviewsTeaser />
       <CtaBanner />
     </div>
   );
@@ -433,6 +436,40 @@ function HowItWorks() {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+// Krátká ukázka recenzí — jen ty označené `featured` (max. 3), bez fotek a
+// s oříznutým textem. Celé recenze žijí na /recenze.
+function ReviewsTeaser() {
+  const featured = reviews.filter((r) => r.featured).slice(0, 3);
+  if (featured.length === 0) return null;
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-28">
+      <div className="mb-12 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+        <div className="max-w-2xl">
+          <p className="eyebrow">Recenze</p>
+          <h2 className="mt-4 font-serif text-4xl leading-tight text-espresso sm:text-5xl">
+            Slova, která <em className="italic text-cocoa">hřejí</em>.
+          </h2>
+        </div>
+        <Link
+          to="/recenze"
+          className="inline-flex shrink-0 items-center gap-3 text-xs uppercase tracking-[0.22em] text-espresso underline decoration-champagne decoration-2 underline-offset-8 hover:text-cocoa"
+        >
+          Všechny recenze <ArrowUpRight className="h-4 w-4" />
+        </Link>
+      </div>
+      {/* Mobil/tablet: vodorovný posuvník se snapem (3 karty pod sebou by
+          byly ~1100px scrollu), desktop: klasická trojice vedle sebe. */}
+      <div className="-mx-6 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto px-6 pb-2 [scrollbar-width:none] lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
+        {featured.map((review, i) => (
+          <div key={i} className="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-auto">
+            <ReviewCard review={review} compact />
+          </div>
+        ))}
       </div>
     </section>
   );

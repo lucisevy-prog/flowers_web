@@ -14,6 +14,7 @@ import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as OMneRouteImport } from './routes/o-mne'
 import { Route as ObchodniPodminkyRouteImport } from './routes/obchodni-podminky'
 import { Route as PlaylistRouteImport } from './routes/playlist'
+import { Route as RecenzeRouteImport } from './routes/recenze'
 import { Route as ZasadyOchranyOsobnichUdajuRouteImport } from './routes/zasady-ochrany-osobnich-udaju'
 import { Route as ZazitkyRouteImport } from './routes/zazitky'
 import { Route as ZazitkySlugRouteImport } from './routes/zazitky.$slug'
@@ -43,6 +44,11 @@ const PlaylistRoute = PlaylistRouteImport.update({
   path: '/playlist',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecenzeRoute = RecenzeRouteImport.update({
+  id: '/recenze',
+  path: '/recenze',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ZasadyOchranyOsobnichUdajuRoute =
   ZasadyOchranyOsobnichUdajuRouteImport.update({
     id: '/zasady-ochrany-osobnich-udaju',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/o-mne': typeof OMneRoute
   '/obchodni-podminky': typeof ObchodniPodminkyRoute
   '/playlist': typeof PlaylistRoute
+  '/recenze': typeof RecenzeRoute
   '/zasady-ochrany-osobnich-udaju': typeof ZasadyOchranyOsobnichUdajuRoute
   '/zazitky': typeof ZazitkyRouteWithChildren
   '/zazitky/$slug': typeof ZazitkySlugRoute
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/o-mne': typeof OMneRoute
   '/obchodni-podminky': typeof ObchodniPodminkyRoute
   '/playlist': typeof PlaylistRoute
+  '/recenze': typeof RecenzeRoute
   '/zasady-ochrany-osobnich-udaju': typeof ZasadyOchranyOsobnichUdajuRoute
   '/zazitky': typeof ZazitkyRouteWithChildren
   '/zazitky/$slug': typeof ZazitkySlugRoute
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/o-mne': typeof OMneRoute
   '/obchodni-podminky': typeof ObchodniPodminkyRoute
   '/playlist': typeof PlaylistRoute
+  '/recenze': typeof RecenzeRoute
   '/zasady-ochrany-osobnich-udaju': typeof ZasadyOchranyOsobnichUdajuRoute
   '/zazitky': typeof ZazitkyRouteWithChildren
   '/zazitky/$slug': typeof ZazitkySlugRoute
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/o-mne'
     | '/obchodni-podminky'
     | '/playlist'
+    | '/recenze'
     | '/zasady-ochrany-osobnich-udaju'
     | '/zazitky'
     | '/zazitky/$slug'
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/o-mne'
     | '/obchodni-podminky'
     | '/playlist'
+    | '/recenze'
     | '/zasady-ochrany-osobnich-udaju'
     | '/zazitky'
     | '/zazitky/$slug'
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/o-mne'
     | '/obchodni-podminky'
     | '/playlist'
+    | '/recenze'
     | '/zasady-ochrany-osobnich-udaju'
     | '/zazitky'
     | '/zazitky/$slug'
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   OMneRoute: typeof OMneRoute
   ObchodniPodminkyRoute: typeof ObchodniPodminkyRoute
   PlaylistRoute: typeof PlaylistRoute
+  RecenzeRoute: typeof RecenzeRoute
   ZasadyOchranyOsobnichUdajuRoute: typeof ZasadyOchranyOsobnichUdajuRoute
   ZazitkyRoute: typeof ZazitkyRouteWithChildren
 }
@@ -169,6 +182,13 @@ declare module '@tanstack/react-router' {
       path: '/playlist'
       fullPath: '/playlist'
       preLoaderRoute: typeof PlaylistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recenze': {
+      id: '/recenze'
+      path: '/recenze'
+      fullPath: '/recenze'
+      preLoaderRoute: typeof RecenzeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/zasady-ochrany-osobnich-udaju': {
@@ -212,6 +232,7 @@ const rootRouteChildren: RootRouteChildren = {
   OMneRoute: OMneRoute,
   ObchodniPodminkyRoute: ObchodniPodminkyRoute,
   PlaylistRoute: PlaylistRoute,
+  RecenzeRoute: RecenzeRoute,
   ZasadyOchranyOsobnichUdajuRoute: ZasadyOchranyOsobnichUdajuRoute,
   ZazitkyRoute: ZazitkyRouteWithChildren,
 }

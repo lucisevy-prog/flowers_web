@@ -7,6 +7,7 @@ const nav = [
   { to: "/", label: "Domů" },
   { to: "/zazitky", label: "Zážitky" },
   { to: "/o-mne", label: "O mně" },
+  { to: "/recenze", label: "Recenze" },
   { to: "/kontakt", label: "Kontakt" },
 ] as const;
 

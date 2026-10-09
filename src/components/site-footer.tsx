@@ -58,6 +58,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/recenze" className="hover:text-champagne">
+                Recenze
+              </Link>
+            </li>
+            <li>
               <Link to="/kontakt" className="hover:text-champagne">
                 Kontakt
               </Link>
