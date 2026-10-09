@@ -5,6 +5,7 @@
 // Pořadí v poli = pořadí na /recenze (nejsilnější/nejkonkrétnější první).
 
 import photoPetraAdamova from "@/assets/review-petra-adamova.webp";
+import photoAlenaB from "@/assets/review-alena-b.webp";
 import photoPetraS from "@/assets/review-petra-s.webp";
 
 export type Review = {
@@ -51,6 +52,7 @@ export const reviews: Review[] = [
   {
     name: "Alena B.",
     role: "Host akce Velvet Society",
+    photo: photoAlenaB,
     text: "Spojení „květinový bar“ jsem poprvé slyšela a zažila přímo od Lucky na eventu Velvet Society a jako milovnice květin jsem byla nadšená. Možnost poskládat si při odchodu vlastní květinovou taštičku z jejího baru pro mne byla doslova třešničkou na dortu celého večera! Takový odchod z akce přeji zažít každé ženě.",
     excerpt:
       "Možnost poskládat si při odchodu vlastní květinovou taštičku z jejího baru pro mne byla doslova třešničkou na dortu celého večera! Takový odchod z akce přeji zažít každé ženě.",
