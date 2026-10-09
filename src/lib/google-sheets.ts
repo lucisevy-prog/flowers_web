@@ -20,16 +20,31 @@ const TOKEN_URL = "https://oauth2.googleapis.com/token";
 // Poznámka) je čistě interní a nikdy se sem nezapisuje.
 const COLUMNS: { header: string; value: (p: InquiryPayload) => string }[] = [
   { header: "Datum poptávky", value: () => formatCzechDateTime(new Date()) },
-  { header: "Jméno", value: (p) => p.name || "" },
-  { header: "Email", value: (p) => p.email || "" },
-  { header: "Telefon", value: (p) => p.phone || "" },
+  { header: "Jméno", value: (p) => asPlainText(p.name) },
+  { header: "Email", value: (p) => asPlainText(p.email) },
+  { header: "Telefon", value: (p) => asPlainText(p.phone) },
   { header: "Datum akce", value: (p) => formatCzechDate(p.eventDate) },
-  { header: "Zážitek", value: (p) => p.experience || "" },
-  { header: "Typ akce", value: (p) => p.occasion || "" },
-  { header: "Počet osob", value: (p) => p.guestCount || "" },
-  { header: "Lokalita", value: (p) => p.location || "" },
-  { header: "Zpráva klienta", value: (p) => p.message || "" },
+  { header: "Zážitek", value: (p) => asPlainText(p.experience) },
+  { header: "Typ akce", value: (p) => asPlainText(p.occasion) },
+  {
+    header: "Počet osob",
+    value: (p) => (/^\d+$/.test(p.guestCount) ? p.guestCount : asPlainText(p.guestCount)),
+  },
+  { header: "Lokalita", value: (p) => asPlainText(p.location) },
+  { header: "Zpráva klienta", value: (p) => asPlainText(p.message) },
 ];
+
+// Zapisujeme s valueInputOption=USER_ENTERED (kvůli datumům, viz níže), což
+// znamená, že Sheets hodnotu interpretuje stejně, jako by ji Lucie napsala
+// ručně — text začínající "=" se tak v její tabulce spustí jako vzorec
+// (formula injection: např. =IMPORTXML/=HYPERLINK s odkazem ven). Úvodní
+// apostrof Sheets bere jako "tohle je čistý text" a sám ho nezobrazí.
+// "+" a "-" sem patří taky: "+420…" by se jinak převedlo na číslo a ztratilo
+// plus, "-1+1" by se vyhodnotilo jako vzorec.
+function asPlainText(value: string): string {
+  if (!value) return "";
+  return /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
+}
 
 export type InquiryPayload = {
   name: string;

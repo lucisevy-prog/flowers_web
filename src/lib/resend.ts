@@ -21,8 +21,12 @@ export async function sendInquiryConfirmationEmail(name: string, email: string):
     return;
   }
 
+  // Oslovení jménem jen tehdy, když to jméno opravdu je (písmena, případně
+  // spojovník/apostrof, max. 30 znaků). Escapování v HTML nestačí: text
+  // jako "www.neco.cz" by poštovní klienti sami udělali klikatelným odkazem.
   const firstName = name.trim().split(/\s+/)[0] || "";
-  const greeting = firstName ? `Dobrý den, ${firstName},` : "Dobrý den,";
+  const isPlausibleName = /^[\p{L}][\p{L}'’-]{0,29}$/u.test(firstName);
+  const greeting = isPlausibleName ? `Dobrý den, ${firstName},` : "Dobrý den,";
 
   const response = await fetch(RESEND_API_URL, {
     method: "POST",
@@ -64,12 +68,25 @@ function buildConfirmationText(greeting: string): string {
   ].join("\n");
 }
 
+// Jméno pochází z formuláře, tedy od kohokoliv — a e-mail jde na adresu,
+// kterou zadal on sám, z naší ověřené domény. Bez escapování by stačilo do
+// jména napsat `<a/href="…">KLIKNĚTE</a>` a máme na doméně klientky hotový
+// phishingový kanál. Vše ostatní v šabloně je náš vlastní statický text.
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function buildConfirmationHtml(greeting: string): string {
   const p = (text: string) =>
     `<p style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#3e2d26;">${text}</p>`;
   return `
     <div style="max-width:520px;margin:0 auto;padding:32px 24px;background:#f6f0eb;">
-      ${p(greeting)}
+      ${p(escapeHtml(greeting))}
       ${p("děkujeme za váš zájem o květinové zážitky LU.")}
       ${p("Vaše poptávka nám dorazila a my se vám ozveme do 24 hodin s potvrzením dostupnosti termínu a dalšími informacemi k rezervaci.")}
       ${p("Než se ozveme, připomínáme, jak celý proces funguje:")}

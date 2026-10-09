@@ -14,26 +14,49 @@ function isValidPhone(value: string): boolean {
   return value === "" || (phoneRegex.test(value) && value.replace(/\D/g, "").length >= 9);
 }
 
+// Horní limity délek — formulář zapisuje do Sheets a posílá e-mail, takže
+// bez nich by šel poslat i megabajtový text. Hodnoty jsou s rezervou nad
+// čímkoliv, co skutečný člověk napíše; formuláře mají stejné `maxLength`.
+export const INQUIRY_MAX_LENGTH = {
+  name: 100,
+  email: 254,
+  short: 100,
+  location: 200,
+  message: 5000,
+} as const;
+
+const tooLong = "Text je příliš dlouhý.";
+const optionalText = (max: number) => z.string().trim().max(max, tooLong).optional().default("");
+
 const inquirySchema = z.object({
-  name: z.string().trim().min(1, "Zadejte prosím jméno."),
-  email: z.string().trim().email("Zadejte prosím platný e-mail."),
+  name: z.string().trim().min(1, "Zadejte prosím jméno.").max(INQUIRY_MAX_LENGTH.name, tooLong),
+  email: z
+    .string()
+    .trim()
+    .max(INQUIRY_MAX_LENGTH.email, tooLong)
+    .email("Zadejte prosím platný e-mail."),
   phone: z
     .string()
     .trim()
     .optional()
     .default("")
     .refine(isValidPhone, "Zadejte prosím platné telefonní číslo."),
-  eventDate: z.string().trim().optional().default(""),
-  experience: z.string().trim().optional().default(""),
-  occasion: z.string().trim().optional().default(""),
-  guestCount: z.string().trim().optional().default(""),
-  location: z.string().trim().optional().default(""),
-  message: z.string().trim().optional().default(""),
+  eventDate: z
+    .string()
+    .trim()
+    .optional()
+    .default("")
+    .refine((v) => v === "" || /^\d{4}-\d{2}-\d{2}$/.test(v), "Neplatné datum."),
+  experience: optionalText(INQUIRY_MAX_LENGTH.short),
+  occasion: optionalText(INQUIRY_MAX_LENGTH.short),
+  guestCount: optionalText(10),
+  location: optionalText(INQUIRY_MAX_LENGTH.location),
+  message: optionalText(INQUIRY_MAX_LENGTH.message),
   // Honeypot: visually hidden from real visitors (see the "company" field in
   // the forms), so a non-empty value here almost always means a bot filled
   // every field it could find. We report success without recording it, so
   // the bot doesn't learn the field is being checked.
-  company: z.string().optional().default(""),
+  company: z.string().max(INQUIRY_MAX_LENGTH.short).optional().default(""),
 });
 
 export type InquiryFormValues = z.infer<typeof inquirySchema>;

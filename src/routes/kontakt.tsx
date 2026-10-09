@@ -3,7 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useState, type SubmitEvent } from "react";
 import { Mail, MessageCircle, MapPin, ArrowUpRight, Instagram } from "lucide-react";
 import { experiences } from "@/lib/experiences";
-import { submitInquiry } from "@/lib/contact.functions";
+import { submitInquiry, INQUIRY_MAX_LENGTH } from "@/lib/contact.functions";
 import { SuccessModal } from "@/components/success-modal";
 import moodboardCollage from "@/assets/moodboard-collage.webp";
 import vizitkaKeepsake from "@/assets/vizitka-keepsake.webp";
@@ -226,6 +226,7 @@ function Contact() {
                 <input
                   required
                   name="name"
+                  maxLength={INQUIRY_MAX_LENGTH.name}
                   type="text"
                   className="lu-input"
                   placeholder="Vaše jméno"
@@ -235,6 +236,7 @@ function Contact() {
                 <input
                   required
                   name="email"
+                  maxLength={INQUIRY_MAX_LENGTH.email}
                   type="email"
                   className="lu-input"
                   placeholder="jmeno@email.cz"
@@ -298,6 +300,7 @@ function Contact() {
               <Field label="Lokalita">
                 <input
                   name="location"
+                  maxLength={INQUIRY_MAX_LENGTH.location}
                   type="text"
                   className="lu-input"
                   placeholder="Praha, Střední Čechy…"
@@ -309,6 +312,7 @@ function Contact() {
               <Field label="Řekněte mi víc">
                 <textarea
                   name="message"
+                  maxLength={INQUIRY_MAX_LENGTH.message}
                   rows={5}
                   className="lu-input resize-none"
                   placeholder="Atmosféra, paleta, prostor, cokoliv, co vám leží na srdci…"

@@ -6,7 +6,7 @@ import intimniRitualImg from "@/assets/o-mne-intimni-ritual.webp";
 import velkolepyBarImg from "@/assets/o-mne-velkolepy-bar.webp";
 import miniKoloStesti from "@/assets/mini-kolo_stesti.webp";
 import { ArrowUpRight } from "lucide-react";
-import { submitInquiry } from "@/lib/contact.functions";
+import { submitInquiry, INQUIRY_MAX_LENGTH } from "@/lib/contact.functions";
 import { SuccessModal } from "@/components/success-modal";
 
 export const Route = createFileRoute("/o-mne")({
@@ -222,6 +222,7 @@ function About() {
           <input
             required
             name="name"
+            maxLength={INQUIRY_MAX_LENGTH.name}
             type="text"
             placeholder="Vaše jméno"
             className="w-full border-0 border-b border-cocoa/30 bg-transparent px-1 py-4 text-base text-espresso placeholder:text-cocoa/50 focus:border-champagne focus:outline-none"
@@ -229,12 +230,14 @@ function About() {
           <input
             required
             name="email"
+            maxLength={INQUIRY_MAX_LENGTH.email}
             type="email"
             placeholder="E-mail"
             className="w-full border-0 border-b border-cocoa/30 bg-transparent px-1 py-4 text-base text-espresso placeholder:text-cocoa/50 focus:border-champagne focus:outline-none"
           />
           <textarea
             name="message"
+            maxLength={INQUIRY_MAX_LENGTH.message}
             rows={4}
             placeholder="O co jde? (pár slov stačí)"
             className="w-full border-0 border-b border-cocoa/30 bg-transparent px-1 py-4 text-base text-espresso placeholder:text-cocoa/50 focus:border-champagne focus:outline-none"
