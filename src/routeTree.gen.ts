@@ -9,18 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ZazitkyRouteImport } from './routes/zazitky'
-import { Route as ZasadyOchranyOsobnichUdajuRouteImport } from './routes/zasady-ochrany-osobnich-udaju'
-import { Route as PlaylistRouteImport } from './routes/playlist'
-import { Route as ObchodniPodminkyRouteImport } from './routes/obchodni-podminky'
-import { Route as OMneRouteImport } from './routes/o-mne'
-import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as OMneRouteImport } from './routes/o-mne'
+import { Route as ObchodniPodminkyRouteImport } from './routes/obchodni-podminky'
+import { Route as PlaylistRouteImport } from './routes/playlist'
+import { Route as ZasadyOchranyOsobnichUdajuRouteImport } from './routes/zasady-ochrany-osobnich-udaju'
+import { Route as ZazitkyRouteImport } from './routes/zazitky'
 import { Route as ZazitkySlugRouteImport } from './routes/zazitky.$slug'
 
-const ZazitkyRoute = ZazitkyRouteImport.update({
-  id: '/zazitky',
-  path: '/zazitky',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OMneRoute = OMneRouteImport.update({
+  id: '/o-mne',
+  path: '/o-mne',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObchodniPodminkyRoute = ObchodniPodminkyRouteImport.update({
+  id: '/obchodni-podminky',
+  path: '/obchodni-podminky',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlaylistRoute = PlaylistRouteImport.update({
+  id: '/playlist',
+  path: '/playlist',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ZasadyOchranyOsobnichUdajuRoute =
@@ -29,29 +49,9 @@ const ZasadyOchranyOsobnichUdajuRoute =
     path: '/zasady-ochrany-osobnich-udaju',
     getParentRoute: () => rootRouteImport,
   } as any)
-const PlaylistRoute = PlaylistRouteImport.update({
-  id: '/playlist',
-  path: '/playlist',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ObchodniPodminkyRoute = ObchodniPodminkyRouteImport.update({
-  id: '/obchodni-podminky',
-  path: '/obchodni-podminky',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OMneRoute = OMneRouteImport.update({
-  id: '/o-mne',
-  path: '/o-mne',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KontaktRoute = KontaktRouteImport.update({
-  id: '/kontakt',
-  path: '/kontakt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ZazitkyRoute = ZazitkyRouteImport.update({
+  id: '/zazitky',
+  path: '/zazitky',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ZazitkySlugRoute = ZazitkySlugRouteImport.update({
@@ -136,39 +136,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/zazitky': {
-      id: '/zazitky'
-      path: '/zazitky'
-      fullPath: '/zazitky'
-      preLoaderRoute: typeof ZazitkyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/zasady-ochrany-osobnich-udaju': {
-      id: '/zasady-ochrany-osobnich-udaju'
-      path: '/zasady-ochrany-osobnich-udaju'
-      fullPath: '/zasady-ochrany-osobnich-udaju'
-      preLoaderRoute: typeof ZasadyOchranyOsobnichUdajuRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/playlist': {
-      id: '/playlist'
-      path: '/playlist'
-      fullPath: '/playlist'
-      preLoaderRoute: typeof PlaylistRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/obchodni-podminky': {
-      id: '/obchodni-podminky'
-      path: '/obchodni-podminky'
-      fullPath: '/obchodni-podminky'
-      preLoaderRoute: typeof ObchodniPodminkyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/o-mne': {
-      id: '/o-mne'
-      path: '/o-mne'
-      fullPath: '/o-mne'
-      preLoaderRoute: typeof OMneRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kontakt': {
@@ -178,11 +150,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KontaktRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/o-mne': {
+      id: '/o-mne'
+      path: '/o-mne'
+      fullPath: '/o-mne'
+      preLoaderRoute: typeof OMneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/obchodni-podminky': {
+      id: '/obchodni-podminky'
+      path: '/obchodni-podminky'
+      fullPath: '/obchodni-podminky'
+      preLoaderRoute: typeof ObchodniPodminkyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/playlist': {
+      id: '/playlist'
+      path: '/playlist'
+      fullPath: '/playlist'
+      preLoaderRoute: typeof PlaylistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zasady-ochrany-osobnich-udaju': {
+      id: '/zasady-ochrany-osobnich-udaju'
+      path: '/zasady-ochrany-osobnich-udaju'
+      fullPath: '/zasady-ochrany-osobnich-udaju'
+      preLoaderRoute: typeof ZasadyOchranyOsobnichUdajuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zazitky': {
+      id: '/zazitky'
+      path: '/zazitky'
+      fullPath: '/zazitky'
+      preLoaderRoute: typeof ZazitkyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/zazitky/$slug': {
