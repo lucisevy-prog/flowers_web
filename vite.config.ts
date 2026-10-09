@@ -98,7 +98,16 @@ export default defineConfig(({ command, mode }) => {
       // needlessly slows dev server startup. Requires nitro >=3.0.260603-beta
       // for the `defaultPreset` option used below.
       ...(command === "build"
-        ? [nitro({ defaultPreset: "vercel", routeRules: securityRouteRules })]
+        ? [
+            nitro({
+              defaultPreset: "vercel",
+              routeRules: securityRouteRules,
+              // Bez explicitního regionu běžela funkce v iad1 (Washington) —
+              // každý SSR request i zápis poptávky s osobními údaji tak šel
+              // přes Atlantik. fra1 (Frankfurt) je nejblíž českým návštěvníkům.
+              vercel: { functions: { regions: ["fra1"] } },
+            }),
+          ]
         : []),
       viteReact(),
     ],
