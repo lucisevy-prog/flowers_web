@@ -44,8 +44,8 @@ function Recenze() {
             Co říkají ti, kdo už <em className="italic text-cocoa">květinový zážitek</em> zažili.
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-cocoa/85 sm:text-lg">
-            Každá akce je jiná — od komorní rozlučky po firemní večer. Tady je pár slov od těch, pro
-            které jsme ji připravovali.
+            Od slavnostního večera Velvet Society po pop-up v kavárně — pár slov od těch, kdo si
+            květinový bar vyzkoušeli na vlastní kůži.
           </p>
         </div>
       </section>
