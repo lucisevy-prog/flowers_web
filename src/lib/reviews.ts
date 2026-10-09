@@ -4,6 +4,8 @@
 //
 // Pořadí v poli = pořadí na /recenze (nejsilnější/nejkonkrétnější první).
 
+import photoPetraS from "@/assets/review-petra-s.webp";
+
 export type Review = {
   // Jak se recenzent podepisuje — celé jméno nebo jméno s iniciálou.
   name: string;
@@ -41,6 +43,7 @@ export const reviews: Review[] = [
   {
     name: "Petra Š.",
     role: "Host akce Velvet Society",
+    photo: photoPetraS,
     text: "Na jedné krásné akci jsem poprvé poznala květinový bar 🌸, o kterém jsem nikdy neslyšela, a byla jsem, a nejen já, velmi nadšená. Vybrala jsem si květiny podle svého vkusu, vytvořila vlastní kytičku, a když vám chybí inspirace, s výběrem i laděním ochotně poradí úžasná Luci. Je krásné přinést si domů něco, co jste si samy vytvořily a co vám připomíná příjemný večer i milá setkání. 🌸🌸🌸 Hlavně velmi originální, v krásné květinové taštičce. Vykouzlí krásný detail celé akce a nezapomenutelný zážitek.",
   },
   {
