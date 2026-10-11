@@ -28,6 +28,8 @@ export const Route = createFileRoute("/recenze")({
 });
 
 function Recenze() {
+  const [lead, ...rest] = reviews;
+
   return (
     <div className="bg-background">
       <section className="relative mx-auto max-w-7xl px-6 pt-16 pb-14 lg:px-10 lg:pt-24">
@@ -51,12 +53,23 @@ function Recenze() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-24 lg:px-10">
-        {/* CSS columns = masonry: karty s fotkou a bez ní různé výšky se
-            skládají pod sebe bez prázdných děr, jak by dělal běžný grid. */}
-        <div className="columns-1 gap-6 md:columns-2 lg:columns-3 [&>*]:mb-6">
-          {reviews.map((review, i) => (
-            <ReviewCard key={i} review={review} />
-          ))}
+        {lead ? <ReviewCard review={lead} variant="lead" /> : null}
+
+        {/* Pravidelné řady se stejně vysokými kartami: na desktopu 6sloupcová
+            mřížka — první dvě karty po 3 sloupcích (řada 2), další po 2
+            (řady po 3). Tablet: 2 vedle sebe, lichá poslední přes celou šířku. */}
+        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-6">
+          {rest.map((review, i) => {
+            const isLastOdd = i === rest.length - 1 && rest.length % 2 === 1;
+            return (
+              <div
+                key={i}
+                className={`${i < 2 ? "lg:col-span-3" : "lg:col-span-2"} ${isLastOdd ? "md:col-span-2" : ""}`}
+              >
+                <ReviewCard review={review} />
+              </div>
+            );
+          })}
         </div>
       </section>
 

@@ -2,7 +2,9 @@
 // Přidání další recenze = nový objekt v poli, nic jiného se měnit nemusí.
 // Souhlas se zveřejněním má klientka (recenze jí poslali sami autoři).
 //
-// Pořadí v poli = pořadí na /recenze (nejsilnější/nejkonkrétnější první).
+// Pořadí v poli = pořadí na /recenze: první recenze je úvodní karta přes
+// celou šířku, další jdou po řadách 2 + 3 (+ 3…) — podobně dlouhé texty
+// patří do stejné řady, ať karty v řadě nemají velké prázdné místo.
 
 import photoPetraAdamova from "@/assets/review-petra-adamova.webp";
 import photoAlenaB from "@/assets/review-alena-b.webp";
@@ -36,18 +38,18 @@ export const reviews: Review[] = [
     featured: true,
   },
   {
+    name: "Petra Š.",
+    role: "Host akce Velvet Society",
+    photo: photoPetraS,
+    text: "Na jedné krásné akci jsem poprvé poznala květinový bar 🌸, o kterém jsem nikdy neslyšela, a byla jsem, a nejen já, velmi nadšená. Vybrala jsem si květiny podle svého vkusu, vytvořila vlastní kytičku, a když vám chybí inspirace, s výběrem i laděním ochotně poradí úžasná Luci. Je krásné přinést si domů něco, co jste si samy vytvořily a co vám připomíná příjemný večer i milá setkání. 🌸🌸🌸 Hlavně velmi originální, v krásné květinové taštičce. Vykouzlí krásný detail celé akce a nezapomenutelný zážitek.",
+  },
+  {
     name: "Denisa V.",
     role: "Lžička Café",
     text: "Ráda bych Lucince poděkovala za úžasný pop-up, který uskutečnila u nás v kavárně. Všichni hosté obdivovali květiny a Lucky obrovský talent a cit pro kombinování barev. Obzvlášť si cením nápadu s osobním vzkazem a na výsledku je znát, že Lucka dělá svojí práci srdcem. U Lucky v baru místo sklenic s rumem, co do hlavy stoupá, se vám pod nohama celá louka houpá.",
     excerpt:
       "Ráda bych Lucince poděkovala za úžasný pop-up, který uskutečnila u nás v kavárně. Všichni hosté obdivovali květiny a Lucky obrovský talent a cit pro kombinování barev.",
     featured: true,
-  },
-  {
-    name: "Petra Š.",
-    role: "Host akce Velvet Society",
-    photo: photoPetraS,
-    text: "Na jedné krásné akci jsem poprvé poznala květinový bar 🌸, o kterém jsem nikdy neslyšela, a byla jsem, a nejen já, velmi nadšená. Vybrala jsem si květiny podle svého vkusu, vytvořila vlastní kytičku, a když vám chybí inspirace, s výběrem i laděním ochotně poradí úžasná Luci. Je krásné přinést si domů něco, co jste si samy vytvořily a co vám připomíná příjemný večer i milá setkání. 🌸🌸🌸 Hlavně velmi originální, v krásné květinové taštičce. Vykouzlí krásný detail celé akce a nezapomenutelný zážitek.",
   },
   {
     name: "Alena B.",

@@ -467,7 +467,7 @@ function ReviewsTeaser() {
       <div className="-mx-6 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto px-6 pb-2 [scrollbar-width:none] lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
         {featured.map((review, i) => (
           <div key={i} className="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-auto">
-            <ReviewCard review={review} compact />
+            <ReviewCard review={review} variant="compact" />
           </div>
         ))}
       </div>
