@@ -52,6 +52,11 @@ export default defineConfig(({ command, mode }) => {
     // hand-written `-webkit-backdrop-filter`) diverging between `vite dev`
     // and `vite build`.
     css: { transformer: "lightningcss" },
+    // Vite by assety pod 4 kB vložil do bundlu jako data: URI — CSP má ale
+    // `img-src 'self'` bez data:, takže by se takový obrázek v produkci
+    // nezobrazil (stalo se s 3,4kB miniaturou u recenze). V `vite dev` se
+    // nic neinlinuje, proto to lokálně není vidět. Vše jako samostatné soubory.
+    build: { assetsInlineLimit: 0 },
     resolve: {
       // Vite 8 resolves the tsconfig `paths` map (our "@/*" alias) natively;
       // the explicit alias below stays as a belt-and-suspenders fallback.
